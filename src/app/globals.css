@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #ce5743;
+  --color-secondary: #070519;
+  --color-accent: #c9c9c9;
+  --color-background: #ffffff;
+  --color-foreground: #000000;
+  --color-muted: #f1f2f4;
+  --color-muted-foreground: #676767;
+  --color-card: #eeeef0;
+  --color-card-foreground: #151823;
+  --color-border: #d9d9d9;
+  --font-heading: 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --radius: 12px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes marquee-slower {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee-slower {
+  animation: marquee-slower 60s linear infinite;
+}
