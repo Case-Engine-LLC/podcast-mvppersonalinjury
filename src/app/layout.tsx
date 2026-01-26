@@ -9,8 +9,8 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Ebook Landing Page',
-  description: 'Download our free ebook and learn how to protect your rights.',
+  title: 'Podcast Landing Page',
+  description: 'Subscribe to our podcast and learn how to protect your rights after a car accident.',
 }
 
 export default function RootLayout({
