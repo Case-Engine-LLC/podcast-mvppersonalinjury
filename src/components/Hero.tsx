@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { PlayCircle } from 'lucide-react'
+import { PlayCircle, ArrowRight } from 'lucide-react'
 
 const Hero = () => {
   return (
