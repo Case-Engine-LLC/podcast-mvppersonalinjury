@@ -2,37 +2,10 @@
 
 import React, { useState } from 'react'
 import { Plus, Minus } from 'lucide-react'
+import { faqs } from '@/data/siteData'
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
-
-  const faqs = [
-    {
-      question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor?',
-      answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      showCta: true
-    },
-    {
-      question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor?',
-      answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      showCta: false
-    },
-    {
-      question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor?',
-      answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      showCta: false
-    },
-    {
-      question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor?',
-      answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      showCta: false
-    },
-    {
-      question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor?',
-      answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      showCta: false
-    }
-  ]
 
   return (
     <section className="py-16 md:py-20 bg-white">
@@ -43,7 +16,7 @@ const FAQ = () => {
             Frequently Asked Questions
           </h2>
           <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Common questions about personal injury law and working with an attorney.
           </p>
         </div>
 
@@ -71,14 +44,9 @@ const FAQ = () => {
 
               {openIndex === index && (
                 <div className="px-6 md:px-8 pb-6 animate-in fade-in slide-in-from-top-2 duration-300">
-                  <p className="text-base text-gray-700 leading-relaxed mb-4">
+                  <p className="text-base text-gray-700 leading-relaxed">
                     {faq.answer}
                   </p>
-                  {faq.showCta && (
-                    <button className="mt-2 bg-secondary text-white px-8 py-3 rounded-lg font-bold text-sm hover:opacity-90 transition-all uppercase tracking-wider">
-                      CTA GOES HERE
-                    </button>
-                  )}
                 </div>
               )}
             </div>

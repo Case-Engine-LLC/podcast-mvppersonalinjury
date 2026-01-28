@@ -3,6 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import FeaturedEpisodePlayer from './FeaturedEpisodePlayer'
+import { siteConfig, episode, content } from '@/data/siteData'
 
 const Hero = () => {
   return (
@@ -11,10 +12,10 @@ const Hero = () => {
       <div className="bg-secondary py-4 overflow-hidden whitespace-nowrap -rotate-[2deg] transform origin-center">
         <div className="flex animate-marquee">
           <span className="text-black font-bold uppercase tracking-[0.3em] text-sm inline-block">
-            NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;
+            {siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
           <span className="text-black font-bold uppercase tracking-[0.3em] text-sm inline-block">
-            NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;
+            {siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </div>
       </div>
@@ -26,23 +27,23 @@ const Hero = () => {
           <div className="md:col-span-3">
             {/* Label */}
             <div className="inline-block bg-white/10 backdrop-blur-sm px-4 py-2 rounded-md text-xs font-bold text-white uppercase tracking-widest mb-4">
-              LOREM IPSUM DOLO
+              {siteConfig.podcastName}
             </div>
 
             {/* Heading */}
             <h1 className="text-4xl md:text-5xl font-bold leading-tighter text-white mb-4">
-              Lorem Ipsum Dolor Sit Amet Consectetur
+              {content.heroTitle}
             </h1>
 
             {/* Description */}
             <p className="text-base md:text-lg text-white/80 leading-relaxed mb-6 md:mb-8 max-w-xl">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              {content.heroDescription}
             </p>
 
             {/* Available On Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                href="#"
+                href={siteConfig.platformLinks.apple}
                 className="flex items-center gap-3 px-6 py-4 rounded-2xl transition-all hover:scale-105 w-full sm:w-auto sm:min-w-[15rem]"
                 style={{
                   background: 'rgba(255, 255, 255, 0.1)',
@@ -68,7 +69,7 @@ const Hero = () => {
               </Link>
 
               <Link
-                href="#"
+                href={siteConfig.platformLinks.spotify}
                 className="flex items-center gap-3 px-6 py-4 rounded-2xl transition-all hover:scale-105 w-full sm:w-auto sm:min-w-[15rem]"
                 style={{
                   background: 'rgba(255, 255, 255, 0.1)',
@@ -108,10 +109,10 @@ const Hero = () => {
 
         {/* Featured Episode Player */}
         <FeaturedEpisodePlayer
-          episodeNumber="1"
-          title="Episode Name Goes Here"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          duration="2 hr 21 min"
+          episodeNumber={String(episode.number)}
+          title={episode.title}
+          description={episode.description}
+          duration={episode.duration}
         />
       </div>
     </section>

@@ -2,15 +2,16 @@
 
 import React, { useState } from 'react'
 import { Play } from 'lucide-react'
+import { content, attorney } from '@/data/siteData'
 
 const EpisodeContent = () => {
-  const [activeTab, setActiveTab] = useState('Transcript')
+  const [activeTab, setActiveTab] = useState('Overview')
   const [isExpanded, setIsExpanded] = useState(false)
 
-  const tabs = ['Transcript', 'Overview', 'Lorem ipsum dolor']
+  const tabs = ['Overview', 'Transcript', 'Key Takeaways']
 
   return (
-    <section className="py-16 md:py-20 bg-white">
+    <section id="episode-content" className="py-16 md:py-20 bg-white">
       <div className="w-[90%] mx-auto bg-primary rounded-[30px] py-12 md:py-16">
         <div className="max-w-container mx-auto px-6 md:px-12">
           {/* Video Player */}
@@ -41,6 +42,37 @@ const EpisodeContent = () => {
 
           {/* Content */}
           <div className="max-w-5xl">
+            {/* Overview Tab */}
+            {activeTab === 'Overview' && (
+              <>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                  {content.articleTitle}
+                </h2>
+
+                <div className="text-base md:text-lg leading-relaxed text-white/70 space-y-6 mb-8">
+                  {content.articleParagraphs.map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                  ))}
+                </div>
+
+                <div className="bg-[#2a2a3e] rounded-3xl p-8 md:p-12 mb-8 relative">
+                  <div className="text-white/20 text-[80px] md:text-[100px] font-bold leading-[0.7] -mb-2">"</div>
+                  <p className="text-lg md:text-xl text-white leading-relaxed">
+                    {content.featuredQuote}
+                  </p>
+                  <p className="text-white/50 mt-4">— {attorney.name}</p>
+                </div>
+
+                {content.additionalParagraphs.length > 0 && (
+                  <div className="text-base md:text-lg leading-relaxed text-white/70 space-y-6 mb-8">
+                    {content.additionalParagraphs.map((paragraph, index) => (
+                      <p key={index}>{paragraph}</p>
+                    ))}
+                  </div>
+                )}
+              </>
+            )}
+
             {/* Transcript Tab */}
             {activeTab === 'Transcript' && (
               <>
@@ -50,13 +82,10 @@ const EpisodeContent = () => {
 
                 <div className="text-base md:text-lg leading-relaxed text-white/70 space-y-6 mb-8">
                   <p>
-                    <span className="text-white font-semibold">[00:00:00]</span> Welcome back to another episode. Today we're diving deep into an incredible topic that's been on everyone's mind lately.
+                    <span className="text-white font-semibold">[00:00:00]</span> Welcome to The You Interview. Today we're sitting down with {attorney.name} from {attorney.firm}.
                   </p>
                   <p>
-                    <span className="text-white font-semibold">[00:02:15]</span> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                  </p>
-                  <p>
-                    <span className="text-white font-semibold">[00:05:30]</span> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                    <span className="text-white font-semibold">[00:02:15]</span> {content.articleParagraphs[0]}
                   </p>
                 </div>
 
@@ -66,14 +95,14 @@ const EpisodeContent = () => {
 
                 <div className="text-base md:text-lg leading-relaxed text-white/70 space-y-6 mb-8">
                   <p>
-                    <span className="text-white font-semibold">[00:10:45]</span> Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+                    <span className="text-white font-semibold">[00:10:45]</span> {content.articleParagraphs[1] || 'Discussion of practice areas and client approach.'}
                   </p>
                 </div>
 
                 <div className="bg-[#2a2a3e] rounded-3xl p-8 md:p-12 mb-8 relative">
                   <div className="text-white/20 text-[80px] md:text-[100px] font-bold leading-[0.7] -mb-2">"</div>
                   <p className="text-lg md:text-xl text-white leading-relaxed">
-                    <span className="text-white font-semibold">[00:15:20]</span> This is the most important insight from today's discussion. Remember this key takeaway as we move forward.
+                    {content.featuredQuote}
                   </p>
                 </div>
 
@@ -84,10 +113,7 @@ const EpisodeContent = () => {
                 >
                   <div className="text-base md:text-lg leading-relaxed text-white/70 space-y-6 mb-8">
                     <p>
-                      <span className="text-white font-semibold">[00:20:00]</span> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                    </p>
-                    <p>
-                      <span className="text-white font-semibold">[00:25:30]</span> Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.
+                      <span className="text-white font-semibold">[00:20:00]</span> Full transcript available upon request. Contact us for the complete episode transcript.
                     </p>
                   </div>
                 </div>
@@ -101,19 +127,16 @@ const EpisodeContent = () => {
               </>
             )}
 
-            {/* Overview Tab */}
-            {activeTab === 'Overview' && (
+            {/* Key Takeaways Tab */}
+            {activeTab === 'Key Takeaways' && (
               <>
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                  Episode Overview
+                  Key Takeaways
                 </h2>
 
                 <div className="text-base md:text-lg leading-relaxed text-white/70 space-y-6 mb-8">
                   <p>
-                    In this episode, we explore the fascinating world of modern innovation and how it shapes our daily lives. From groundbreaking discoveries to practical applications, we cover it all.
-                  </p>
-                  <p>
-                    Our discussion takes you through the historical context, current trends, and future possibilities. Whether you're a beginner or an expert, there's something valuable for everyone in this conversation.
+                    In this episode with {attorney.name}, we cover the important aspects of personal injury law and what clients should know when seeking representation.
                   </p>
                 </div>
 
@@ -122,55 +145,19 @@ const EpisodeContent = () => {
                 </h3>
 
                 <div className="text-base md:text-lg leading-relaxed text-white/70 space-y-4 mb-8">
-                  <p>• The fundamental principles behind the topic</p>
-                  <p>• Real-world applications and case studies</p>
-                  <p>• Expert insights and industry perspectives</p>
-                  <p>• Practical tips you can implement today</p>
-                  <p>• Future trends and what to expect next</p>
+                  <p>• The importance of specialization in personal injury law</p>
+                  <p>• How to choose the right attorney for your case</p>
+                  <p>• What to expect during the legal process</p>
+                  <p>• How insurance companies approach claims</p>
+                  <p>• The value of client-centric representation</p>
                 </div>
 
                 <div className="bg-[#2a2a3e] rounded-3xl p-8 md:p-12 mb-8 relative">
                   <div className="text-white/20 text-[80px] md:text-[100px] font-bold leading-[0.7] -mb-2">"</div>
                   <p className="text-lg md:text-xl text-white leading-relaxed">
-                    This episode is a must-listen for anyone interested in staying ahead of the curve and understanding the bigger picture.
+                    {content.featuredQuote}
                   </p>
-                </div>
-              </>
-            )}
-
-            {/* Lorem ipsum dolor Tab */}
-            {activeTab === 'Lorem ipsum dolor' && (
-              <>
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                  Additional Resources
-                </h2>
-
-                <div className="text-base md:text-lg leading-relaxed text-white/70 space-y-6 mb-8">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  </p>
-                  <p>
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                  </p>
-                </div>
-
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
-                  Recommended Reading
-                </h3>
-
-                <div className="text-base md:text-lg leading-relaxed text-white/70 space-y-4 mb-8">
-                  <p>• Lorem ipsum dolor sit amet consectetur</p>
-                  <p>• Sed do eiusmod tempor incididunt</p>
-                  <p>• Ut labore et dolore magna aliqua</p>
-                  <p>• Quis nostrud exercitation ullamco</p>
-                  <p>• Duis aute irure dolor in reprehenderit</p>
-                </div>
-
-                <div className="bg-[#2a2a3e] rounded-3xl p-8 md:p-12 mb-8 relative">
-                  <div className="text-white/20 text-[80px] md:text-[100px] font-bold leading-[0.7] -mb-2">"</div>
-                  <p className="text-lg md:text-xl text-white leading-relaxed">
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem.
-                  </p>
+                  <p className="text-white/50 mt-4">— {attorney.name}, {attorney.firm}</p>
                 </div>
               </>
             )}

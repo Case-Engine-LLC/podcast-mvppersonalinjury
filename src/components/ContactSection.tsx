@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { MapPin, Phone, Mail } from 'lucide-react'
+import { contact } from '@/data/siteData'
 
 const ContactSection = () => {
   return (
@@ -16,21 +17,21 @@ const ContactSection = () => {
                 <MapPin className="text-white/50 shrink-0" size={24} />
                 <div>
                   <p className="text-[12px] font-bold uppercase tracking-[0.96px] mb-1 opacity-50">ADDRESS</p>
-                  <p className="text-[18px]">3822 Lakewood Drive</p>
+                  <p className="text-[18px]">{contact.address}</p>
                 </div>
               </div>
               <div className="flex gap-4">
                 <Phone className="text-white/50 shrink-0" size={24} />
                 <div>
                   <p className="text-[12px] font-bold uppercase tracking-[0.96px] mb-1 opacity-50">PHONE</p>
-                  <p className="text-[18px]">(555) 123-4567</p>
+                  <p className="text-[18px]">{contact.phone}</p>
                 </div>
               </div>
               <div className="flex gap-4">
                 <Mail className="text-white/50 shrink-0" size={24} />
                 <div>
                   <p className="text-[12px] font-bold uppercase tracking-[0.96px] mb-1 opacity-50">EMAIL</p>
-                  <p className="text-[18px]">contact@company.com</p>
+                  <p className="text-[18px]">{contact.email}</p>
                 </div>
               </div>
             </div>
@@ -42,16 +43,16 @@ const ContactSection = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-[14px] font-bold text-black mb-2">NAME</label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     placeholder="Enter Your Name"
                     className="w-full border border-black/10 rounded-[3px] px-4 py-3 focus:outline-none focus:border-black/30 transition-colors"
                   />
                 </div>
                 <div>
                   <label className="block text-[14px] font-bold text-black mb-2">EMAIL</label>
-                  <input 
-                    type="email" 
+                  <input
+                    type="email"
                     placeholder="Enter Your Email"
                     className="w-full border border-black/10 rounded-[3px] px-4 py-3 focus:outline-none focus:border-black/30 transition-colors"
                   />
@@ -59,13 +60,13 @@ const ContactSection = () => {
               </div>
               <div>
                 <label className="block text-[14px] font-bold text-black mb-2">MESSAGE</label>
-                <textarea 
+                <textarea
                   rows={6}
                   placeholder="Enter your message"
                   className="w-full border border-black/10 rounded-[3px] px-4 py-3 focus:outline-none focus:border-black/30 transition-colors resize-none"
                 />
               </div>
-              <button 
+              <button
                 type="submit"
                 className="bg-black text-white px-12 py-4 rounded-[3px] font-bold text-[14px] uppercase tracking-[0.7px] hover:bg-black/80 transition-all"
               >

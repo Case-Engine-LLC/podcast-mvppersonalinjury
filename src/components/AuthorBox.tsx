@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import { attorney } from '@/data/siteData'
 
 const AuthorBox = () => {
   return (
@@ -13,27 +14,22 @@ const AuthorBox = () => {
               ABOUT THE AUTHOR
             </div>
             <h2 className="text-[36px] md:text-[48px] font-bold leading-[1.1] tracking-[-0.48px] text-black mb-8 max-w-[571px]">
-              Lorem ipsum dolor sit amet consectetur 
+              {attorney.name}
             </h2>
             <div className="text-[18px] leading-[1.3] text-black space-y-6">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-              </p>
+              {attorney.bio.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
             </div>
             <div className="mt-12">
-               <img src="/images/d943e6d7-a34b-47d6-ab66-4ec5d8781d10.png" alt="Author Signature" className="h-[84px] object-contain" />
+               <img src={attorney.signature} alt="Author Signature" className="h-[84px] object-contain" />
             </div>
           </div>
 
           {/* Author Image */}
           <div className="order-1 md:order-2">
             <div className="aspect-[454/526] bg-[#c9c9c9] rounded-[20px] relative overflow-hidden">
-               <div className="absolute inset-0 flex items-center justify-center opacity-20">
-                  <img src="/images/37f50b44-3bd9-4292-b5bb-2b15044556b9.png" alt="" className="w-1/2 h-1/2 object-contain" />
-               </div>
+               <img src={attorney.photo} alt={attorney.name} className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
