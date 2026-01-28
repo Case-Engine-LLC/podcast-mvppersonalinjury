@@ -14,7 +14,7 @@ const ChapterSection = () => {
 
   return (
     <section className="py-24 bg-white overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+      <div className="max-w-container mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
           <div className="inline-block bg-[#c9c9c9] px-6 py-1.5 rounded-[6px] text-[12px] font-bold text-black uppercase tracking-[0.96px] mb-6">
             TOPICS INSIDE

@@ -5,7 +5,7 @@ import React from 'react'
 const AuthorBox = () => {
   return (
     <section className="py-24 bg-white">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+      <div className="max-w-container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           {/* Author Content */}
           <div className="order-2 md:order-1">

@@ -1,9 +1,9 @@
-import HomeEbook from '@/components/HomeEbook'
+import HomePodcast from '@/components/HomePodcast'
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <HomeEbook />
+      <HomePodcast />
     </main>
   )
 }

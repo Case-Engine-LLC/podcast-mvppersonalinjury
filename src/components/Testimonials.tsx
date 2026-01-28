@@ -1,70 +1,183 @@
 'use client'
 
-import React from 'react'
-import { Star } from 'lucide-react'
+import React, { useState } from 'react'
+import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
+
+interface Testimonial {
+  id: number
+  name: string
+  initials: string
+  role: string
+  rating: number
+  text: string
+}
 
 const Testimonials = () => {
-  const testimonials = [
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  const testimonials: Testimonial[] = [
     {
+      id: 1,
       name: 'Meghan Doyle',
       initials: 'MD',
-      source: 'Google Reviewer',
+      role: 'Google Reviewer',
       rating: 5,
-      text: 'Great attorney. Brett was very helpful in the beginning explaining everything to me. I was always informed on my case and the status of it. When I had questions they answered quickly . Jessica helped resolve my medical bills by almost half! I highly recommend MVP Attorneys !',
+      text: 'Great attorney. Brett was very helpful in the beginning explaining everything to me. I was always informed on my case and the status of it. When I had questions they answered quickly . Jessica helped resolve my medical bills by almost half! I highly recommend MVP Attorneys !'
     },
     {
-      name: 'Meghan Doyle',
-      initials: 'MD',
-      source: 'Google Reviewer',
+      id: 2,
+      name: 'Olivia Okoro',
+      initials: 'OO',
+      role: 'Google Reviewer',
       rating: 5,
-      text: 'I had a great experience working with MVP Accident Attorneys! They were very informative and kept me up-to-date with everything going on. Brett was amazing with his communication and timeliness to handle any of my concerns and questions! The whole team was great and explained everything thoroughly. I’d highly recommend going with them if you need an accident attorney!',
+      text: 'I had a great experience working with MVP Accident Attorneys! They were very informative and kept me up-to-date with everything going on. Brett was amazing with his communication and timeliness to handle any of my concerns and questions! The whole team was great and explained everything thoroughly. I\'d highly recommend going with them if you need an accident attorney!'
     },
     {
-      name: 'Meghan Doyle',
-      initials: 'MD',
-      source: 'Google Reviewer',
+      id: 3,
+      name: 'Doris Hamilton',
+      initials: 'DH',
+      role: 'Google Reviewer',
       rating: 5,
-      text: 'Great attorney. Brett was very helpful in the beginning explaining everything to me. I was always informed on my case and the status of it. When I had questions they answered quickly . Jessica helped resolve my medical bills by almost half! I highly recommend MVP Attorneys !',
+      text: '"They handled my case like real pros!!! I was able to get the maximum settlement offer and each time I call they are available to answer all questions and concerns. Andrew was amazing in this difficult time he was really there for me. My attorney Taylor was great as well. You can tell that Taylor is a great attorney very knowledgeable!"'
+    },
+    {
+      id: 4,
+      name: 'John Smith',
+      initials: 'JS',
+      role: 'Google Reviewer',
+      rating: 5,
+      text: 'Excellent service and professional team. They handled everything smoothly and kept me informed throughout the entire process. Highly recommend their services to anyone looking for quality legal representation.'
+    },
+    {
+      id: 5,
+      name: 'Sarah Johnson',
+      initials: 'SJ',
+      role: 'Google Reviewer',
+      rating: 5,
+      text: 'Outstanding experience from start to finish. The team was responsive, knowledgeable, and truly cared about my case. I couldn\'t be happier with the results and would definitely recommend them to friends and family.'
     }
   ]
 
-  return (
-    <section className="py-24 bg-[#f1f2f4]">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-        <div className="text-center mb-16">
-          <div className="inline-block bg-[#c9c9c9] px-6 py-1.5 rounded-[6px] text-[12px] font-bold text-black uppercase tracking-[0.96px] mb-6">
-            TESTIMONIALS
-          </div>
-          <h2 className="text-[36px] md:text-[48px] font-bold leading-[1.1] tracking-[-0.48px] text-black mb-8">
-            Lorem ipsum dolor sit amet consectetur 
-          </h2>
-          <p className="text-[18px] leading-[1.3] text-black max-w-[926px] mx-auto opacity-70">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-          </p>
-        </div>
+  const cardsPerView = isMobile ? 1 : 3
+  const maxIndex = Math.max(0, testimonials.length - cardsPerView)
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((item, index) => (
-            <div key={index} className="bg-white p-8 rounded-[12px] shadow-sm">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-full bg-[#eeeef0] flex items-center justify-center font-bold text-[16px] text-black">
-                  {item.initials}
+  const handlePrevious = () => {
+    setCurrentIndex((prev) => Math.max(0, prev - 1))
+  }
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => Math.min(maxIndex, prev + 1))
+  }
+
+  const progressPercentage = maxIndex > 0 ? (currentIndex / maxIndex) * 100 : 0
+
+  const getTransform = () => {
+    if (isMobile) {
+      return `translateX(-${currentIndex * 100}%)`
+    }
+    return `translateX(-${currentIndex * (100 / cardsPerView)}%)`
+  }
+
+  return (
+    <section className="testimonails-home bg-primary py-16 md:py-20">
+      <div className="max-w-container mx-auto px-6 md:px-12">
+        {/* Slider Container */}
+        <div className="relative">
+          {/* Cards Container */}
+          <div className="overflow-hidden">
+            <div
+              className="flex transition-transform duration-500 ease-in-out md:gap-6"
+              style={{
+                transform: getTransform()
+              }}
+            >
+              {testimonials.map((testimonial) => (
+                <div
+                  key={testimonial.id}
+                  className="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)]"
+                >
+                  {/* Testimonial Card */}
+                  <div className="bg-white rounded-2xl p-6 md:p-8 h-full flex flex-col border border-gray-200">
+                    {/* Header */}
+                    <div className="flex items-center gap-4 mb-4">
+                      {/* Avatar */}
+                      <div className="w-14 h-14 rounded-full bg-gray-800 flex items-center justify-center flex-shrink-0">
+                        <span className="text-white font-bold text-lg">
+                          {testimonial.initials}
+                        </span>
+                      </div>
+
+                      {/* Name and Role */}
+                      <div>
+                        <h3 className="text-lg font-bold text-black">
+                          {testimonial.name}
+                        </h3>
+                        <p className="text-sm text-gray-600">
+                          {testimonial.role}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Star Rating */}
+                    <div className="flex gap-1 mb-4">
+                      {[...Array(testimonial.rating)].map((_, index) => (
+                        <Star
+                          key={index}
+                          size={20}
+                          fill="#FFA500"
+                          stroke="#FFA500"
+                        />
+                      ))}
+                    </div>
+
+                    {/* Testimonial Text */}
+                    <p className="text-base text-gray-700 leading-relaxed flex-grow">
+                      {testimonial.text}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-[18px] font-bold text-black">{item.name}</h4>
-                  <p className="text-[14px] text-[#676767]">{item.source}</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-1 mb-6 text-[#ce5743]">
-                {[...Array(item.rating)].map((_, i) => (
-                  <Star key={i} size={16} fill="currentColor" />
-                ))}
-              </div>
-              <p className="text-[16px] leading-[1.4] text-black opacity-80">
-                {item.text}
-              </p>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Navigation Controls */}
+          <div className="flex items-center gap-6 mt-8">
+            {/* Navigation Buttons */}
+            <div className="flex gap-4">
+              <button
+                onClick={handlePrevious}
+                disabled={currentIndex === 0}
+                className="w-12 h-12 rounded-full bg-black flex items-center justify-center hover:bg-gray-800 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <ChevronLeft size={24} stroke="white" />
+              </button>
+              <button
+                onClick={handleNext}
+                disabled={currentIndex >= maxIndex}
+                className="w-12 h-12 rounded-full bg-black flex items-center justify-center hover:bg-gray-800 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <ChevronRight size={24} stroke="white" />
+              </button>
+            </div>
+
+            {/* Progress Bar */}
+            <div className="flex-grow h-1 bg-black/5 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-black transition-all duration-500 ease-in-out rounded-full"
+                style={{ width: `${progressPercentage}%` }}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

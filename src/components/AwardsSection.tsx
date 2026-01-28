@@ -24,7 +24,7 @@ const AwardsSection = () => {
 
   return (
     <section className="py-24 bg-white">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="max-w-container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-8">
         {cards.map((card, index) => (
           <div 
             key={index} 

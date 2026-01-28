@@ -4,8 +4,22 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { Menu, X, ArrowRight } from 'lucide-react'
 
-const Header = () => {
+interface HeaderProps {
+  variant?: 'dark' | 'light'
+}
+
+const Header = ({ variant = 'dark' }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const navItems = [
     { name: 'Nav Item', href: '#' },
@@ -13,21 +27,29 @@ const Header = () => {
     { name: 'Nav Item', href: '#' },
   ]
 
+  const isDark = variant === 'dark'
+  const textColor = isScrolled ? 'text-white' : (isDark ? 'text-white' : 'text-black')
+  const textHoverColor = isScrolled ? 'hover:text-white/70' : (isDark ? 'hover:text-white/70' : 'hover:text-black/70')
+  const buttonBg = isScrolled ? 'bg-white text-black hover:bg-white/90' : (isDark ? 'bg-white text-black hover:bg-white/90' : 'bg-black text-white hover:bg-black/90')
+  const mobileMenuBg = isScrolled ? 'bg-black' : (isDark ? 'bg-black' : 'bg-white')
+  const mobileBorder = isScrolled ? 'border-white/10' : (isDark ? 'border-white/10' : 'border-black/10')
+  const headerBg = isScrolled ? 'bg-black' : 'bg-transparent'
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#e1dddc] md:bg-transparent">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-4 flex items-center justify-between">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${headerBg}`}>
+      <div className="max-w-container mx-auto px-6 md:px-12 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="text-lg md:text-[18px] font-extrabold tracking-[-0.36px] text-black">
+        <Link href="/" className={`text-lg md:text-xl font-extrabold ${textColor} tracking-tight`}>
           LOGO HERE
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+        <nav className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
           {navItems.map((item, index) => (
             <Link
               key={index}
               href={item.href}
-              className="text-[16px] font-bold text-black hover:opacity-70 transition-opacity"
+              className={`text-base font-medium ${textColor} ${textHoverColor} transition-colors`}
             >
               {item.name}
             </Link>
@@ -35,21 +57,18 @@ const Header = () => {
         </nav>
 
         {/* Desktop Subscribe Button */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center">
           <Link
             href="#"
-            className="flex items-center gap-2 bg-white px-6 py-2 rounded-[6px] text-[16px] font-bold text-black hover:bg-black hover:text-white transition-all group"
+            className={`px-6 py-2.5 rounded-lg text-base font-semibold ${buttonBg} transition-all`}
           >
-            <div className="w-[18px] h-[18px] relative">
-              <img src="/images/8678af5e-9562-4d38-9998-6a1755239ff6.png" alt="" className="w-full h-full object-contain group-hover:invert transition-all" />
-            </div>
             Subscribe
           </Link>
         </div>
 
         {/* Mobile menu button */}
         <button
-          className="md:hidden p-2 text-black"
+          className={`md:hidden p-2 ${textColor}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -58,12 +77,12 @@ const Header = () => {
 
       {/* Mobile Nav Overlay */}
       {isMenuOpen && (
-        <div className="md:hidden bg-[#e1dddc] absolute top-full left-0 right-0 border-t border-black/10 py-6 px-6 flex flex-col gap-6 shadow-xl animate-in fade-in slide-in-from-top-4">
+        <div className={`md:hidden ${mobileMenuBg} border-t ${mobileBorder} py-6 px-6 flex flex-col gap-6 shadow-xl`}>
           {navItems.map((item, index) => (
             <Link
               key={index}
               href={item.href}
-              className="text-[18px] font-bold text-black"
+              className={`text-lg font-medium ${textColor}`}
               onClick={() => setIsMenuOpen(false)}
             >
               {item.name}
@@ -71,7 +90,7 @@ const Header = () => {
           ))}
           <Link
             href="#"
-            className="flex items-center justify-center gap-2 bg-white px-6 py-3 rounded-[6px] text-[18px] font-bold text-black shadow-sm"
+            className={`flex items-center justify-center px-6 py-3 rounded-lg text-base font-semibold ${buttonBg}`}
             onClick={() => setIsMenuOpen(false)}
           >
             Subscribe

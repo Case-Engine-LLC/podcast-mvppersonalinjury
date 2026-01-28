@@ -1,76 +1,163 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const OtherEpisodes = () => {
+  const [currentIndex, setCurrentIndex] = useState(0)
+
   const episodes = [
     {
       id: '2',
       title: 'Lorem Ipsum Dolor Sit Amet Consectetur Sit Amet Consectetur',
-      description: 'Episode 2 / Lorem ipsum dolor / 2 hr 21 min',
+      episodeNumber: 'Episode 2',
+      category: 'Lorem ipsum dolor',
+      duration: '2 hr 21 min',
       image: null,
     },
     {
       id: '3',
       title: 'Lorem Ipsum Dolor Sit Amet Consectetur Sit Amet Consectetur',
-      description: 'Episode 3 / Lorem ipsum dolor / 2 hr 21 min',
+      episodeNumber: 'Episode 3',
+      category: 'Lorem ipsum dolor',
+      duration: '2 hr 21 min',
       image: null,
     },
     {
       id: '4',
       title: 'Lorem Ipsum Dolor Sit Amet Consectetur Sit Amet Consectetur',
-      description: 'Episode 4 / Lorem ipsum dolor / 2 hr 21 min',
+      episodeNumber: 'Episode 4',
+      category: 'Lorem ipsum dolor',
+      duration: '2 hr 21 min',
+      image: null,
+    },
+    {
+      id: '5',
+      title: 'Lorem Ipsum Dolor Sit Amet Consectetur Sit Amet Consectetur',
+      episodeNumber: 'Episode 5',
+      category: 'Lorem ipsum dolor',
+      duration: '2 hr 21 min',
+      image: null,
+    },
+    {
+      id: '6',
+      title: 'Lorem Ipsum Dolor Sit Amet Consectetur Sit Amet Consectetur',
+      episodeNumber: 'Episode 6',
+      category: 'Lorem ipsum dolor',
+      duration: '2 hr 21 min',
+      image: null,
+    },
+    {
+      id: '7',
+      title: 'Lorem Ipsum Dolor Sit Amet Consectetur Sit Amet Consectetur',
+      episodeNumber: 'Episode 7',
+      category: 'Lorem ipsum dolor',
+      duration: '2 hr 21 min',
+      image: null,
+    },
+    {
+      id: '8',
+      title: 'Lorem Ipsum Dolor Sit Amet Consectetur Sit Amet Consectetur',
+      episodeNumber: 'Episode 8',
+      category: 'Lorem ipsum dolor',
+      duration: '2 hr 21 min',
+      image: null,
+    },
+    {
+      id: '9',
+      title: 'Lorem Ipsum Dolor Sit Amet Consectetur Sit Amet Consectetur',
+      episodeNumber: 'Episode 9',
+      category: 'Lorem ipsum dolor',
+      duration: '2 hr 21 min',
       image: null,
     }
   ]
 
+  const maxIndex = Math.max(0, episodes.length - 3)
+
+  const handlePrevious = () => {
+    setCurrentIndex((prev) => Math.max(0, prev - 1))
+  }
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => Math.min(maxIndex, prev + 1))
+  }
+
+  const progressPercentage = maxIndex > 0 ? (currentIndex / maxIndex) * 100 : 0
+
   return (
-    <section className="py-24 bg-white border-t border-black/5">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-        <div className="text-center mb-16">
-          <h2 className="text-[36px] md:text-[48px] font-bold text-black mb-4">Other Episodes</h2>
-          <p className="text-[18px] text-black/50">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    <section className="py-16 md:py-20 bg-white">
+      <div className="max-w-container mx-auto px-6 md:px-12">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4">
+            Other Episodes
+          </h2>
+          <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {episodes.map((episode) => (
-            <Link 
-              key={episode.id} 
-              href={`/episode/${episode.id}`}
-              className="group flex flex-col h-full"
-            >
-              <div className="aspect-[420/280] bg-[#eeeef0] rounded-[12px] mb-6 overflow-hidden relative border border-black/5">
-                  <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                     <div className="w-16 h-16 border-4 border-black rounded-lg" />
-                  </div>
-              </div>
-              <div className="inline-block bg-[#ce5743] text-white text-[10px] font-bold px-3 py-1 rounded-[4px] self-start mb-3 uppercase tracking-wider">
-                EPISODE {episode.id}
-              </div>
-              <h3 className="text-[18px] font-bold text-black mb-2 group-hover:text-[#ce5743] transition-colors line-clamp-2">
-                {episode.title}
-              </h3>
-              <p className="text-[14px] text-black/40">
-                {episode.description}
-              </p>
-            </Link>
-          ))}
+        {/* Carousel Container */}
+        <div className="overflow-hidden mb-8">
+          <div
+            className="flex gap-6 transition-transform duration-500 ease-in-out"
+            style={{
+              transform: `translateX(-${currentIndex * (100 / 3)}%)`
+            }}
+          >
+            {episodes.map((episode) => (
+              <Link
+                key={episode.id}
+                href={`/episode/${episode.id}`}
+                className="group flex flex-col flex-shrink-0 w-full md:w-[calc(33.333%-1rem)]"
+              >
+                <div className="aspect-video bg-gray-200 rounded-2xl mb-4 overflow-hidden relative flex items-center justify-center">
+                  <svg width="60" height="60" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-gray-400">
+                    <circle cx="45" cy="35" r="12" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M15 105 L45 65 L75 90 L105 50" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  </svg>
+                </div>
+
+                <div className="inline-block bg-gray-200 px-3 py-1.5 rounded-md text-xs font-bold text-black uppercase tracking-widest self-start mb-3">
+                  EPISODE {episode.id}
+                </div>
+
+                <h3 className="text-lg font-bold text-black mb-2 group-hover:text-gray-600 transition-colors">
+                  {episode.title}
+                </h3>
+
+                <p className="text-sm text-gray-500">
+                  {episode.episodeNumber} • {episode.category} • {episode.duration}
+                </p>
+              </Link>
+            ))}
+          </div>
         </div>
 
-        {/* Carousel Controls Placeholder */}
-        <div className="mt-12 flex items-center justify-center gap-4">
-          <button className="w-12 h-12 rounded-full bg-[#070519] text-white flex items-center justify-center hover:bg-black transition-colors">
-             <ArrowLeft size={20} />
+        {/* Navigation Controls */}
+        <div className="flex items-center gap-4">
+          <button
+            onClick={handlePrevious}
+            disabled={currentIndex === 0}
+            className="w-12 h-12 rounded-full bg-[#1a1a2e] flex items-center justify-center hover:bg-[#2a2a3e] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+          >
+            <ChevronLeft size={24} stroke="white" />
           </button>
-          <button className="w-12 h-12 rounded-full bg-[#070519] text-white flex items-center justify-center hover:bg-black transition-colors">
-             <ArrowRight size={20} />
+          <button
+            onClick={handleNext}
+            disabled={currentIndex >= maxIndex}
+            className="w-12 h-12 rounded-full bg-[#1a1a2e] flex items-center justify-center hover:bg-[#2a2a3e] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+          >
+            <ChevronRight size={24} stroke="white" />
           </button>
-          <div className="flex-grow max-w-[200px] h-[2px] bg-black/10 rounded-full relative overflow-hidden">
-             <div className="absolute left-0 top-0 h-full w-1/3 bg-black/40" />
+
+          {/* Progress Bar */}
+          <div className="flex-grow h-1 bg-gray-200 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-[#1a1a2e] transition-all duration-500 ease-in-out rounded-full"
+              style={{ width: `${progressPercentage}%` }}
+            />
           </div>
         </div>
       </div>

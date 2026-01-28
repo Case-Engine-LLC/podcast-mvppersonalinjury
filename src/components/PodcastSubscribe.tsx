@@ -6,7 +6,7 @@ import Link from 'next/link'
 const PodcastSubscribe = () => {
   return (
     <section className="py-24 px-6 md:px-12">
-      <div className="max-w-[1440px] mx-auto bg-gradient-to-br from-[#070519] via-[#1a1444] to-[#070519] rounded-[24px] overflow-hidden relative min-h-[400px] flex items-center">
+      <div className="max-w-container mx-auto bg-gradient-to-br from-[#070519] via-[#1a1444] to-[#070519] rounded-[24px] overflow-hidden relative min-h-[400px] flex items-center">
         {/* Background blobs */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/4" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#ce5743]/5 blur-[80px] rounded-full translate-y-1/2 -translate-x-1/4" />
