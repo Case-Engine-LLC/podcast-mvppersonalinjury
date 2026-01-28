@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
+import { episode, siteConfig } from '@/data/siteData'
 
 const EpisodeHero = () => {
   return (
@@ -10,10 +11,10 @@ const EpisodeHero = () => {
       <div className="bg-secondary py-4 overflow-hidden whitespace-nowrap -rotate-[2deg] transform origin-center">
         <div className="flex animate-marquee">
           <span className="text-black font-bold uppercase tracking-[0.3em] text-sm inline-block">
-            NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;
+            {siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
           <span className="text-black font-bold uppercase tracking-[0.3em] text-sm inline-block">
-            NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;NEW SEASON&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;
+            {siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.tagline}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </div>
       </div>
@@ -26,23 +27,23 @@ const EpisodeHero = () => {
             <div>
               {/* Episode Badge */}
               <div className="inline-block bg-gray-200 px-4 py-2 rounded-md text-xs font-bold text-black uppercase tracking-widest mb-6">
-                EPISODE 1
+                EPISODE {episode.number}
               </div>
 
               {/* Heading */}
               <h1 className="text-4xl md:text-5xl font-bold leading-tight text-black mb-6">
-                Lorem Ipsum Dolor Sit Amet Consectetur
+                {episode.title}
               </h1>
 
               {/* Description */}
               <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-8">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                {episode.description.replace(/\*\*/g, '')}
               </p>
 
               {/* Platform Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  href="#"
+                  href={siteConfig.platformLinks.apple}
                   className="flex items-center gap-3 px-6 py-4 bg-black text-white rounded-2xl transition-all hover:scale-105 w-full sm:w-auto sm:min-w-[15rem]"
                 >
                   <div className="w-8 h-8 flex items-center justify-center">
@@ -64,7 +65,7 @@ const EpisodeHero = () => {
                 </Link>
 
                 <Link
-                  href="#"
+                  href={siteConfig.platformLinks.spotify}
                   className="flex items-center gap-3 px-6 py-4 bg-black text-white rounded-2xl transition-all hover:scale-105 w-full sm:w-auto sm:min-w-[15rem]"
                 >
                   <div className="w-8 h-8 flex items-center justify-center">

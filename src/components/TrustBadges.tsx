@@ -2,55 +2,12 @@
 
 import React, { useState } from 'react'
 import { Info } from 'lucide-react'
-
-interface Badge {
-  id: number
-  title: string
-  imageSrc: string
-  tooltip: string
-}
+import { trustBadges } from '@/data/siteData'
 
 const TrustBadges = () => {
   const [hoveredBadge, setHoveredBadge] = useState<number | null>(null)
 
-  const badges: Badge[] = [
-    {
-      id: 1,
-      title: 'TRUSTED SELLER',
-      imageSrc: '/badges/badge-1.svg', // Replace with your actual badge image
-      tooltip: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      id: 2,
-      title: 'SAFE CHOICE',
-      imageSrc: '/badges/badge-2.svg', // Replace with your actual badge image
-      tooltip: 'Sed do eiusmod tempor incididunt ut labore et dolore.'
-    },
-    {
-      id: 3,
-      title: 'TRUSTED SELLER',
-        imageSrc: '/badges/badge-1.svg', // Replace with your actual badge image
-      tooltip: 'Ut enim ad minim veniam, quis nostrud exercitation.'
-    },
-    {
-      id: 4,
-      title: 'SAFE CHOICE',
-      imageSrc: '/badges/badge-2.svg', // Replace with your actual badge image
-      tooltip: 'Duis aute irure dolor in reprehenderit in voluptate.'
-    },
-    {
-      id: 5,
-      title: 'TRUSTED SELLER',
-      imageSrc: '/badges/badge-1.svg', // Replace with your actual badge image
-      tooltip: 'Excepteur sint occaecat cupidatat non proident.'
-    },
-    {
-      id: 6,
-      title: 'SAFE CHOICE',
-      imageSrc: '/badges/badge-2.svg', // Replace with your actual badge image
-      tooltip: 'Sunt in culpa qui officia deserunt mollit anim.'
-    }
-  ]
+  const badges = trustBadges
 
   return (
     <section className="bg-white py-12 overflow-hidden border-y border-gray-200">
@@ -63,16 +20,10 @@ const TrustBadges = () => {
             onMouseEnter={() => setHoveredBadge(badge.id)}
             onMouseLeave={() => setHoveredBadge(null)}
           >
-            {/* Badge Image */}
-            <img
-              src={badge.imageSrc}
-              alt={badge.title}
-              className="w-16 h-16 object-contain"
-              onError={(e) => {
-                // Fallback to a placeholder if image fails to load
-                e.currentTarget.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"><circle cx="32" cy="32" r="30" fill="%23e5e7eb" stroke="%23000" stroke-width="2"/><text x="32" y="38" font-family="Arial" font-size="12" text-anchor="middle" fill="%23000">BADGE</text></svg>';
-              }}
-            />
+            {/* Badge */}
+            <div className="w-16 h-16 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center">
+              <span className="text-xs font-bold text-gray-600 text-center px-1 leading-tight">{badge.title}</span>
+            </div>
 
             {/* Info Icon */}
             <button className="relative">
@@ -97,16 +48,10 @@ const TrustBadges = () => {
             onMouseEnter={() => setHoveredBadge(badge.id + 100)}
             onMouseLeave={() => setHoveredBadge(null)}
           >
-            {/* Badge Image */}
-            <img
-              src={badge.imageSrc}
-              alt={badge.title}
-              className="w-16 h-16 object-contain"
-              onError={(e) => {
-                // Fallback to a placeholder if image fails to load
-                e.currentTarget.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"><circle cx="32" cy="32" r="30" fill="%23e5e7eb" stroke="%23000" stroke-width="2"/><text x="32" y="38" font-family="Arial" font-size="12" text-anchor="middle" fill="%23000">BADGE</text></svg>';
-              }}
-            />
+            {/* Badge */}
+            <div className="w-16 h-16 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center">
+              <span className="text-xs font-bold text-gray-600 text-center px-1 leading-tight">{badge.title}</span>
+            </div>
 
             {/* Info Icon */}
             <button className="relative">

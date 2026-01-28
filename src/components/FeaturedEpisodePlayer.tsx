@@ -3,22 +3,23 @@
 import React from 'react'
 import Link from 'next/link'
 import { Play, Volume2, ChevronRight } from 'lucide-react'
+import { episode as defaultEpisode } from '@/data/siteData'
 
 interface FeaturedEpisodePlayerProps {
-  episodeNumber: string
-  title: string
-  description: string
-  duration: string
+  episodeNumber?: string
+  title?: string
+  description?: string
+  duration?: string
   episodeLink?: string
   imageUrl?: string
 }
 
 const FeaturedEpisodePlayer = ({
-  episodeNumber = '1',
-  title = 'Episode Name Goes Here',
-  description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-  duration = '2 hr 21 min',
-  episodeLink = '#',
+  episodeNumber = String(defaultEpisode.number),
+  title = defaultEpisode.title,
+  description = defaultEpisode.description.replace(/\*\*/g, ''),
+  duration = defaultEpisode.duration,
+  episodeLink = `/episode/${defaultEpisode.number}`,
   imageUrl
 }: FeaturedEpisodePlayerProps) => {
   return (

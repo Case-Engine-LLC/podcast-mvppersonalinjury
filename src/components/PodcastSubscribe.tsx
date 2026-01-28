@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
+import { subscribeCTA, siteConfig } from '@/data/siteData'
 
 const PodcastSubscribe = () => {
   return (
@@ -10,15 +11,15 @@ const PodcastSubscribe = () => {
         {/* Background blobs */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/4" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#ce5743]/5 blur-[80px] rounded-full translate-y-1/2 -translate-x-1/4" />
-        
+
         <div className="container mx-auto px-8 md:px-16 grid grid-cols-1 md:grid-cols-12 gap-12 items-center relative z-10 py-16">
           {/* Phone Mockup Column */}
           <div className="md:col-span-5 flex justify-center md:justify-start">
              <div className="relative w-[280px] aspect-[9/19] bg-black rounded-[40px] border-[8px] border-[#1a1835] shadow-2xl overflow-hidden group hover:-translate-y-2 transition-transform duration-500">
-                <img 
-                  src="/images/ellipse372.png" 
-                  alt="" 
-                  className="absolute inset-0 w-full h-full object-cover opacity-80" 
+                <img
+                  src="/images/ellipse372.png"
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover opacity-80"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.src = 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&q=80&w=500';
@@ -43,10 +44,10 @@ const PodcastSubscribe = () => {
           {/* Content Column */}
           <div className="md:col-span-7">
             <h2 className="text-[40px] md:text-[56px] font-bold text-white mb-6 leading-[1.1]">
-              Subscribe To <br />Our Podcast
+              {subscribeCTA.title}
             </h2>
             <p className="text-[18px] text-white/60 mb-10 max-w-[500px]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+              {subscribeCTA.description}
             </p>
             <button className="bg-white text-black px-10 py-4 rounded-[6px] font-bold text-[18px] hover:bg-white/90 transition-all">
               Subscribe Now

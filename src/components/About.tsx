@@ -1,24 +1,25 @@
 'use client'
 
 import React, { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, CheckCircle } from 'lucide-react'
+import { about, attorney, siteConfig } from '@/data/siteData'
 
 const About = () => {
   const [isExpanded, setIsExpanded] = useState(false)
 
   return (
-    <section className="bg-white py-16 md:py-20">
+    <section id="about" className="bg-white py-16 md:py-20">
       <div className="max-w-container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
           {/* Left Content */}
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
-              Lorem Ipsum Dolor Sit Amet Consectetur
+              {about.title}
             </h2>
 
             {/* First paragraph - always visible */}
             <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-4">
-              ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+              {about.description}
             </p>
 
             {/* Expandable content */}
@@ -27,9 +28,14 @@ const About = () => {
                 isExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
               }`}
             >
-              <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-4">
-                Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.
-              </p>
+              <ul className="space-y-3 mb-4">
+                {about.highlights.map((highlight, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <CheckCircle size={20} className="text-secondary mt-1 flex-shrink-0" />
+                    <span className="text-base md:text-lg text-gray-700">{highlight}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             {/* Read More / Read Less Button */}

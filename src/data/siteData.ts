@@ -153,3 +153,81 @@ export const footer = {
     youtube: "https://youtube.com/@mvpaccidentattorneys",
   },
 }
+
+// Awards/Trust badges from transcript
+export const awards = [
+  {
+    name: "Super Lawyers Rising Stars",
+    description: "Recognition given to only 2.5% of lawyers in California for outstanding work in personal injury law.",
+  },
+  {
+    name: "Best Lawyers",
+    description: "Professional recognition for legal excellence in personal injury representation.",
+  },
+  {
+    name: "CAOC Member",
+    description: "Active member of Consumer Attorneys of California fighting for accident victims' rights.",
+  },
+]
+
+// About section content
+export const about = {
+  title: "The You Interview: Real Conversations with California's Top Attorneys",
+  description: "The You Interview goes beyond the billboard. Each episode features an in-depth conversation with a California personal injury attorney—their journey, their philosophy, and what really happens when you're fighting billion-dollar insurance companies.",
+  highlights: [
+    "Unscripted conversations about the realities of personal injury law",
+    "Learn what to look for when choosing an attorney after an accident",
+    "Hear real stories from attorneys who fight insurance companies daily",
+    "Understand how technology is changing legal representation",
+  ],
+}
+
+// Subscribe CTA content
+export const subscribeCTA = {
+  title: "Never Miss an Episode",
+  description: "Subscribe to The You Interview and get notified when new episodes drop. Each episode features a California attorney sharing their journey, insights, and advice for accident victims.",
+}
+
+// Episodes list (currently just episode 1)
+export const episodes = [
+  {
+    id: 1,
+    number: 1,
+    title: "Brett Sachs: Why MVP Puts Clients First",
+    subtitle: "Episode 1 • MVP Accident Attorneys",
+    description: "Brett Sachs founded MVP Accident Attorneys to fight insurance companies worth $900 billion annually. Learn how he built a tech-forward firm that treats every client like family.",
+    duration: "01:06:33",
+    date: "01.28.26",
+    category: "Personal Injury",
+    featured: true,
+  },
+]
+
+// Trust badges with real descriptions
+export const trustBadges = [
+  {
+    id: 1,
+    title: "Super Lawyers 2.5%",
+    tooltip: "Brett Sachs is recognized as a Super Lawyers Rising Star—an honor given to only 2.5% of California attorneys.",
+  },
+  {
+    id: 2,
+    title: "24/7 Availability",
+    tooltip: "MVP Accident Attorneys offers round-the-clock client support through phone, text, email, and AI chat.",
+  },
+  {
+    id: 3,
+    title: "200+ Cases/Year",
+    tooltip: "MVP handles over 200 personal injury cases annually across California with dedicated teams of 3-7 people per client.",
+  },
+  {
+    id: 4,
+    title: "4 Office Locations",
+    tooltip: "Offices in Irvine, Riverside, Los Angeles, and Sacramento serving accident victims statewide.",
+  },
+  {
+    id: 5,
+    title: "No Fee Unless We Win",
+    tooltip: "MVP works on contingency—you pay nothing unless they recover compensation for your injuries.",
+  },
+]

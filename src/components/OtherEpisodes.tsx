@@ -3,75 +3,39 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { episodes as episodesData, subscribeCTA } from '@/data/siteData'
 
 const OtherEpisodes = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
 
+  // Map episodes from siteData - for now we just have episode 1
+  // Show "Coming Soon" for future episodes
   const episodes = [
+    ...episodesData.map(ep => ({
+      id: String(ep.id),
+      title: ep.title,
+      episodeNumber: `Episode ${ep.number}`,
+      category: ep.category,
+      duration: ep.duration,
+      image: null,
+    })),
+    // Coming soon placeholders
     {
-      id: '2',
-      title: 'Lorem Ipsum Dolor Sit Amet Consectetur Sit Amet Consectetur',
+      id: 'coming-2',
+      title: 'Coming Soon: New Attorney Interview',
       episodeNumber: 'Episode 2',
-      category: 'Lorem ipsum dolor',
-      duration: '2 hr 21 min',
+      category: 'Personal Injury',
+      duration: 'TBA',
       image: null,
     },
     {
-      id: '3',
-      title: 'Lorem Ipsum Dolor Sit Amet Consectetur Sit Amet Consectetur',
+      id: 'coming-3',
+      title: 'Coming Soon: New Attorney Interview',
       episodeNumber: 'Episode 3',
-      category: 'Lorem ipsum dolor',
-      duration: '2 hr 21 min',
+      category: 'Personal Injury',
+      duration: 'TBA',
       image: null,
     },
-    {
-      id: '4',
-      title: 'Lorem Ipsum Dolor Sit Amet Consectetur Sit Amet Consectetur',
-      episodeNumber: 'Episode 4',
-      category: 'Lorem ipsum dolor',
-      duration: '2 hr 21 min',
-      image: null,
-    },
-    {
-      id: '5',
-      title: 'Lorem Ipsum Dolor Sit Amet Consectetur Sit Amet Consectetur',
-      episodeNumber: 'Episode 5',
-      category: 'Lorem ipsum dolor',
-      duration: '2 hr 21 min',
-      image: null,
-    },
-    {
-      id: '6',
-      title: 'Lorem Ipsum Dolor Sit Amet Consectetur Sit Amet Consectetur',
-      episodeNumber: 'Episode 6',
-      category: 'Lorem ipsum dolor',
-      duration: '2 hr 21 min',
-      image: null,
-    },
-    {
-      id: '7',
-      title: 'Lorem Ipsum Dolor Sit Amet Consectetur Sit Amet Consectetur',
-      episodeNumber: 'Episode 7',
-      category: 'Lorem ipsum dolor',
-      duration: '2 hr 21 min',
-      image: null,
-    },
-    {
-      id: '8',
-      title: 'Lorem Ipsum Dolor Sit Amet Consectetur Sit Amet Consectetur',
-      episodeNumber: 'Episode 8',
-      category: 'Lorem ipsum dolor',
-      duration: '2 hr 21 min',
-      image: null,
-    },
-    {
-      id: '9',
-      title: 'Lorem Ipsum Dolor Sit Amet Consectetur Sit Amet Consectetur',
-      episodeNumber: 'Episode 9',
-      category: 'Lorem ipsum dolor',
-      duration: '2 hr 21 min',
-      image: null,
-    }
   ]
 
   const maxIndex = Math.max(0, episodes.length - 3)
@@ -94,7 +58,7 @@ const OtherEpisodes = () => {
             Other Episodes
           </h2>
           <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            {subscribeCTA.description}
           </p>
         </div>
 
@@ -109,7 +73,7 @@ const OtherEpisodes = () => {
             {episodes.map((episode) => (
               <Link
                 key={episode.id}
-                href={`/episode/${episode.id}`}
+                href={episode.id.startsWith('coming') ? '#subscribe' : `/episode/${episode.id}`}
                 className="group flex flex-col flex-shrink-0 w-full md:w-[calc(33.333%-1rem)]"
               >
                 <div className="aspect-video bg-gray-200 rounded-2xl mb-4 overflow-hidden relative flex items-center justify-center">
@@ -120,7 +84,7 @@ const OtherEpisodes = () => {
                 </div>
 
                 <div className="inline-block bg-gray-200 px-3 py-1.5 rounded-md text-xs font-bold text-black uppercase tracking-widest self-start mb-3">
-                  EPISODE {episode.id}
+                  {episode.episodeNumber}
                 </div>
 
                 <h3 className="text-lg font-bold text-black mb-2 group-hover:text-gray-600 transition-colors">

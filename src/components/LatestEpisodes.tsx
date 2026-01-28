@@ -3,6 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { Play, Info, ArrowRight } from 'lucide-react'
+import { episodes as episodesData, subscribeCTA } from '@/data/siteData'
 
 interface Episode {
   id: string
@@ -19,37 +20,19 @@ interface LatestEpisodesProps {
 }
 
 const LatestEpisodes = ({ episodes }: LatestEpisodesProps) => {
-  const defaultEpisodes: Episode[] = [
-    {
-      id: '1',
-      number: '01',
-      title: 'Lorem Ipsum Dolor Sit Amet Consectetur',
-      subtitle: 'Episode 2 • Lorem ipsum dolor',
-      description: 'ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
-      duration: '2 hr 21 min'
-    },
-    {
-      id: '2',
-      number: '02',
-      title: 'Lorem Ipsum Dolor Sit Amet Consectetur',
-      subtitle: 'Episode 2 • Lorem ipsum dolor',
-      description: 'ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
-      duration: '2 hr 21 min'
-    },
-    {
-      id: '3',
-      number: '03',
-      title: 'Lorem Ipsum Dolor Sit Amet Consectetur',
-      subtitle: 'Episode 3 • Lorem ipsum dolor',
-      description: 'ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
-      duration: '2 hr 21 min'
-    }
-  ]
+  const defaultEpisodes: Episode[] = episodesData.map(ep => ({
+    id: String(ep.id),
+    number: String(ep.number).padStart(2, '0'),
+    title: ep.title,
+    subtitle: ep.subtitle,
+    description: ep.description,
+    duration: ep.duration,
+  }))
 
   const episodeList = episodes || defaultEpisodes
 
   return (
-    <section className="bg-primary py-16 md:py-20">
+    <section id="episodes" className="bg-primary py-16 md:py-20">
       <div className="max-w-container mx-auto px-6 md:px-12">
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
@@ -57,7 +40,7 @@ const LatestEpisodes = ({ episodes }: LatestEpisodesProps) => {
             Latest Episodes
           </h2>
           <p className="text-base md:text-lg text-white/70 max-w-2xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            {subscribeCTA.description}
           </p>
         </div>
 
@@ -126,7 +109,7 @@ const LatestEpisodes = ({ episodes }: LatestEpisodesProps) => {
             href="/episodes"
             className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black rounded-xl font-semibold text-base hover:bg-white/90 transition-all"
           >
-            View All Eposodes
+            View All Episodes
             <ArrowRight size={20} />
           </Link>
         </div>
