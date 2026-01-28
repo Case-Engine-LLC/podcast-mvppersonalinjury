@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import Image from 'next/image'
 import { Info } from 'lucide-react'
 import { trustBadges } from '@/data/siteData'
 
@@ -21,8 +22,20 @@ const TrustBadges = () => {
             onMouseLeave={() => setHoveredBadge(null)}
           >
             {/* Badge */}
-            <div className="w-16 h-16 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center">
-              <span className="text-xs font-bold text-gray-600 text-center px-1 leading-tight">{badge.title}</span>
+            <div className="w-20 h-20 flex items-center justify-center">
+              {badge.badge ? (
+                <Image
+                  src={badge.badge}
+                  alt={badge.title}
+                  width={80}
+                  height={80}
+                  className="object-contain"
+                />
+              ) : (
+                <div className="w-16 h-16 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center">
+                  <span className="text-xs font-bold text-gray-600 text-center px-1 leading-tight">{badge.title}</span>
+                </div>
+              )}
             </div>
 
             {/* Info Icon */}
@@ -49,8 +62,20 @@ const TrustBadges = () => {
             onMouseLeave={() => setHoveredBadge(null)}
           >
             {/* Badge */}
-            <div className="w-16 h-16 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center">
-              <span className="text-xs font-bold text-gray-600 text-center px-1 leading-tight">{badge.title}</span>
+            <div className="w-20 h-20 flex items-center justify-center">
+              {badge.badge ? (
+                <Image
+                  src={badge.badge}
+                  alt={badge.title}
+                  width={80}
+                  height={80}
+                  className="object-contain"
+                />
+              ) : (
+                <div className="w-16 h-16 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center">
+                  <span className="text-xs font-bold text-gray-600 text-center px-1 leading-tight">{badge.title}</span>
+                </div>
+              )}
             </div>
 
             {/* Info Icon */}
