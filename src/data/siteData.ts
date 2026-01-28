@@ -96,8 +96,60 @@ export const chaptersDescription = "Key topics covered in this episode with Bret
 
 export const testimonials = [
   {
-    quote: "Testimonial quote here.",
-    name: "Client",
-    context: "Case Type",
+    id: 1,
+    name: 'Meghan Doyle',
+    initials: 'MD',
+    role: 'Google Reviewer',
+    rating: 5,
+    text: 'Great attorney. Brett was very helpful in the beginning explaining everything to me. I was always informed on my case and the status of it. When I had questions they answered quickly. Jessica helped resolve my medical bills by almost half! I highly recommend MVP Attorneys!'
+  },
+  {
+    id: 2,
+    name: 'Olivia Okoro',
+    initials: 'OO',
+    role: 'Google Reviewer',
+    rating: 5,
+    text: 'I had a great experience working with MVP Accident Attorneys! They were very informative and kept me up-to-date with everything going on. Brett was amazing with his communication and timeliness to handle any of my concerns and questions!'
+  },
+  {
+    id: 3,
+    name: 'Doris Hamilton',
+    initials: 'DH',
+    role: 'Google Reviewer',
+    rating: 5,
+    text: 'They handled my case like real pros! I was able to get the maximum settlement offer and each time I call they are available to answer all questions and concerns. Andrew was amazing in this difficult time.'
   },
 ]
+
+export const stats = {
+  rating: 4.98,
+  reviewCount: 247,
+  satisfactionRate: 99,
+  satisfactionLabel: "Client Satisfaction Rate",
+  casesHandled: 200,
+  casesLabel: "Cases Handled Annually",
+}
+
+export const navigation = {
+  logo: "The You Interview",
+  items: [
+    { name: 'Episodes', href: '#episodes' },
+    { name: 'About', href: '#about' },
+    { name: 'Contact', href: '#contact' },
+  ],
+  ctaText: 'Subscribe',
+  ctaHref: '#subscribe',
+}
+
+export const footer = {
+  logo: "The You Interview",
+  description: "The You Interview features in-depth conversations with California's leading personal injury attorneys. Each episode explores their journey, philosophy, and insights on fighting for accident victims.",
+  copyright: "MVP Accident Attorneys",
+  socialLinks: {
+    twitter: "https://twitter.com/mvpaccident",
+    linkedin: "https://linkedin.com/company/mvp-accident-attorneys",
+    facebook: "https://facebook.com/mvpaccidentattorneys",
+    instagram: "https://instagram.com/mvpaccidentattorneys",
+    youtube: "https://youtube.com/@mvpaccidentattorneys",
+  },
+}

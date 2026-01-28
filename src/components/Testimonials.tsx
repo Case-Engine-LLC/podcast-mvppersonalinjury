@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
+import { testimonials as testimonialsData } from '@/data/siteData'
 
 interface Testimonial {
   id: number
@@ -25,48 +26,7 @@ const Testimonials = () => {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  const testimonials: Testimonial[] = [
-    {
-      id: 1,
-      name: 'Meghan Doyle',
-      initials: 'MD',
-      role: 'Google Reviewer',
-      rating: 5,
-      text: 'Great attorney. Brett was very helpful in the beginning explaining everything to me. I was always informed on my case and the status of it. When I had questions they answered quickly . Jessica helped resolve my medical bills by almost half! I highly recommend MVP Attorneys !'
-    },
-    {
-      id: 2,
-      name: 'Olivia Okoro',
-      initials: 'OO',
-      role: 'Google Reviewer',
-      rating: 5,
-      text: 'I had a great experience working with MVP Accident Attorneys! They were very informative and kept me up-to-date with everything going on. Brett was amazing with his communication and timeliness to handle any of my concerns and questions! The whole team was great and explained everything thoroughly. I\'d highly recommend going with them if you need an accident attorney!'
-    },
-    {
-      id: 3,
-      name: 'Doris Hamilton',
-      initials: 'DH',
-      role: 'Google Reviewer',
-      rating: 5,
-      text: '"They handled my case like real pros!!! I was able to get the maximum settlement offer and each time I call they are available to answer all questions and concerns. Andrew was amazing in this difficult time he was really there for me. My attorney Taylor was great as well. You can tell that Taylor is a great attorney very knowledgeable!"'
-    },
-    {
-      id: 4,
-      name: 'John Smith',
-      initials: 'JS',
-      role: 'Google Reviewer',
-      rating: 5,
-      text: 'Excellent service and professional team. They handled everything smoothly and kept me informed throughout the entire process. Highly recommend their services to anyone looking for quality legal representation.'
-    },
-    {
-      id: 5,
-      name: 'Sarah Johnson',
-      initials: 'SJ',
-      role: 'Google Reviewer',
-      rating: 5,
-      text: 'Outstanding experience from start to finish. The team was responsive, knowledgeable, and truly cared about my case. I couldn\'t be happier with the results and would definitely recommend them to friends and family.'
-    }
-  ]
+  const testimonials: Testimonial[] = testimonialsData
 
   const cardsPerView = isMobile ? 1 : 3
   const maxIndex = Math.max(0, testimonials.length - cardsPerView)

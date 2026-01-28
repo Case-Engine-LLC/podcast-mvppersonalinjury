@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { Menu, X, ArrowRight } from 'lucide-react'
+import { navigation } from '@/data/siteData'
 
 interface HeaderProps {
   variant?: 'dark' | 'light'
@@ -21,11 +22,7 @@ const Header = ({ variant = 'dark' }: HeaderProps) => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navItems = [
-    { name: 'Nav Item', href: '#' },
-    { name: 'Nav Item', href: '#' },
-    { name: 'Nav Item', href: '#' },
-  ]
+  const navItems = navigation.items
 
   const isDark = variant === 'dark'
   const textColor = isScrolled ? 'text-white' : (isDark ? 'text-white' : 'text-black')
@@ -40,7 +37,7 @@ const Header = ({ variant = 'dark' }: HeaderProps) => {
       <div className="max-w-container mx-auto px-6 md:px-12 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className={`text-lg md:text-xl font-extrabold ${textColor} tracking-tight`}>
-          LOGO HERE
+          {navigation.logo}
         </Link>
 
         {/* Desktop Nav */}
@@ -59,10 +56,10 @@ const Header = ({ variant = 'dark' }: HeaderProps) => {
         {/* Desktop Subscribe Button */}
         <div className="hidden md:flex items-center">
           <Link
-            href="#"
+            href={navigation.ctaHref}
             className={`px-6 py-2.5 rounded-lg text-base font-semibold ${buttonBg} transition-all`}
           >
-            Subscribe
+            {navigation.ctaText}
           </Link>
         </div>
 
@@ -89,11 +86,11 @@ const Header = ({ variant = 'dark' }: HeaderProps) => {
             </Link>
           ))}
           <Link
-            href="#"
+            href={navigation.ctaHref}
             className={`flex items-center justify-center px-6 py-3 rounded-lg text-base font-semibold ${buttonBg}`}
             onClick={() => setIsMenuOpen(false)}
           >
-            Subscribe
+            {navigation.ctaText}
           </Link>
         </div>
       )}

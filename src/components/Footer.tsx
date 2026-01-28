@@ -3,21 +3,15 @@
 import React from 'react'
 import Link from 'next/link'
 import { Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react'
+import { footer, chapters } from '@/data/siteData'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
 
-  const episodes = [
-    { name: 'Episode 1', href: '#' },
-    { name: 'Episode 2', href: '#' },
-    { name: 'Episode 3', href: '#' },
-    { name: 'Episode 4', href: '#' },
-    { name: 'Episode 5', href: '#' },
-    { name: 'Episode 6', href: '#' },
-    { name: 'Episode 7', href: '#' },
-    { name: 'Episode 8', href: '#' },
-    { name: 'Episode 9', href: '#' },
-  ]
+  const episodes = chapters.map((ch, idx) => ({
+    name: `Episode ${ch.number}: ${ch.title.split(':')[0]}`,
+    href: `#chapter-${ch.number}`,
+  }))
 
   return (
     <footer className="bg-[#0a0a1a] text-white">
@@ -39,25 +33,25 @@ const Footer = () => {
           {/* Left Column - Logo & Social */}
           <div>
             <h3 className="text-xl md:text-2xl font-extrabold text-white mb-6">
-              LOGO HERE
+              {footer.logo}
             </h3>
             <p className="text-base text-white/70 leading-relaxed mb-8 max-w-md">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              {footer.description}
             </p>
             <div className="flex items-center gap-4">
-              <Link href="#" className="hover:opacity-70 transition-opacity">
+              <Link href={footer.socialLinks.twitter} className="hover:opacity-70 transition-opacity">
                 <Twitter size={20} className="text-white" />
               </Link>
-              <Link href="#" className="hover:opacity-70 transition-opacity">
+              <Link href={footer.socialLinks.linkedin} className="hover:opacity-70 transition-opacity">
                 <Linkedin size={20} className="text-white" />
               </Link>
-              <Link href="#" className="hover:opacity-70 transition-opacity">
+              <Link href={footer.socialLinks.facebook} className="hover:opacity-70 transition-opacity">
                 <Facebook size={20} className="text-white" />
               </Link>
-              <Link href="#" className="hover:opacity-70 transition-opacity">
+              <Link href={footer.socialLinks.instagram} className="hover:opacity-70 transition-opacity">
                 <Instagram size={20} className="text-white" />
               </Link>
-              <Link href="#" className="hover:opacity-70 transition-opacity">
+              <Link href={footer.socialLinks.youtube} className="hover:opacity-70 transition-opacity">
                 <Youtube size={20} className="text-white" />
               </Link>
             </div>
@@ -85,7 +79,7 @@ const Footer = () => {
       <div className="border-t border-white/10">
         <div className="max-w-container mx-auto px-6 md:px-12 py-6">
           <p className="text-sm text-white/60 text-center">
-            © {currentYear} Company Name. All rights reserved.
+            © {currentYear} {footer.copyright}. All rights reserved.
           </p>
         </div>
       </div>

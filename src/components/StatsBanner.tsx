@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { Star } from 'lucide-react'
+import { stats } from '@/data/siteData'
 
 const StatsBanner = () => {
   return (
@@ -11,14 +12,14 @@ const StatsBanner = () => {
           {/* Column 1: Rating */}
           <div className="flex items-center justify-center md:border-r border-white/10 px-8">
             <div className="flex items-center gap-6">
-              <span className="text-[42px] font-bold text-white tracking-[-0.42px]">4.98</span>
+              <span className="text-[42px] font-bold text-white tracking-[-0.42px]">{stats.rating}</span>
               <div>
                 <div className="flex items-center gap-1 text-[#ce5743] mb-1">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} size={16} fill="currentColor" />
                   ))}
                 </div>
-                <p className="text-[16px] text-white opacity-60">2,469 Readers</p>
+                <p className="text-[16px] text-white opacity-60">{stats.reviewCount} Reviews</p>
               </div>
             </div>
           </div>
@@ -26,9 +27,9 @@ const StatsBanner = () => {
           {/* Column 2: Satisfaction */}
           <div className="flex items-center justify-center md:border-r border-white/10 px-8 text-center md:text-left">
             <div className="flex items-center gap-6">
-              <span className="text-[42px] font-bold text-white tracking-[-0.42px]">99%</span>
+              <span className="text-[42px] font-bold text-white tracking-[-0.42px]">{stats.satisfactionRate}%</span>
               <p className="text-[16px] text-white opacity-60 max-w-[150px]">
-                Lorem ipsum dolor sit amet
+                {stats.satisfactionLabel}
               </p>
             </div>
           </div>
@@ -36,9 +37,9 @@ const StatsBanner = () => {
           {/* Column 3: Stats */}
           <div className="flex items-center justify-center px-8 text-center md:text-left">
             <div className="flex items-center gap-6">
-              <span className="text-[42px] font-bold text-white tracking-[-0.42px]">200+</span>
+              <span className="text-[42px] font-bold text-white tracking-[-0.42px]">{stats.casesHandled}+</span>
               <p className="text-[16px] text-white opacity-60 max-w-[150px]">
-                Lorem ipsum dolor sit amet
+                {stats.casesLabel}
               </p>
             </div>
           </div>
