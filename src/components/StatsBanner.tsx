@@ -20,6 +20,11 @@ const StatsBanner = () => {
                   ))}
                 </div>
                 <p className="text-[16px] text-white opacity-60">{stats.reviewCount} Reviews</p>
+                {stats.ratingVerbalization && (
+                  <p className="text-[13px] text-white opacity-40 mt-1 max-w-[200px]">
+                    {stats.ratingVerbalization}
+                  </p>
+                )}
               </div>
             </div>
           </div>
@@ -28,9 +33,16 @@ const StatsBanner = () => {
           <div className="flex items-center justify-center md:border-r border-white/10 px-8 text-center md:text-left">
             <div className="flex items-center gap-6">
               <span className="text-[42px] font-bold text-white tracking-[-0.42px]">{stats.satisfactionRate}%</span>
-              <p className="text-[16px] text-white opacity-60 max-w-[150px]">
-                {stats.satisfactionLabel}
-              </p>
+              <div>
+                <p className="text-[16px] text-white opacity-60 max-w-[150px]">
+                  {stats.satisfactionLabel}
+                </p>
+                {stats.satisfactionVerbalization && (
+                  <p className="text-[13px] text-white opacity-40 mt-1 max-w-[200px]">
+                    {stats.satisfactionVerbalization}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
 
@@ -38,9 +50,16 @@ const StatsBanner = () => {
           <div className="flex items-center justify-center px-8 text-center md:text-left">
             <div className="flex items-center gap-6">
               <span className="text-[42px] font-bold text-white tracking-[-0.42px]">{stats.casesHandled}+</span>
-              <p className="text-[16px] text-white opacity-60 max-w-[150px]">
-                {stats.casesLabel}
-              </p>
+              <div>
+                <p className="text-[16px] text-white opacity-60 max-w-[150px]">
+                  {stats.casesLabel}
+                </p>
+                {stats.casesVerbalization && (
+                  <p className="text-[13px] text-white opacity-40 mt-1 max-w-[200px]">
+                    {stats.casesVerbalization}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
         </div>

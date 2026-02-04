@@ -4,25 +4,16 @@ import React from 'react'
 import Header from './Header'
 import Hero from './Hero'
 import TrustBadges from './TrustBadges'
+import StatsBanner from './StatsBanner'
 import About from './About'
 import LatestEpisodes from './LatestEpisodes'
-import StatsBanner from './StatsBanner'
-import AwardsSection from './AwardsSection'
-import ChapterSection from './ChapterSection'
-import AuthorBox from './AuthorBox'
-import EpisodeCard from './EpisodeCard'
-import SubscribeBanner from './SubscribeBanner'
-import PodcastSubscribe from './PodcastSubscribe'
 import PodcastSubscribeCTA from './PodcastSubscribeCTA'
 import Testimonials from './Testimonials'
 import FAQ from './FAQ'
-import ContactSection from './ContactSection'
-import BottomMarquee from './BottomMarquee'
+import TopicalEntryGrid from './TopicalEntryGrid'
 import Footer from './Footer'
 
 const HomePodcast = () => {
-
-
   return (
     <div className="bg-white min-h-screen overflow-x-hidden">
       <Header />
@@ -30,12 +21,13 @@ const HomePodcast = () => {
       <main>
         <Hero />
         <TrustBadges />
+        <StatsBanner />
         <About />
         <LatestEpisodes />
         <PodcastSubscribeCTA />
         <Testimonials />
         <FAQ />
-
+        <TopicalEntryGrid />
       </main>
 
       <Footer />

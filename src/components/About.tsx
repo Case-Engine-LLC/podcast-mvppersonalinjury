@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { ChevronDown, CheckCircle } from 'lucide-react'
-import { about, attorney, siteConfig } from '@/data/siteData'
+import { about, attorney, siteConfig, podcastTeam } from '@/data/siteData'
 
 const About = () => {
   const [isExpanded, setIsExpanded] = useState(false)
@@ -61,6 +61,34 @@ const About = () => {
             </svg>
           </div>
         </div>
+
+        {/* Podcast Team */}
+        {podcastTeam && podcastTeam.length > 0 && (
+          <div className="mt-16 pt-16 border-t border-gray-200">
+            <h3 className="text-2xl md:text-3xl font-bold text-black mb-8">
+              The Team Behind the Podcast
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {podcastTeam.map((member, index) => (
+                <div key={index} className="bg-white rounded-2xl p-6 border border-gray-200">
+                  <div className="w-16 h-16 rounded-full bg-gray-200 mb-4 overflow-hidden">
+                    {member.photo ? (
+                      <img src={member.photo} alt={member.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-gray-400 font-bold text-lg">
+                        {member.name.split(' ').map(n => n[0]).join('')}
+                      </div>
+                    )}
+                  </div>
+                  <h4 className="text-lg font-bold text-black">{member.name}</h4>
+                  <p className="text-sm text-secondary font-semibold mb-2">{member.role}</p>
+                  <p className="text-sm text-gray-600 mb-3">{member.bio}</p>
+                  <span className="text-xs px-3 py-1 bg-gray-100 rounded-full text-gray-600">{member.episodes}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   )

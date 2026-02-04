@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
+import { FileText } from 'lucide-react'
 import FeaturedEpisodePlayer from './FeaturedEpisodePlayer'
 import { siteConfig, episode, content } from '@/data/siteData'
 
@@ -91,6 +92,19 @@ const Hero = () => {
                 <div className="text-left">
                   <div className="text-xs text-white/60">Available on</div>
                   <div className="text-lg font-bold text-white">Spotify</div>
+                </div>
+              </Link>
+
+              <Link
+                href={siteConfig.formCTA?.href || '#form'}
+                className="flex items-center gap-3 px-6 py-4 rounded-2xl transition-all hover:scale-105 bg-secondary w-full sm:w-auto sm:min-w-[15rem]"
+              >
+                <div className="w-8 h-8 flex items-center justify-center">
+                  <FileText className="w-6 h-6 text-black" />
+                </div>
+                <div className="text-left">
+                  <div className="text-xs text-black/60">Get a</div>
+                  <div className="text-lg font-bold text-black">{siteConfig.formCTA?.text || 'Free Consultation'}</div>
                 </div>
               </Link>
             </div>

@@ -29,6 +29,16 @@ const PodcastSubscribeCTA = () => {
               <p className="text-base md:text-lg text-white/70 leading-relaxed mb-8">
                 {subscribeCTA.description}
               </p>
+              {subscribeCTA.highlights && (
+                <ul className="space-y-3 mb-8">
+                  {subscribeCTA.highlights.map((item, index) => (
+                    <li key={index} className="flex items-start gap-3 text-sm text-white/70">
+                      <span className="text-secondary mt-0.5 shrink-0">&#10003;</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              )}
               <Link
                 href="#subscribe"
                 className="inline-block px-8 py-4 bg-white text-black rounded-xl font-semibold text-base hover:bg-white/90 transition-all"

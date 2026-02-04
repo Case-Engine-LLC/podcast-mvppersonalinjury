@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
-import { testimonials as testimonialsData } from '@/data/siteData'
+import { testimonials as testimonialsData, reviewsInstruction } from '@/data/siteData'
 
 interface Testimonial {
   id: number
@@ -51,6 +51,18 @@ const Testimonials = () => {
   return (
     <section className="testimonails-home bg-primary py-16 md:py-20">
       <div className="max-w-container mx-auto px-6 md:px-12">
+        {/* Section Header */}
+        <div className="mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            What Listeners Say
+          </h2>
+          {reviewsInstruction && (
+            <p className="text-base text-white/50 max-w-2xl italic">
+              {reviewsInstruction}
+            </p>
+          )}
+        </div>
+
         {/* Slider Container */}
         <div className="relative">
           {/* Cards Container */}

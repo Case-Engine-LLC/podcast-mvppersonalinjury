@@ -13,6 +13,10 @@ export const siteConfig = {
     apple: "#",
     spotify: "#",
   },
+  formCTA: {
+    text: "Free Consultation",
+    href: "#form",
+  },
 }
 
 export const episode = {
@@ -50,31 +54,103 @@ export const chapters = [
   { number: 5, title: "The MVP Approach: Client-Centric, Data-Driven, Team-Based", active: false }
 ]
 
-export const faqs = [
+export const faqGroups = [
   {
-    question: "What types of personal injury cases does MVP Accident Attorneys handle?",
-    answer: "MVP handles car accidents, slip and falls, wrongful death, product liability, and pool drowning cases. MVP Accident Attorneys focuses on single-event injuries caused by negligence. The firm handles 200+ cases annually in California. Pool drowning cases require expertise with HOA rules, city codes, and attractive nuisance laws. MVP has this specialized knowledge.",
+    label: "The You Interview",
+    description: "General questions about the podcast",
+    questions: [
+      {
+        question: "What is The You Interview podcast about?",
+        answer: "The You Interview features in-depth conversations with California's leading personal injury attorneys. Each episode explores their journey, philosophy, and insights on fighting for accident victims against billion-dollar insurance companies.",
+      },
+      {
+        question: "How often are new episodes released?",
+        answer: "New episodes are released bi-weekly. Each episode features a different California attorney sharing their journey, legal insights, and advice for accident victims.",
+      },
+      {
+        question: "Where can I listen to The You Interview?",
+        answer: "The You Interview is available on Apple Podcasts, Spotify, and all major podcast platforms. You can also listen directly on our website with the built-in player.",
+      },
+    ],
   },
   {
-    question: "Why did Brett Sachs choose to focus on personal injury law?",
-    answer: "Brett Sachs chose personal injury law to help injured people recover maximum compensation. Brett Sachs can impact dozens of lives each year through this practice area. His father inspired him to pursue work with both intent and resources to help others. Brett Sachs and his team fight daily against insurance companies that deny valid claims.",
+    label: "Speakers",
+    description: "About the hosts and guests",
+    questions: [
+      {
+        question: "Who hosts The You Interview?",
+        answer: "The You Interview is hosted by Brett Sachs, founder of MVP Accident Attorneys. Brett graduated cum laude from Michigan State University College of Law and has handled thousands of personal injury cases.",
+      },
+      {
+        question: "How are guest attorneys selected?",
+        answer: "Guest attorneys are selected based on their track record, specialization, and commitment to client advocacy. We look for attorneys who bring unique perspectives and real stories from the courtroom.",
+      },
+    ],
   },
   {
-    question: "What makes MVP Accident Attorneys different from other personal injury firms?",
-    answer: "MVP treats each client like family with 24/7 availability through phone, text, and email. The firm limits caseloads so attorneys know each client by name. MVP responds to client questions within 4 hours during business days. Large firms treat clients as numbers on spreadsheets. MVP assigns dedicated case managers to every injured person.",
+    label: "Who Should Listen",
+    description: "Is this podcast right for you?",
+    questions: [
+      {
+        question: "Who is this podcast for?",
+        answer: "This podcast is for anyone who wants to understand personal injury law, learn how to choose the right attorney, or hear real stories from lawyers who fight insurance companies daily.",
+      },
+      {
+        question: "Do I need legal knowledge to enjoy the podcast?",
+        answer: "Not at all. Episodes are designed for general audiences. Attorneys explain complex legal concepts in plain language with real-world examples.",
+      },
+    ],
   },
   {
-    question: "What is Brett Sachs' legal background and experience?",
-    answer: "Brett Sachs graduated cum laude from Michigan State University College of Law. Brett Sachs attended Indiana University for undergraduate studies. He represented prisoners in civil rights cases before graduation. This clinic work gave Brett Sachs 50+ real case experiences while still a law student. He learned client advocacy through direct courtroom practice.",
+    label: "Car Accident Attorney",
+    description: "Questions about car accident cases",
+    questions: [
+      {
+        question: "What types of car accident cases does MVP handle?",
+        answer: "MVP handles all types of car accidents including rear-end collisions, intersection accidents, highway crashes, and multi-vehicle pileups. The firm also handles truck accidents and rideshare incidents.",
+      },
+      {
+        question: "What should I do after a car accident in California?",
+        answer: "Ensure safety, call 911, document the scene with photos, exchange information with other drivers, seek medical attention, and contact an attorney before speaking with insurance companies.",
+      },
+      {
+        question: "How much is my car accident case worth?",
+        answer: "Case value depends on injury severity, medical expenses, lost wages, pain and suffering, and liability. MVP evaluates each case individually and most clients receive 3x more with attorney representation.",
+      },
+    ],
   },
   {
-    question: "Can MVP Accident Attorneys help with cases outside their specialty areas?",
-    answer: "MVP refers non-injury cases to trusted specialists in California. MVP Accident Attorneys maintains relationships with 30+ attorneys across practice areas. Brett Sachs believes clients deserve experts for their specific legal issue. MVP will connect you with the right attorney at no cost. Call MVP first even with questions about other case types.",
+    label: "Personal Injury Attorney",
+    description: "Questions about personal injury representation",
+    questions: [
+      {
+        question: "What types of personal injury cases does MVP handle?",
+        answer: "MVP handles car accidents, slip and falls, wrongful death, product liability, and pool drowning cases. The firm handles 200+ cases annually across California.",
+      },
+      {
+        question: "How much does a personal injury attorney cost?",
+        answer: "MVP works on contingency — you pay nothing unless they recover compensation. There are no upfront costs, no hourly fees, and no hidden charges.",
+      },
+      {
+        question: "What makes MVP different from other personal injury firms?",
+        answer: "MVP treats each client like family with 24/7 availability. The firm limits caseloads so attorneys know each client by name and responds to questions within 4 hours on business days.",
+      },
+    ],
   },
   {
-    question: "What does a personal injury lawyer actually do for clients?",
-    answer: "Personal injury lawyers fight insurance companies to get you maximum compensation after accidents. Insurance carriers have $900 billion in annual revenue. They employ teams to reduce and deny your claim. MVP handles medical records, negotiations, and litigation. You recover from injuries while MVP builds your case. Most clients receive 3x more with attorney representation.",
-  }
+    label: "Background",
+    description: "About MVP Accident Attorneys",
+    questions: [
+      {
+        question: "What is Brett Sachs' legal background?",
+        answer: "Brett Sachs graduated cum laude from Michigan State University College of Law. He represented prisoners in civil rights cases before graduation, gaining 50+ real case experiences while still a student.",
+      },
+      {
+        question: "Can MVP help with cases outside their specialty?",
+        answer: "MVP refers non-injury cases to trusted specialists. The firm maintains relationships with 30+ attorneys across practice areas to ensure clients get the best attorney for their specific situation.",
+      },
+    ],
+  },
 ]
 
 export const content = {
@@ -126,8 +202,11 @@ export const stats = {
   reviewCount: 247,
   satisfactionRate: 99,
   satisfactionLabel: "Client Satisfaction Rate",
+  satisfactionVerbalization: "Nearly every client reports a positive experience with our featured attorneys",
   casesHandled: 200,
   casesLabel: "Cases Handled Annually",
+  casesVerbalization: "Our featured attorneys collectively handle hundreds of personal injury cases each year",
+  ratingVerbalization: "Based on verified client reviews across Google and legal review platforms",
 }
 
 export const navigation = {
@@ -186,6 +265,12 @@ export const about = {
 export const subscribeCTA = {
   title: "Never Miss an Episode",
   description: "Subscribe to The You Interview and get notified when new episodes drop. Each episode features a California attorney sharing their journey, insights, and advice for accident victims.",
+  highlights: [
+    "In-depth conversations with California's top personal injury attorneys",
+    "Real stories from lawyers who fight billion-dollar insurance companies",
+    "Practical advice for anyone navigating an injury claim",
+    "New episodes released bi-weekly on all major platforms",
+  ],
 }
 
 // Episodes list (currently just episode 1)
@@ -200,8 +285,74 @@ export const episodes = [
     date: "01.28.26",
     category: "Personal Injury",
     featured: true,
+    topic: "Personal Injury",
+    concepts: ["Client-first approach", "Insurance industry", "Tech-forward firm", "Contingency fees"],
+    chapters: ["Why Personal Injury Law", "From Midwest to California", "Fighting Insurance Giants"],
+    logo: "/images/episode-1-logo.jpg",
   },
 ]
+
+export const episodeTopics = ["All", "Car Accident", "Personal Injury", "Laws"]
+export const episodeLocations = ["All", "California", "Southern California", "Los Angeles", "Orange County"]
+
+export const podcastTeam = [
+  {
+    name: "Brett Sachs",
+    role: "Host & Founder",
+    episodes: "All Episodes",
+    bio: "Founder of MVP Accident Attorneys. Graduated cum laude from Michigan State Law.",
+    photo: "/images/team-1.jpg",
+  },
+  {
+    name: "Jessica Martinez",
+    role: "Co-Host & Producer",
+    episodes: "Episode 1+",
+    bio: "Senior associate specializing in insurance negotiations and settlement maximization.",
+    photo: "/images/team-2.jpg",
+  },
+  {
+    name: "Andrew Chen",
+    role: "Legal Analyst",
+    episodes: "Episode 1+",
+    bio: "Trial attorney with expertise in evidence collection and courtroom strategy.",
+    photo: "/images/team-3.jpg",
+  },
+]
+
+export const reviewsInstruction = "Each review is from a verified client of an attorney featured on The You Interview. Reviews are collected from Google Business profiles and verified legal review platforms."
+
+export const topicalEntryGrid = {
+  title: "Guide for Legal Help and Injury Cases",
+  tabs: [
+    {
+      label: "Car Accident",
+      links: [
+        { title: "Car Accident Attorney", description: "Find experienced car accident lawyers who fight for maximum compensation", href: "#car-accident-attorney" },
+        { title: "What To Do After a Car Accident", description: "Step-by-step guide for protecting your rights after a collision", href: "#after-car-accident" },
+        { title: "Car Accident Settlement Calculator", description: "Estimate the value of your car accident injury claim", href: "#settlement-calculator" },
+        { title: "Dealing With Insurance Companies", description: "How to handle insurance adjusters and protect your claim", href: "#insurance-companies" },
+      ],
+    },
+    {
+      label: "Personal Injury",
+      links: [
+        { title: "Personal Injury Attorney", description: "Experienced trial lawyers fighting for accident victims in California", href: "#personal-injury-attorney" },
+        { title: "Types of Personal Injury Cases", description: "From slip and falls to wrongful death — understand your case type", href: "#case-types" },
+        { title: "Personal Injury Claim Process", description: "The complete timeline from injury to settlement or verdict", href: "#claim-process" },
+        { title: "Maximizing Your Settlement", description: "Proven strategies to increase your personal injury compensation", href: "#maximize-settlement" },
+      ],
+    },
+    {
+      label: "Laws",
+      links: [
+        { title: "California Personal Injury Laws", description: "Key statutes and legal standards that govern injury claims", href: "#california-laws" },
+        { title: "Statute of Limitations", description: "Critical filing deadlines for California injury cases", href: "#statute-of-limitations" },
+        { title: "Comparative Fault in California", description: "How shared fault affects your injury compensation", href: "#comparative-fault" },
+        { title: "Workers Compensation vs Personal Injury", description: "Understanding which claim applies to your workplace injury", href: "#workers-comp" },
+      ],
+    },
+  ],
+}
 
 // Trust badges with real descriptions
 export const trustBadges = [
@@ -210,29 +361,34 @@ export const trustBadges = [
     title: "Super Lawyers 2.5%",
     tooltip: "Brett Sachs is recognized as a Super Lawyers Rising Star—an honor given to only 2.5% of California attorneys.",
     badge: "/badges/badge-1.svg",
+    href: "#super-lawyers",
   },
   {
     id: 2,
     title: "24/7 Availability",
     tooltip: "MVP Accident Attorneys offers round-the-clock client support through phone, text, email, and AI chat.",
     badge: "/badges/badge-2.svg",
+    href: "#availability",
   },
   {
     id: 3,
     title: "200+ Cases/Year",
     tooltip: "MVP handles over 200 personal injury cases annually across California with dedicated teams of 3-7 people per client.",
     badge: "/badges/badge-3.svg",
+    href: "#cases",
   },
   {
     id: 4,
     title: "4 Office Locations",
     tooltip: "Offices in Irvine, Riverside, Los Angeles, and Sacramento serving accident victims statewide.",
     badge: "/badges/badge-4.svg",
+    href: "#locations",
   },
   {
     id: 5,
     title: "No Fee Unless We Win",
     tooltip: "MVP works on contingency—you pay nothing unless they recover compensation for your injuries.",
     badge: "/badges/badge-5.svg",
+    href: "#contingency",
   },
 ]

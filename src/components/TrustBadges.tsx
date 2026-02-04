@@ -17,9 +17,10 @@ const TrustBadges = () => {
         {badges.map((badge) => (
           <div
             key={`first-${badge.id}`}
-            className="relative flex items-center gap-4 mx-16 shrink-0"
+            className="relative flex items-center gap-4 mx-16 shrink-0 cursor-pointer"
             onMouseEnter={() => setHoveredBadge(badge.id)}
             onMouseLeave={() => setHoveredBadge(null)}
+            onClick={() => badge.href && window.location.assign(badge.href)}
           >
             {/* Badge */}
             <div className="w-20 h-20 flex items-center justify-center">
@@ -57,9 +58,10 @@ const TrustBadges = () => {
         {badges.map((badge) => (
           <div
             key={`second-${badge.id}`}
-            className="relative flex items-center gap-4 mx-16 shrink-0"
+            className="relative flex items-center gap-4 mx-16 shrink-0 cursor-pointer"
             onMouseEnter={() => setHoveredBadge(badge.id + 100)}
             onMouseLeave={() => setHoveredBadge(null)}
+            onClick={() => badge.href && window.location.assign(badge.href)}
           >
             {/* Badge */}
             <div className="w-20 h-20 flex items-center justify-center">
