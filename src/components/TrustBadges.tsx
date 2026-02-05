@@ -12,6 +12,9 @@ const TrustBadges = () => {
 
   return (
     <section className="bg-white py-12 overflow-hidden border-y border-gray-200">
+      <h2 className="text-2xl md:text-3xl font-bold text-black text-center mb-8 px-6">
+        Trust Elements
+      </h2>
       <div className="flex animate-marquee-slower">
         {/* First set of badges */}
         {badges.map((badge) => (

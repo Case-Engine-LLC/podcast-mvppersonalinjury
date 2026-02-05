@@ -24,8 +24,8 @@ const HomePodcast = () => {
         <StatsBanner />
         <About />
         <LatestEpisodes />
-        <PodcastSubscribeCTA />
         <Testimonials />
+        <PodcastSubscribeCTA />
         <FAQ />
         <TopicalEntryGrid />
       </main>

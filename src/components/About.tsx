@@ -1,7 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import { ChevronDown, CheckCircle } from 'lucide-react'
+import Link from 'next/link'
+import { ChevronDown, CheckCircle, FileText } from 'lucide-react'
 import { about, attorney, siteConfig, podcastTeam } from '@/data/siteData'
 
 const About = () => {
@@ -51,6 +52,17 @@ const About = () => {
                 }`}
               />
             </button>
+
+            {/* CTA/Form */}
+            <div className="mt-6">
+              <Link
+                href={siteConfig.formCTA?.href || '#form'}
+                className="inline-flex items-center gap-3 bg-secondary text-black px-8 py-4 rounded-2xl transition-transform hover:scale-105 font-bold"
+              >
+                <FileText className="w-5 h-5" />
+                <span>{siteConfig.formCTA?.text || 'Free Consultation'}</span>
+              </Link>
+            </div>
           </div>
 
           {/* Right Image */}
@@ -66,7 +78,7 @@ const About = () => {
         {podcastTeam && podcastTeam.length > 0 && (
           <div className="mt-16 pt-16 border-t border-gray-200">
             <h3 className="text-2xl md:text-3xl font-bold text-black mb-8">
-              The Team Behind the Podcast
+              The Team Behind The You Interview
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {podcastTeam.map((member, index) => (

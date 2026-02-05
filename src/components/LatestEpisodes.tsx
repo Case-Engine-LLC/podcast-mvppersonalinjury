@@ -34,7 +34,7 @@ const LatestEpisodes = () => {
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Latest Episodes
+            Seasons and Episodes of The You Interview
           </h2>
           <p className="text-base md:text-lg text-white/70 max-w-2xl mx-auto">
             {subscribeCTA.description}
@@ -43,6 +43,9 @@ const LatestEpisodes = () => {
 
         {/* Controls: Topic Tabs + Location Tabs + View Toggle */}
         <div className="flex flex-col gap-4 mb-8">
+          <p className="text-sm text-white/50">
+            Filter episodes by topic — {activeTopic === 'All' ? `showing all ${defaultEpisodes.length} episodes` : `${filteredEpisodes.length} of ${defaultEpisodes.length} episodes cover ${activeTopic.toLowerCase()} topics`}
+          </p>
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex flex-wrap gap-2">
               {episodeTopics.map((topic) => (
@@ -74,6 +77,9 @@ const LatestEpisodes = () => {
               </button>
             </div>
           </div>
+          <p className="text-sm text-white/50">
+            Filter by location — {activeLocation === 'All' ? `showing all locations` : `showing episodes from ${activeLocation}`}
+          </p>
           <div className="flex flex-wrap gap-2">
             {episodeLocations.map((location) => (
               <button
