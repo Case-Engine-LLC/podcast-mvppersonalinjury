@@ -508,7 +508,7 @@ export const about = {
 
 // Subscribe CTA content
 export const subscribeCTA = {
-  title: "Subscription Element",
+  title: "Never Miss an Episode",
   description: "Subscribe to The You Interview and get notified when new episodes drop. Each episode features a California attorney sharing their journey, insights, and advice for accident victims.",
   highlights: [
     "In-depth conversations with California's top personal injury attorneys",

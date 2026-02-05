@@ -9,6 +9,7 @@ const LatestEpisodes = () => {
   const [activeTopic, setActiveTopic] = useState('All')
   const [activeLocation, setActiveLocation] = useState('All')
   const [viewMode, setViewMode] = useState<'list' | 'grid'>('list')
+  const [showAll, setShowAll] = useState(false)
 
   const defaultEpisodes = episodesData.map(ep => ({
     id: String(ep.id),
@@ -27,6 +28,8 @@ const LatestEpisodes = () => {
     if (activeTopic !== 'All' && ep.topic !== activeTopic) return false
     return true
   })
+
+  const visibleEpisodes = showAll ? filteredEpisodes : filteredEpisodes.slice(0, 3)
 
   return (
     <section id="episodes" className="bg-primary py-16 md:py-20">
@@ -99,8 +102,9 @@ const LatestEpisodes = () => {
 
         {/* List View */}
         {viewMode === 'list' && (
-          <div className="space-y-0">
-            {filteredEpisodes.map((episode, index) => (
+          <div className="relative">
+            <div className="space-y-0">
+            {visibleEpisodes.map((episode, index) => (
               <div key={episode.id}>
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 py-8 md:py-12 items-center">
                   {/* Episode Image */}
@@ -159,11 +163,25 @@ const LatestEpisodes = () => {
                   </div>
                 </div>
 
-                {index < filteredEpisodes.length - 1 && (
+                {index < visibleEpisodes.length - 1 && (
                   <div className="border-b border-white/10" />
                 )}
               </div>
             ))}
+            </div>
+            {!showAll && filteredEpisodes.length > 3 && (
+              <div className="relative mt-0">
+                <div className="absolute bottom-full left-0 right-0 h-32 bg-gradient-to-t from-primary to-transparent pointer-events-none" />
+                <div className="text-center pt-8">
+                  <button
+                    onClick={() => setShowAll(true)}
+                    className="bg-white text-black px-8 py-4 rounded-xl font-semibold text-base hover:bg-white/90 transition-all"
+                  >
+                    Show All {filteredEpisodes.length} Episodes
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         )}
 
@@ -181,7 +199,7 @@ const LatestEpisodes = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredEpisodes.map((episode) => (
+                {visibleEpisodes.map((episode) => (
                   <tr key={episode.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
                     <td className="py-5 pr-4 text-base font-bold text-white/30">{episode.number}</td>
                     <td className="py-5 pr-4">
@@ -207,6 +225,19 @@ const LatestEpisodes = () => {
                 ))}
               </tbody>
             </table>
+            {!showAll && filteredEpisodes.length > 3 && (
+              <div className="relative mt-0">
+                <div className="absolute bottom-full left-0 right-0 h-32 bg-gradient-to-t from-primary to-transparent pointer-events-none" />
+                <div className="text-center pt-8">
+                  <button
+                    onClick={() => setShowAll(true)}
+                    className="bg-white text-black px-8 py-4 rounded-xl font-semibold text-base hover:bg-white/90 transition-all"
+                  >
+                    Show All {filteredEpisodes.length} Episodes
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         )}
 

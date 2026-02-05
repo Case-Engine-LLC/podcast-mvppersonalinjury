@@ -8,9 +8,6 @@ const StatsBanner = () => {
   return (
     <section className="bg-[#070519] py-12 md:py-16">
       <div className="max-w-container mx-auto px-6 md:px-12">
-        <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-8">
-          Statistics
-        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0">
           {/* Column 1: Rating */}
           <div className="flex items-center justify-center md:border-r border-white/10 px-8">
