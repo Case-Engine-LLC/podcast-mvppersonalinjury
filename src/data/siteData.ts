@@ -546,23 +546,134 @@ export const podcastTeam = [
     role: "Host & Founder",
     episodes: "All Episodes",
     bio: "Founder of MVP Accident Attorneys. Graduated cum laude from Michigan State Law.",
-    photo: "/images/team-1.jpg",
+    photo: "/Brett Sachs.png",
+    slug: "brett-sachs",
   },
   {
-    name: "Jessica Martinez",
-    role: "Co-Host & Producer",
-    episodes: "Episode 1+",
-    bio: "Senior associate specializing in insurance negotiations and settlement maximization.",
-    photo: "/images/team-2.jpg",
-  },
-  {
-    name: "Andrew Chen",
-    role: "Legal Analyst",
-    episodes: "Episode 1+",
-    bio: "Trial attorney with expertise in evidence collection and courtroom strategy.",
-    photo: "/images/team-3.jpg",
+    name: "Chelsee Sachs",
+    role: "Co-Host & Managing Partner",
+    episodes: "All Episodes",
+    bio: "Managing Partner of MVP Accident Attorneys. Former defense attorney turned plaintiff advocate.",
+    photo: "/Chelsee Sachs.png",
+    slug: "chelsee-sachs",
   },
 ]
+
+export const authorProfiles: Record<string, {
+  name: string
+  slug: string
+  title: string
+  role: string
+  photo: string
+  barNumber: string
+  barUrl: string
+  education: { degree: string; school: string; year: string; honors?: string }[]
+  admissions: { jurisdiction: string; year: string }[]
+  awards: { name: string; years: string; description: string }[]
+  practiceAreas: string[]
+  bio: string[]
+  memberships: string[]
+  socialLinks: { platform: string; url: string }[]
+  episodeAppearances: string
+}> = {
+  "brett-sachs": {
+    name: "Brett Sachs",
+    slug: "brett-sachs",
+    title: "Founder & Personal Injury Attorney",
+    role: "Host & Founder",
+    photo: "/Brett Sachs.png",
+    barNumber: "297504",
+    barUrl: "https://apps.calbar.ca.gov/attorney/Licensee/Detail/297504",
+    education: [
+      { degree: "Juris Doctor (J.D.)", school: "Michigan State University College of Law", year: "2013", honors: "Cum Laude" },
+      { degree: "B.S. in Public Affairs", school: "Indiana University Bloomington", year: "2010" },
+    ],
+    admissions: [
+      { jurisdiction: "California State Bar", year: "2014" },
+    ],
+    awards: [
+      { name: "Super Lawyers Rising Star", years: "2020–2026", description: "An honor given to only 2.5% of eligible attorneys in California, awarded seven consecutive years." },
+      { name: "Top 40 Under 40", years: "2018–Present", description: "Selected by The National Trial Lawyers as one of the top 40 trial lawyers under age 40." },
+      { name: "Best Lawyers: Ones to Watch", years: "2022–Present", description: "Recognized by Best Lawyers in America for exceptional legal services in personal injury." },
+      { name: "EvenUp Pioneer Award", years: "2025", description: "Regional Case Outcome Excellence Award for personal injury representation." },
+    ],
+    practiceAreas: [
+      "Car Accidents",
+      "Wrongful Death",
+      "Pool Drowning & Premises Liability",
+      "Truck Accidents",
+      "Motorcycle Accidents",
+      "Pedestrian Accidents",
+      "Rideshare Accidents",
+      "Traumatic Brain Injuries",
+    ],
+    bio: [
+      "Brett Sachs founded MVP Accident Attorneys to fight for injured Californians against insurance companies with $900 billion in annual revenue. He graduated cum laude from Michigan State University College of Law in 2013, where he represented over 50 prisoners in civil rights cases through the MSU Legal Clinic and received an award for outstanding service.",
+      "Before founding MVP, Brett gained experience on both sides of personal injury law — first at a large plaintiff firm in Newport Beach, then at an insurance defense firm representing major medical providers and insurance carriers. This dual perspective gives him a unique advantage in anticipating and countering defense strategies.",
+      "Brett moved from his hometown of Carmel, Indiana to Southern California and launched Sachs Law, APC in August 2017. He sold his car and restructured his household budget to fund the firm's startup. With the unwavering support of his wife Chelsee, he grew the practice from a solo operation to a 50-person firm now handling over 200 cases annually.",
+      "MVP Accident Attorneys is the official law firm of the LA Galaxy. Brett serves on the board of the Orange County Trial Lawyers Association and the executive board of OCTLA Charities, which has donated over $200,000 to the Orange County community since 2021.",
+    ],
+    memberships: [
+      "Consumer Attorneys Association of Los Angeles (CAALA)",
+      "Orange County Trial Lawyers Association (OCTLA) — Board Member",
+      "OCTLA Charities — Executive Board Member",
+      "American Bar Association (ABA)",
+      "Orange County Bar Association (OCBA)",
+    ],
+    socialLinks: [
+      { platform: "LinkedIn", url: "https://www.linkedin.com/in/brett-sachs-74a1a34a/" },
+      { platform: "Website", url: "https://themvp.com/attorneys/brett-sachs/" },
+    ],
+    episodeAppearances: "All Episodes",
+  },
+  "chelsee-sachs": {
+    name: "Chelsee Sachs",
+    slug: "chelsee-sachs",
+    title: "Managing Partner & Personal Injury Attorney",
+    role: "Co-Host & Managing Partner",
+    photo: "/Chelsee Sachs.png",
+    barNumber: "297511",
+    barUrl: "https://apps.calbar.ca.gov/attorney/Licensee/Detail/297511",
+    education: [
+      { degree: "Juris Doctor (J.D.)", school: "Michigan State University College of Law", year: "2013" },
+      { degree: "B.A. in Political Science & History", school: "Indiana University Bloomington", year: "2010" },
+    ],
+    admissions: [
+      { jurisdiction: "California State Bar", year: "2014" },
+      { jurisdiction: "Texas State Bar", year: "2023" },
+    ],
+    awards: [
+      { name: "Super Lawyers", years: "2025–2026", description: "Recognized as a Super Lawyer — an honor given to only the top 5% of attorneys in California." },
+      { name: "Super Lawyers Rising Star", years: "2022–2024", description: "An honor given to only 2.5% of eligible attorneys in California for three consecutive years." },
+    ],
+    practiceAreas: [
+      "Car Accidents",
+      "Wrongful Death",
+      "Premises Liability",
+      "Truck Accidents",
+      "Motorcycle Accidents",
+      "Pedestrian Accidents",
+      "Catastrophic Injuries",
+      "Insurance Bad Faith",
+    ],
+    bio: [
+      "Chelsee Sachs serves as Managing Partner of MVP Accident Attorneys, where she co-leads the firm alongside her husband Brett. She graduated from Michigan State University College of Law in 2013 and earned a double major in Political Science and History from Indiana University Bloomington in 2010.",
+      "Chelsee is a former defense attorney turned plaintiff advocate. She began her career at Bremer Whyte Brown & O'Meara, an AV-rated defense firm with over 180 attorneys, where she gained firsthand knowledge of the tactics insurance companies use to minimize claims. She then joined Carpenter Zuckerman & Rowley, one of California's largest plaintiff trial firms, where she co-managed their Irvine office.",
+      "In August 2017, Chelsee and Brett co-founded Sachs Law, APC — later rebranded as MVP Accident Attorneys. To fund the firm's launch, Chelsee supported the household on her salary alone for an entire year while Brett saved his full income as startup capital. Her sacrifice and partnership were essential to building the firm into the 50-person practice it is today.",
+      "Chelsee has helped clients recover more than $15 million in favorable verdicts and settlements. She is licensed in both California and Texas, serves on the executive board of Orange County Trial Lawyers Charities, and has published in Advocate Magazine on premises liability defense strategies. She was also a speaker at the Law-Di-Gras legal conference.",
+    ],
+    memberships: [
+      "Orange County Trial Lawyers Charities — Executive Board Member",
+      "Consumer Attorneys Association of Los Angeles (CAALA)",
+      "Orange County Bar Association (OCBA)",
+    ],
+    socialLinks: [
+      { platform: "LinkedIn", url: "https://www.linkedin.com/in/chelsee-sachs-esq-793a2019" },
+      { platform: "Website", url: "https://themvp.com/attorneys/chelsee-sachs/" },
+    ],
+    episodeAppearances: "All Episodes",
+  },
+}
 
 export const reviewsInstruction = "Each review is from a verified client of an attorney featured on The You Interview. Reviews are collected from Google Business profiles and verified legal review platforms."
 

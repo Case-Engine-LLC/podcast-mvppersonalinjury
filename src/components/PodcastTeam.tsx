@@ -1,25 +1,21 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { podcastTeam } from '@/data/siteData'
 
 const PodcastTeam = () => {
+  const router = useRouter()
   const [currentSlide, setCurrentSlide] = useState(0)
   const [direction, setDirection] = useState<'left' | 'right'>('right')
 
-  const teamMembers = [
-    {
-      name: 'Brett Sachs',
-      title: 'Host & Founder',
-      image: '/Brett Sachs.png',
-      bio: 'Founder of MVP Accident Attorneys. Graduated cum laude from Michigan State Law.',
-    },
-    {
-      name: 'Chelsee Sachs',
-      title: 'Co-Host',
-      image: '/Chelsee Sachs.png',
-      bio: 'Founder of MVP Accident Attorneys. Graduated cum laude from Michigan State Law.',
-    },
-  ]
+  const teamMembers = podcastTeam.map(member => ({
+    name: member.name,
+    title: member.role,
+    image: member.photo,
+    bio: member.bio,
+    slug: member.slug,
+  }))
 
   const nextSlide = () => {
     setDirection('right')
@@ -31,10 +27,8 @@ const PodcastTeam = () => {
     setCurrentSlide((prev) => (prev - 1 + teamMembers.length) % teamMembers.length)
   }
 
-  const handleAuthorClick = (memberName: string) => {
-    // TODO: Navigate to author page when implemented
-    // For example: router.push(`/author/${memberName.toLowerCase().replace(' ', '-')}`)
-    console.log(`Navigate to author page for: ${memberName}`)
+  const handleAuthorClick = (slug: string) => {
+    router.push(`/author/${slug}`)
   }
 
   return (
@@ -94,7 +88,7 @@ const PodcastTeam = () => {
 
             {/* Card */}
             <div
-              onClick={() => handleAuthorClick(teamMembers[currentSlide].name)}
+              onClick={() => handleAuthorClick(teamMembers[currentSlide].slug)}
               className="absolute bottom-20 left-4 right-4 bg-white rounded-2xl shadow-lg p-4 cursor-pointer hover:shadow-xl transition-shadow"
             >
               <div className="flex items-start justify-between mb-2">
@@ -180,7 +174,7 @@ const PodcastTeam = () => {
 
               {/* Card */}
               <div
-                onClick={() => handleAuthorClick(member.name)}
+                onClick={() => handleAuthorClick(member.slug)}
                 className="absolute bottom-8 left-8 right-8 bg-white rounded-2xl shadow-lg p-5 cursor-pointer hover:shadow-xl transition-shadow"
               >
                 <div className="flex items-start justify-between mb-2.5">

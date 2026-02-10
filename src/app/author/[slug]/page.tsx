@@ -1,0 +1,261 @@
+import React from 'react'
+import { notFound } from 'next/navigation'
+import { Metadata } from 'next'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import TrustBadges from '@/components/TrustBadges'
+import StatsBanner from '@/components/StatsBanner'
+import Testimonials from '@/components/Testimonials'
+import ContactSection from '@/components/ContactSection'
+import FAQ from '@/components/FAQ'
+import LatestEpisodes from '@/components/LatestEpisodes'
+import { authorProfiles, siteConfig, contact } from '@/data/siteData'
+import { Scale, GraduationCap, Award, Briefcase, Users, ExternalLink, FileText } from 'lucide-react'
+import Link from 'next/link'
+
+export async function generateStaticParams() {
+  return Object.keys(authorProfiles).map((slug) => ({ slug }))
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const author = authorProfiles[slug]
+  if (!author) return { title: 'Author Not Found' }
+
+  return {
+    title: `${author.name} — ${author.title} | ${siteConfig.podcastName}`,
+    description: author.bio[0],
+  }
+}
+
+const AuthorPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params
+  const author = authorProfiles[slug]
+
+  if (!author) {
+    notFound()
+  }
+
+  return (
+    <div className="bg-white min-h-screen overflow-x-hidden">
+      <Header variant="light" />
+
+      <main className="pt-[6rem]">
+        {/* Author Hero */}
+        <section className="relative bg-primary py-16 md:py-24 overflow-hidden">
+          <div className="max-w-container mx-auto px-6 md:px-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+              {/* Photo */}
+              <div className="flex justify-center">
+                <div className="w-full max-w-[420px] aspect-[3/4] rounded-[20px] overflow-hidden bg-white/10">
+                  <img
+                    src={author.photo}
+                    alt={author.name}
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+              </div>
+
+              {/* Info */}
+              <div className="text-center md:text-left">
+                <div className="inline-block bg-[#EC6A00] px-6 py-1.5 rounded-[6px] text-[12px] font-bold text-black uppercase tracking-[0.96px] mb-6">
+                  {author.role}
+                </div>
+                <h1 className="text-[2.25rem] leading-[1.1] md:text-5xl font-bold text-white mb-4">
+                  {author.name}
+                </h1>
+                <p className="text-xl md:text-2xl text-[#EC6A00] font-semibold mb-6">
+                  {author.title}
+                </p>
+                <p className="text-base md:text-lg text-white/80 leading-relaxed mb-8">
+                  {author.bio[0]}
+                </p>
+
+                {/* Bar Info */}
+                <div className="flex flex-wrap gap-4 justify-center md:justify-start mb-8">
+                  {author.admissions.map((admission, i) => (
+                    <div key={i} className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+                      <Scale size={16} className="text-[#EC6A00]" />
+                      <span className="text-sm text-white">{admission.jurisdiction} ({admission.year})</span>
+                    </div>
+                  ))}
+                  <a
+                    href={author.barUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full hover:bg-white/20 transition-colors"
+                  >
+                    <span className="text-sm text-white">Bar #{author.barNumber}</span>
+                    <ExternalLink size={14} className="text-white/60" />
+                  </a>
+                </div>
+
+                {/* CTA */}
+                <Link
+                  href={siteConfig.formCTA?.href || '#contact'}
+                  className="inline-flex items-center gap-3 bg-[#EC6A00] text-black px-8 py-4 rounded-2xl transition-transform hover:scale-105 font-bold"
+                >
+                  <FileText className="w-5 h-5" />
+                  <span>{siteConfig.formCTA?.text || 'Free Consultation'}</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Trust Badges */}
+        <TrustBadges />
+
+        {/* Bio Section — follows About component pattern */}
+        <section className="bg-white py-16 md:py-20">
+          <div className="max-w-container mx-auto px-6 md:px-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+              {/* Left: Bio */}
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-none">
+                  About {author.name}
+                </h2>
+                <div className="text-base md:text-lg text-gray-700 leading-relaxed space-y-6">
+                  {author.bio.map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right: Education & Admissions */}
+              <div className="space-y-8">
+                {/* Education */}
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <GraduationCap size={24} className="text-[#EC6A00]" />
+                    <h3 className="text-xl font-bold text-black">Education</h3>
+                  </div>
+                  <div className="space-y-4">
+                    {author.education.map((edu, index) => (
+                      <div key={index} className="bg-[#f1f2f4] rounded-xl p-5">
+                        <p className="font-bold text-black">{edu.degree}{edu.honors ? ` — ${edu.honors}` : ''}</p>
+                        <p className="text-gray-600 text-sm">{edu.school}</p>
+                        <p className="text-gray-500 text-sm">Class of {edu.year}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Awards */}
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Award size={24} className="text-[#EC6A00]" />
+                    <h3 className="text-xl font-bold text-black">Awards & Recognition</h3>
+                  </div>
+                  <div className="space-y-3">
+                    {author.awards.map((award, index) => (
+                      <div key={index} className="border border-gray-200 rounded-xl p-5">
+                        <div className="flex items-start justify-between gap-4">
+                          <div>
+                            <p className="font-bold text-black">{award.name}</p>
+                            <p className="text-gray-600 text-sm mt-1">{award.description}</p>
+                          </div>
+                          <span className="text-xs px-3 py-1 bg-[#EC6A00]/10 text-[#EC6A00] rounded-full whitespace-nowrap font-semibold">
+                            {award.years}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Memberships */}
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Users size={24} className="text-[#EC6A00]" />
+                    <h3 className="text-xl font-bold text-black">Professional Memberships</h3>
+                  </div>
+                  <ul className="space-y-2">
+                    {author.memberships.map((org, index) => (
+                      <li key={index} className="flex items-start gap-3 text-gray-700">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#EC6A00] mt-2.5 flex-shrink-0" />
+                        {org}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Practice Areas — follows StatsBanner pattern */}
+        <section className="bg-[#f1f2f4] py-16 md:py-20">
+          <div className="max-w-container mx-auto px-6 md:px-12">
+            <div className="text-center mb-12">
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <Briefcase size={24} className="text-[#EC6A00]" />
+                <h2 className="text-3xl md:text-4xl font-bold text-black leading-none">
+                  Practice Areas
+                </h2>
+              </div>
+              <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+                {author.name} focuses on the following areas of personal injury law at MVP Accident Attorneys.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+              {author.practiceAreas.map((area, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-2xl p-6 text-center hover:shadow-lg transition-shadow"
+                >
+                  <p className="font-bold text-black">{area}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Stats */}
+        <StatsBanner />
+
+        {/* Episodes */}
+        <LatestEpisodes />
+
+        {/* Testimonials */}
+        <Testimonials />
+
+        {/* Social Links */}
+        <section className="bg-white py-12">
+          <div className="max-w-container mx-auto px-6 md:px-12">
+            <div className="flex flex-wrap gap-4 justify-center">
+              {author.socialLinks.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full hover:bg-primary/80 transition-colors font-semibold"
+                >
+                  <ExternalLink size={16} />
+                  {link.platform}
+                </a>
+              ))}
+              <a
+                href={`tel:${contact.phone}`}
+                className="flex items-center gap-2 bg-[#EC6A00] text-black px-6 py-3 rounded-full hover:bg-[#d15f00] transition-colors font-bold"
+              >
+                Call {contact.phone}
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <FAQ />
+
+        {/* Contact */}
+        <ContactSection />
+      </main>
+
+      <Footer />
+    </div>
+  )
+}
+
+export default AuthorPage
