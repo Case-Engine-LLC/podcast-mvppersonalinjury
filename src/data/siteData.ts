@@ -46,6 +46,37 @@ export const contact = {
   website: "https://themvp.com",
 }
 
+export const formConfig = {
+  // Webhook endpoint — receives POST with JSON body
+  webhookUrl: process.env.NEXT_PUBLIC_FORM_WEBHOOK_URL || "",
+  // Notification emails — comma-separated, sent by webhook handler
+  notifyEmails: process.env.NEXT_PUBLIC_FORM_NOTIFY_EMAILS || "contact@themvp.com",
+  // Form fields — configurable per client
+  fields: [
+    { name: "name", label: "NAME", type: "text" as const, placeholder: "Enter Your Name", required: true, halfWidth: true },
+    { name: "email", label: "EMAIL", type: "email" as const, placeholder: "Enter Your Email", required: true, halfWidth: true },
+    { name: "phone", label: "PHONE", type: "tel" as const, placeholder: "Enter Your Phone Number", required: false, halfWidth: true },
+    { name: "caseType", label: "CASE TYPE", type: "select" as const, placeholder: "Select Case Type", required: false, halfWidth: true, options: [
+      "Car Accident",
+      "Wrongful Death",
+      "Truck Accident",
+      "Motorcycle Accident",
+      "Pedestrian Accident",
+      "Premises Liability",
+      "Other",
+    ]},
+    { name: "message", label: "MESSAGE", type: "textarea" as const, placeholder: "Briefly describe your situation", required: true, halfWidth: false },
+  ],
+  // UI text
+  heading: "Get in touch now!",
+  submitText: "Send Message",
+  successMessage: "Thank you! Your message has been sent. We'll get back to you within 4 hours during business days.",
+  errorMessage: "Something went wrong. Please call us directly at 833-MVP-WINS.",
+  // Source tracking — included in webhook payload
+  source: "podcast-website",
+  campaign: "the-you-interview",
+}
+
 export const chapters = [
   { number: 1, title: "Why Personal Injury Law: Making a Real Difference", active: false },
   { number: 2, title: "From the Midwest to California: The Journey to MVP", active: true },
