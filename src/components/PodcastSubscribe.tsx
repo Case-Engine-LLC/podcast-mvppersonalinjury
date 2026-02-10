@@ -43,7 +43,7 @@ const PodcastSubscribe = () => {
 
           {/* Content Column */}
           <div className="md:col-span-7">
-            <h2 className="text-[40px] md:text-[56px] font-bold text-white mb-6 leading-[1.1]">
+            <h2 className="text-[40px] md:text-[56px] font-bold text-white mb-6 leading-none">
               {subscribeCTA.title}
             </h2>
             <p className="text-[18px] text-white/60 mb-10 max-w-[500px]">

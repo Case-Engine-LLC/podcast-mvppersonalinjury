@@ -11,7 +11,7 @@ const ContactSection = () => {
         <div className="bg-white rounded-[12px] shadow-sm overflow-hidden flex flex-col md:flex-row">
           {/* Contact Info */}
           <div className="md:w-1/3 bg-[#070519] p-12 text-white">
-            <h2 className="text-[24px] font-bold mb-12">Get in touch now!</h2>
+            <h2 className="text-[24px] font-bold mb-12 leading-none">Get in touch now!</h2>
             <div className="space-y-8">
               <div className="flex gap-4">
                 <MapPin className="text-white/50 shrink-0" size={24} />

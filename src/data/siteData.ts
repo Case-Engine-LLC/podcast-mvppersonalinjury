@@ -7,7 +7,7 @@
  */
 
 export const siteConfig = {
-  podcastName: "The You Interview",
+  podcastName: "The MVP of Personal Injury Law w. Brett & Chelsee Sachs",
   tagline: "NEW EPISODE",
   platformLinks: {
     apple: "#",
@@ -21,7 +21,7 @@ export const siteConfig = {
 
 export const episode = {
   number: 1,
-  title: "Why MVP Puts Clients First in Personal Injury",
+  title: "The YOU Interview",
   date: "01.28.26",
   duration: "01:06:33",
   description: "Brett Sachs founded MVP Accident Attorneys to fight insurance companies worth $900 billion annually. Brett Sachs moved from Indiana to California after graduating cum laude from Michigan State Law. His firm handles car accidents, wrongful death, and pool drowning cases. MVP treats each client like family, not a case number.",
@@ -399,7 +399,7 @@ export const faqGroups = [
 ]
 
 export const content = {
-  heroTitle: "MVP Accident Attorneys: Brett Sachs Fights Insurance Giants",
+  heroTitle: "The MVP of Personal Injury Law w. Brett & Chelsee Sachs",
   heroDescription: "Brett Sachs founded MVP to get injured Californians 3x more compensation than self-represented claimants. Insurance companies have $900 billion in annual revenue. They employ thousands to deny your claim. MVP fights back with specialized trial attorneys.",
 
   articleTitle: "From Midwest Values to California Advocacy: The MVP Story",
@@ -455,7 +455,7 @@ export const stats = {
 }
 
 export const navigation = {
-  logo: "The You Interview",
+  logo: "Logo Here",
   items: [
     { name: 'Episodes', href: '#episodes' },
     { name: 'About', href: '#about' },
@@ -466,7 +466,7 @@ export const navigation = {
 }
 
 export const footer = {
-  logo: "The You Interview",
+  logo: "Logo Here",
   description: "The You Interview features in-depth conversations with California's leading personal injury attorneys. Each episode explores their journey, philosophy, and insights on fighting for accident victims.",
   copyright: "MVP Accident Attorneys",
   socialLinks: {
@@ -533,7 +533,7 @@ export const episodes = [
     topic: "Personal Injury",
     concepts: ["Client-first approach", "Insurance industry", "Tech-forward firm", "Contingency fees"],
     chapters: ["Why Personal Injury Law", "From Midwest to California", "Fighting Insurance Giants"],
-    logo: "/images/episode-1-logo.jpg",
+    logo: "/episode-art.avif",
   },
 ]
 
@@ -603,37 +603,44 @@ export const topicalEntryGrid = {
 export const trustBadges = [
   {
     id: 1,
-    title: "Super Lawyers 2.5%",
+    title: "Super Lawyers",
     tooltip: "Brett Sachs is recognized as a Super Lawyers Rising Star—an honor given to only 2.5% of California attorneys.",
-    badge: "/badges/badge-1.svg",
+    badge: "/badges/Super-Lawyers_converted.avif",
     href: "#super-lawyers",
   },
   {
     id: 2,
-    title: "24/7 Availability",
-    tooltip: "MVP Accident Attorneys offers round-the-clock client support through phone, text, email, and AI chat.",
-    badge: "/badges/badge-2.svg",
-    href: "#availability",
+    title: "Best Lawyers 2022",
+    tooltip: "Recognized by Best Lawyers for exceptional legal services and client representation in 2022.",
+    badge: "/badges/Best-Lawyers-2022_converted.avif",
+    href: "#best-lawyers",
   },
   {
     id: 3,
-    title: "200+ Cases/Year",
-    tooltip: "MVP handles over 200 personal injury cases annually across California with dedicated teams of 3-7 people per client.",
-    badge: "/badges/badge-3.svg",
-    href: "#cases",
+    title: "Best Lawyers 2023",
+    tooltip: "Recognized by Best Lawyers for exceptional legal services and client representation in 2023.",
+    badge: "/badges/Best-Lawyers-2023_converted.avif",
+    href: "#best-lawyers",
   },
   {
     id: 4,
-    title: "4 Office Locations",
-    tooltip: "Offices in Irvine, Riverside, Los Angeles, and Sacramento serving accident victims statewide.",
-    badge: "/badges/badge-4.svg",
-    href: "#locations",
+    title: "Lead Counsel Rated",
+    tooltip: "Independently verified as meeting strict qualifications for legal ability, ethics, and client satisfaction.",
+    badge: "/badges/Lead-Counsel-Rated_converted.avif",
+    href: "#lead-counsel",
   },
   {
     id: 5,
-    title: "No Fee Unless We Win",
-    tooltip: "MVP works on contingency—you pay nothing unless they recover compensation for your injuries.",
-    badge: "/badges/badge-5.svg",
-    href: "#contingency",
+    title: "Avvo Clients' Choice Award 2017",
+    tooltip: "Awarded Avvo Clients' Choice for outstanding client reviews and high satisfaction ratings.",
+    badge: "/badges/Avvo-Rating-Clients-Choice-Award-2017_converted.avif",
+    href: "#avvo",
+  },
+  {
+    id: 6,
+    title: "Professional Excellence",
+    tooltip: "Recognized for outstanding professional achievement and commitment to client service.",
+    badge: "/badges/badge2.avif",
+    href: "#excellence",
   },
 ]

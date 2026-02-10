@@ -6,6 +6,7 @@ import Hero from './Hero'
 import TrustBadges from './TrustBadges'
 import StatsBanner from './StatsBanner'
 import About from './About'
+import PodcastTeam from './PodcastTeam'
 import LatestEpisodes from './LatestEpisodes'
 import PodcastSubscribeCTA from './PodcastSubscribeCTA'
 import Testimonials from './Testimonials'
@@ -23,6 +24,7 @@ const HomePodcast = () => {
         <TrustBadges />
         <StatsBanner />
         <About />
+        <PodcastTeam />
         <LatestEpisodes />
         <Testimonials />
         <PodcastSubscribeCTA />

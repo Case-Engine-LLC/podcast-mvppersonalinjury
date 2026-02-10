@@ -11,25 +11,25 @@ const TrustBadges = () => {
   const badges = trustBadges
 
   return (
-    <section className="bg-white py-12 overflow-hidden border-y border-gray-200">
-      <div className="flex animate-marquee-slower">
+    <section className="bg-white py-6 md:py-12 overflow-hidden ">
+      <div className="flex animate-marquee-fast md:animate-marquee-slower">
         {/* First set of badges */}
         {badges.map((badge) => (
           <div
             key={`first-${badge.id}`}
-            className="relative flex items-center gap-4 mx-16 shrink-0 cursor-pointer"
+            className="relative flex items-center gap-0.5 mx-6 md:mx-16 shrink-0 cursor-pointer"
             onMouseEnter={() => setHoveredBadge(badge.id)}
             onMouseLeave={() => setHoveredBadge(null)}
             onClick={() => badge.href && window.location.assign(badge.href)}
           >
             {/* Badge */}
-            <div className="w-20 h-20 flex items-center justify-center">
+            <div className="w-48 h-48 flex items-center justify-center">
               {badge.badge ? (
                 <Image
                   src={badge.badge}
                   alt={badge.title}
-                  width={80}
-                  height={80}
+                  width={192}
+                  height={192}
                   className="object-contain"
                 />
               ) : (
@@ -58,19 +58,19 @@ const TrustBadges = () => {
         {badges.map((badge) => (
           <div
             key={`second-${badge.id}`}
-            className="relative flex items-center gap-4 mx-16 shrink-0 cursor-pointer"
+            className="relative flex items-center gap-0.5 mx-6 md:mx-16 shrink-0 cursor-pointer"
             onMouseEnter={() => setHoveredBadge(badge.id + 100)}
             onMouseLeave={() => setHoveredBadge(null)}
             onClick={() => badge.href && window.location.assign(badge.href)}
           >
             {/* Badge */}
-            <div className="w-20 h-20 flex items-center justify-center">
+            <div className="w-48 h-48 flex items-center justify-center">
               {badge.badge ? (
                 <Image
                   src={badge.badge}
                   alt={badge.title}
-                  width={80}
-                  height={80}
+                  width={192}
+                  height={192}
                   className="object-contain"
                 />
               ) : (

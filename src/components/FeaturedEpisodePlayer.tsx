@@ -23,66 +23,122 @@ const FeaturedEpisodePlayer = ({
   imageUrl
 }: FeaturedEpisodePlayerProps) => {
   return (
-    <div className="bg-white rounded-xl p-5 md:p-6 flex flex-col md:flex-row gap-5 md:gap-6 shadow-sm">
-      {/* Episode Image */}
-      <div className="w-full md:w-[12rem] h-[12rem] bg-gray-200 rounded-lg shrink-0 flex items-center justify-center overflow-hidden">
-        {imageUrl ? (
-          <img src={imageUrl} alt={title} className="w-full h-full object-cover" />
-        ) : (
-          <svg width="60" height="60" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="30" cy="25" r="8" stroke="#999" strokeWidth="2" fill="none"/>
-            <path d="M10 70 L30 45 L50 60 L70 35" stroke="#999" strokeWidth="2" strokeLinecap="round" fill="none"/>
-          </svg>
-        )}
-      </div>
+    <div className="bg-white rounded-xl p-5 md:p-6 shadow-sm">
+      {/* Mobile Layout */}
+      <div className="md:hidden">
+        {/* Top: Image + Title + Link */}
+        <div className="flex gap-4 mb-4 items-center">
+          {/* Episode Image */}
+          <div className="w-24 h-24 bg-gray-200 rounded-lg shrink-0 flex items-center justify-center overflow-hidden">
+            <img
+              src={imageUrl || '/episode-art.avif'}
+              alt={title}
+              className="w-full h-full object-cover"
+            />
+          </div>
 
-      {/* Episode Content */}
-      <div className="flex-1 flex flex-col justify-between">
-        {/* Top Section */}
-        <div>
-          <div className="flex items-start justify-between mb-2">
-            <h3 className="text-xl md:text-2xl font-bold text-black leading-tight pr-4">
+          {/* Title and Info */}
+          <div className="flex-1">
+            <h3 className="text-lg font-bold text-black leading-tight mb-1">
               {title}
             </h3>
-            <Link
-              href={episodeLink}
-              className="flex items-center gap-1 text-sm text-black hover:opacity-70 transition-opacity shrink-0"
-            >
-              Episode Page
-              <ChevronRight size={16} />
-            </Link>
+            <div className="text-xs text-gray-500">
+              Episode {episodeNumber} • {duration}
+            </div>
           </div>
 
-          <p className="text-sm md:text-base text-gray-600 mb-3 leading-relaxed">
-            {description}
-          </p>
-
-          <div className="text-sm text-gray-500 mb-4">
-            Episode {episodeNumber} • {duration}
-          </div>
+          {/* Episode Page Arrow */}
+          <Link
+            href={episodeLink}
+            className="text-black hover:opacity-70 transition-opacity shrink-0"
+          >
+            <ChevronRight size={28} />
+          </Link>
         </div>
 
+        {/* Description */}
+        <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+          {description}
+        </p>
+
         {/* Audio Player */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           {/* Play Button */}
-          <button className="w-10 h-10 rounded-full bg-black flex items-center justify-center hover:bg-gray-800 transition-colors shrink-0">
-            <Play size={18} fill="white" className="text-white ml-0.5" />
+          <button className="w-12 h-12 rounded-full bg-black flex items-center justify-center hover:bg-gray-800 transition-colors shrink-0">
+            <Play size={20} fill="white" className="text-white ml-0.5" />
           </button>
 
-          {/* Progress Bar */}
-          <div className="flex-1 h-1.5 bg-gray-200 rounded-full overflow-hidden cursor-pointer group">
-            <div className="h-full w-0 bg-black transition-all group-hover:bg-gray-800" />
+          {/* Progress Bar and Time */}
+          <div className="flex-1 flex flex-col gap-1">
+            <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden cursor-pointer group">
+              <div className="h-full w-0 bg-black transition-all group-hover:bg-gray-800" />
+            </div>
+            <span className="text-xs text-gray-400">
+              0:00 / {duration}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop Layout */}
+      <div className="hidden md:flex gap-6">
+        {/* Episode Image */}
+        <div className="w-[12rem] h-[12rem] bg-gray-200 rounded-lg shrink-0 flex items-center justify-center overflow-hidden">
+          <img
+            src={imageUrl || '/episode-art.avif'}
+            alt={title}
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Episode Content */}
+        <div className="flex-1 flex flex-col justify-between">
+          {/* Top Section */}
+          <div>
+            <div className="flex items-start justify-between mb-2">
+              <h3 className="text-xl md:text-2xl font-bold text-black leading-tight pr-4">
+                {title}
+              </h3>
+              <Link
+                href={episodeLink}
+                className="flex items-center gap-1 text-sm text-black hover:opacity-70 transition-opacity shrink-0"
+              >
+                Episode Page
+                <ChevronRight size={16} />
+              </Link>
+            </div>
+
+            <p className="text-sm md:text-base text-gray-600 mb-3 leading-relaxed">
+              {description}
+            </p>
+
+            <div className="text-sm text-gray-500 mb-4">
+              Episode {episodeNumber} • {duration}
+            </div>
           </div>
 
-          {/* Time Display */}
-          <span className="text-xs text-gray-400 shrink-0 min-w-[3.5rem] text-right">
-            00/00
-          </span>
+          {/* Audio Player */}
+          <div className="flex items-center gap-4">
+            {/* Play Button */}
+            <button className="w-10 h-10 rounded-full bg-black flex items-center justify-center hover:bg-gray-800 transition-colors shrink-0">
+              <Play size={18} fill="white" className="text-white ml-0.5" />
+            </button>
 
-          {/* Volume Icon */}
-          <button className="text-gray-600 hover:text-black transition-colors shrink-0">
-            <Volume2 size={20} />
-          </button>
+            {/* Progress Bar */}
+            <div className="flex-1 h-1.5 bg-gray-200 rounded-full overflow-hidden cursor-pointer group">
+              <div className="h-full w-0 bg-black transition-all group-hover:bg-gray-800" />
+            </div>
+
+            {/* Time Display */}
+            <span className="text-xs text-gray-400 shrink-0 min-w-[3.5rem] text-right">
+              00/00
+            </span>
+
+            {/* Volume Icon */}
+            <button className="text-gray-600 hover:text-black transition-colors shrink-0">
+              <Volume2 size={20} />
+            </button>
+          </div>
         </div>
       </div>
     </div>

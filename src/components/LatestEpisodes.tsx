@@ -36,7 +36,7 @@ const LatestEpisodes = () => {
       <div className="max-w-container mx-auto px-6 md:px-12">
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-none">
             Seasons and Episodes of The You Interview
           </h2>
           <p className="text-base md:text-lg text-white/70 max-w-2xl mx-auto">
@@ -45,58 +45,82 @@ const LatestEpisodes = () => {
         </div>
 
         {/* Controls: Topic Tabs + Location Tabs + View Toggle */}
-        <div className="flex flex-col gap-4 mb-8">
-          <p className="text-sm text-white/50">
-            Filter episodes by topic — {activeTopic === 'All' ? `showing all ${defaultEpisodes.length} episodes` : `${filteredEpisodes.length} of ${defaultEpisodes.length} episodes cover ${activeTopic.toLowerCase()} topics`}
-          </p>
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div className="flex flex-wrap gap-2">
-              {episodeTopics.map((topic) => (
-                <button
-                  key={topic}
-                  onClick={() => setActiveTopic(topic)}
-                  className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${
-                    activeTopic === topic
-                      ? 'bg-white text-black'
-                      : 'bg-white/10 text-white hover:bg-white/20'
-                  }`}
-                >
-                  {topic}
-                </button>
-              ))}
+        <div className="flex flex-col gap-6 mb-8">
+          {/* Topic Filters with View Toggle (Desktop) */}
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 flex-1">
+              <span className="text-white font-medium whitespace-nowrap">Filter Episodes By Topic</span>
+              <div className="flex overflow-x-auto gap-2 pb-2 scrollbar-hide">
+                {episodeTopics.map((topic) => (
+                  <button
+                    key={topic}
+                    onClick={() => setActiveTopic(topic)}
+                    className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all flex-shrink-0 ${
+                      activeTopic === topic
+                        ? 'bg-secondary text-black'
+                        : 'bg-white/10 text-white hover:bg-white/20'
+                    }`}
+                  >
+                    {topic}
+                  </button>
+                ))}
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => setViewMode('list')}
-                className={`p-2 rounded-lg transition-all ${viewMode === 'list' ? 'bg-white text-black' : 'bg-white/10 text-white'}`}
-              >
-                <LayoutList size={18} />
-              </button>
+            {/* View Toggle - Desktop Only */}
+            <div className="hidden md:flex items-center gap-2">
               <button
                 onClick={() => setViewMode('grid')}
-                className={`p-2 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-white text-black' : 'bg-white/10 text-white'}`}
+                className={`p-2.5 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-white text-black' : 'bg-white/10 text-white hover:bg-white/20'}`}
+                aria-label="Grid view"
               >
-                <LayoutGrid size={18} />
+                <LayoutGrid size={20} />
+              </button>
+              <button
+                onClick={() => setViewMode('list')}
+                className={`p-2.5 rounded-lg transition-all ${viewMode === 'list' ? 'bg-white text-black' : 'bg-white/10 text-white hover:bg-white/20'}`}
+                aria-label="List view"
+              >
+                <LayoutList size={20} />
               </button>
             </div>
           </div>
-          <p className="text-sm text-white/50">
-            Filter by location — {activeLocation === 'All' ? `showing all locations` : `showing episodes from ${activeLocation}`}
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {episodeLocations.map((location) => (
-              <button
-                key={location}
-                onClick={() => setActiveLocation(location)}
-                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
-                  activeLocation === location
-                    ? 'bg-secondary text-black'
-                    : 'bg-white/5 text-white/60 hover:bg-white/10'
-                }`}
-              >
-                {location}
-              </button>
-            ))}
+
+          {/* Location Filters */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+            <span className="text-white font-medium whitespace-nowrap">Filter By Location:</span>
+            <div className="flex overflow-x-auto gap-2 pb-2 scrollbar-hide">
+              {episodeLocations.map((location) => (
+                <button
+                  key={location}
+                  onClick={() => setActiveLocation(location)}
+                  className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all flex-shrink-0 ${
+                    activeLocation === location
+                      ? 'bg-secondary text-black'
+                      : 'bg-white/10 text-white hover:bg-white/20'
+                  }`}
+                >
+                  {location}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* View Toggle - Mobile Only (Below Filters) */}
+          <div className="flex md:hidden items-center gap-2">
+            <button
+              onClick={() => setViewMode('grid')}
+              className={`p-2.5 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-white text-black' : 'bg-white/10 text-white hover:bg-white/20'}`}
+              aria-label="Grid view"
+            >
+              <LayoutGrid size={20} />
+            </button>
+            <button
+              onClick={() => setViewMode('list')}
+              className={`p-2.5 rounded-lg transition-all ${viewMode === 'list' ? 'bg-white text-black' : 'bg-white/10 text-white hover:bg-white/20'}`}
+              aria-label="List view"
+            >
+              <LayoutList size={20} />
+            </button>
           </div>
         </div>
 
@@ -105,19 +129,16 @@ const LatestEpisodes = () => {
           <div className="relative">
             <div className="space-y-0">
             {visibleEpisodes.map((episode, index) => (
-              <div key={episode.id}>
+              <div key={episode.id} className="relative">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 py-8 md:py-12 items-center">
                   {/* Episode Image */}
-                  <div className="md:col-span-3">
+                  <div className="md:col-span-4">
                     <div className="w-full aspect-square bg-gray-700 rounded-2xl flex items-center justify-center overflow-hidden">
-                      {episode.logo ? (
-                        <img src={episode.logo} alt={episode.title} className="w-full h-full object-cover" />
-                      ) : (
-                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <circle cx="30" cy="25" r="8" stroke="white" strokeWidth="2" strokeOpacity="0.3"/>
-                          <path d="M10 70 L30 45 L50 60 L70 35" stroke="white" strokeWidth="2" strokeLinecap="round" strokeOpacity="0.3"/>
-                        </svg>
-                      )}
+                      <img
+                        src={episode.logo || '/episode-art.avif'}
+                        alt={episode.title}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
 
@@ -141,7 +162,7 @@ const LatestEpisodes = () => {
                     )}
 
                     {/* Play Button */}
-                    <Link href={`/episode/${episode.id}`} className="flex items-center gap-3 text-white hover:opacity-80 transition-opacity mb-4">
+                    <Link href={`/episode/${episode.id}`} className="flex items-center gap-3 text-white hover:opacity-80 transition-opacity mb-3">
                       <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center">
                         <Play size={20} fill="black" stroke="black" className="ml-0.5" />
                       </div>
@@ -151,21 +172,18 @@ const LatestEpisodes = () => {
                     {/* Episode Info */}
                     <div className="flex items-center gap-2 text-sm text-white/60">
                       <Info size={16} />
-                      <span>{episode.subtitle} • {episode.duration}</span>
+                      <span>Episode {episode.number} • {episode.subtitle} • {episode.duration}</span>
                     </div>
-                  </div>
-
-                  {/* Episode Number */}
-                  <div className="md:col-span-1 flex md:justify-end">
-                    <span className="text-5xl md:text-6xl font-bold text-white/20">
-                      {episode.number}
-                    </span>
                   </div>
                 </div>
 
-                {index < visibleEpisodes.length - 1 && (
+                {/* Border with Episode Number */}
+                <div className="relative pt-4">
                   <div className="border-b border-white/10" />
-                )}
+                  <span className="absolute right-0 bottom-0 text-lg font-bold text-white/40 pb-1">
+                    {episode.number}
+                  </span>
+                </div>
               </div>
             ))}
             </div>
@@ -242,7 +260,7 @@ const LatestEpisodes = () => {
         )}
 
         {/* View All Button */}
-        <div className="flex justify-center mt-12 md:mt-16">
+        {/* <div className="flex justify-center mt-12 md:mt-16">
           <Link
             href="/episodes"
             className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black rounded-xl font-semibold text-base hover:bg-white/90 transition-all"
@@ -250,7 +268,7 @@ const LatestEpisodes = () => {
             View All Episodes
             <ArrowRight size={20} />
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   )

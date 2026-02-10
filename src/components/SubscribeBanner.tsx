@@ -30,7 +30,7 @@ const SubscribeBanner = () => {
             <div className="inline-block bg-white/10 px-6 py-1.5 rounded-[6px] text-[12px] font-bold text-white uppercase tracking-[0.96px] mb-8">
               SUBSCRIBE TO OUR PODCAST
             </div>
-            <h2 className="text-[36px] md:text-[48px] font-bold text-white mb-6 leading-[1.1]">
+            <h2 className="text-[36px] md:text-[48px] font-bold text-white mb-6 leading-none">
               Get Every Episode Delivered To Your Inbox
             </h2>
             <p className="text-[20px] md:text-[24px] leading-[1.3] text-white/70 mb-12 max-w-[600px]">

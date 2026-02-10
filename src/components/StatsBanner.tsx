@@ -1,66 +1,71 @@
 'use client'
 
 import React from 'react'
-import { Star } from 'lucide-react'
 import { stats } from '@/data/siteData'
 
 const StatsBanner = () => {
   return (
-    <section className="bg-[#070519] py-12 md:py-16">
+    <section className="bg-white py-0 md:py-12">
       <div className="max-w-container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0">
-          {/* Column 1: Rating */}
-          <div className="flex items-center justify-center md:border-r border-white/10 px-8">
-            <div className="flex items-center gap-6">
-              <span className="text-[42px] font-bold text-white tracking-[-0.42px]">{stats.rating}</span>
-              <div>
-                <div className="flex items-center gap-1 text-[#ce5743] mb-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={16} fill="currentColor" />
-                  ))}
-                </div>
-                <p className="text-[16px] text-white opacity-60">{stats.reviewCount} Reviews</p>
-                {stats.ratingVerbalization && (
-                  <p className="text-[13px] text-white opacity-40 mt-1 max-w-[200px]">
-                    {stats.ratingVerbalization}
-                  </p>
-                )}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {/* Card 1: Rating - Orange */}
+          <div className="bg-[#EC6A00] rounded-3xl px-6 py-8 md:px-5 md:py-10 text-left">
+            <div className="flex items-center justify-between mb-4 md:mb-6">
+              <div className="text-[#FFC564] text-4xl md:text-6xl font-bold">
+                {stats.rating}
               </div>
+              <img
+                src="/icons/stars.svg"
+                alt="Stars"
+                className="w-16 h-16 md:w-20 md:h-20"
+              />
             </div>
+            <h3 className="text-[#451F00] text-xl md:text-2xl font-bold mb-3">
+              Positive Reviews
+            </h3>
+            <p className="text-[#451F00] text-sm md:text-base leading-relaxed">
+              {stats.ratingVerbalization}
+            </p>
           </div>
 
-          {/* Column 2: Satisfaction */}
-          <div className="flex items-center justify-center md:border-r border-white/10 px-8 text-center md:text-left">
-            <div className="flex items-center gap-6">
-              <span className="text-[42px] font-bold text-white tracking-[-0.42px]">{stats.satisfactionRate}%</span>
-              <div>
-                <p className="text-[16px] text-white opacity-60 max-w-[150px]">
-                  {stats.satisfactionLabel}
-                </p>
-                {stats.satisfactionVerbalization && (
-                  <p className="text-[13px] text-white opacity-40 mt-1 max-w-[200px]">
-                    {stats.satisfactionVerbalization}
-                  </p>
-                )}
+          {/* Card 2: Satisfaction - Yellow */}
+          <div className="bg-[#FAA61A] rounded-3xl px-6 py-8 md:px-5 md:py-10 text-left">
+            <div className="flex items-center justify-between mb-4 md:mb-6">
+              <div className="text-[#10284B] text-4xl md:text-6xl font-bold">
+                {stats.satisfactionRate}%
               </div>
+              <img
+                src="/icons/like.svg"
+                alt="Like"
+                className="w-16 h-16 md:w-20 md:h-20"
+              />
             </div>
+            <h3 className="text-[#10284B] text-xl md:text-2xl font-bold mb-3">
+              {stats.satisfactionLabel}
+            </h3>
+            <p className="text-[#10284B] text-sm md:text-base leading-relaxed">
+              {stats.satisfactionVerbalization}
+            </p>
           </div>
 
-          {/* Column 3: Stats */}
-          <div className="flex items-center justify-center px-8 text-center md:text-left">
-            <div className="flex items-center gap-6">
-              <span className="text-[42px] font-bold text-white tracking-[-0.42px]">{stats.casesHandled}+</span>
-              <div>
-                <p className="text-[16px] text-white opacity-60 max-w-[150px]">
-                  {stats.casesLabel}
-                </p>
-                {stats.casesVerbalization && (
-                  <p className="text-[13px] text-white opacity-40 mt-1 max-w-[200px]">
-                    {stats.casesVerbalization}
-                  </p>
-                )}
+          {/* Card 3: Cases - Dark Blue */}
+          <div className="bg-[#10284B] rounded-3xl px-6 py-8 md:px-5 md:py-10 text-left">
+            <div className="flex items-center justify-between mb-4 md:mb-6">
+              <div className="text-[#EC6A00] text-4xl md:text-6xl font-bold">
+                {stats.casesHandled}+
               </div>
+              <img
+                src="/icons/case.svg"
+                alt="Case"
+                className="w-16 h-16 md:w-20 md:h-20"
+              />
             </div>
+            <h3 className="text-[#A3C9FF] text-xl md:text-2xl font-bold mb-3">
+              {stats.casesLabel}
+            </h3>
+            <p className="text-[#A3C9FF] text-sm md:text-base leading-relaxed">
+              {stats.casesVerbalization}
+            </p>
           </div>
         </div>
       </div>
