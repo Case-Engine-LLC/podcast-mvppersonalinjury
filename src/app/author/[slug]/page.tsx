@@ -9,9 +9,170 @@ import Testimonials from '@/components/Testimonials'
 import ContactSection from '@/components/ContactSection'
 import FAQ from '@/components/FAQ'
 import LatestEpisodes from '@/components/LatestEpisodes'
-import { authorProfiles, siteConfig, contact } from '@/data/siteData'
+import { authorProfiles, siteConfig, contact, stats, testimonials } from '@/data/siteData'
 import { Scale, GraduationCap, Award, Briefcase, Users, ExternalLink, FileText } from 'lucide-react'
 import Link from 'next/link'
+
+const SITE_URL = 'https://podcast-template-next-js.vercel.app'
+
+function generateAuthorSchema(author: typeof authorProfiles[string], slug: string) {
+  const pageUrl = `${SITE_URL}/author/${slug}`
+  const imageUrl = `${SITE_URL}${author.photo}`
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        '@id': `${SITE_URL}/#website`,
+        'url': SITE_URL,
+        'name': siteConfig.podcastName,
+        'inLanguage': 'en',
+        'publisher': { '@id': `${SITE_URL}/#org` },
+      },
+      {
+        '@type': ['LegalService', 'Organization'],
+        '@id': `${SITE_URL}/#org`,
+        'name': 'MVP Accident Attorneys',
+        'legalName': 'Sachs Law, APC',
+        'url': 'https://themvp.com',
+        'telephone': '+1-833-687-9467',
+        'email': contact.email,
+        'foundingDate': '2017-08-01',
+        'address': {
+          '@type': 'PostalAddress',
+          'streetAddress': '4 Park Plaza, Suite 850',
+          'addressLocality': 'Irvine',
+          'addressRegion': 'CA',
+          'postalCode': '92614',
+          'addressCountry': 'US',
+        },
+        'aggregateRating': {
+          '@type': 'AggregateRating',
+          'ratingValue': String(stats.rating),
+          'ratingCount': String(stats.reviewCount),
+          'bestRating': '5',
+          'worstRating': '1',
+        },
+        'sameAs': [
+          'https://www.linkedin.com/company/mvp-accident-attorneys',
+          'https://www.facebook.com/MVPAccidentAttorneys',
+          'https://www.instagram.com/mvpaccidentattorneys/',
+          'https://x.com/mvpaccidentatty',
+          'https://www.youtube.com/@mvpaccidentattorneys',
+        ],
+        'knowsAbout': [
+          'Personal Injury Law',
+          'Car Accident Claims',
+          'Wrongful Death',
+          'Premises Liability',
+          'Insurance Negotiations',
+        ],
+      },
+      {
+        '@type': ['WebPage', 'ProfilePage'],
+        '@id': `${pageUrl}#webpage`,
+        'url': pageUrl,
+        'name': `${author.name} — ${author.title}`,
+        'headline': `${author.name} — Personal Injury Attorney`,
+        'inLanguage': 'en',
+        'isPartOf': { '@id': `${SITE_URL}/#website` },
+        'about': { '@id': `${pageUrl}#person` },
+        'mainEntity': { '@id': `${pageUrl}#person` },
+        'primaryImageOfPage': {
+          '@type': 'ImageObject',
+          '@id': `${imageUrl}#primaryimage`,
+          'url': imageUrl,
+        },
+        'breadcrumb': { '@id': `${pageUrl}#breadcrumb` },
+        'speakable': {
+          '@type': 'SpeakableSpecification',
+          'cssSelector': ['article h1', 'article .bio-summary'],
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${pageUrl}#breadcrumb`,
+        'itemListElement': [
+          { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': `${SITE_URL}/` },
+          { '@type': 'ListItem', 'position': 2, 'name': 'Team', 'item': `${SITE_URL}/#about` },
+          { '@type': 'ListItem', 'position': 3, 'name': author.name, 'item': pageUrl },
+        ],
+      },
+      {
+        '@type': 'Person',
+        '@id': `${pageUrl}#person`,
+        'name': author.name,
+        'givenName': author.name.split(' ')[0],
+        'familyName': author.name.split(' ').slice(1).join(' '),
+        'jobTitle': author.title,
+        'description': author.bio[0],
+        'image': {
+          '@type': 'ImageObject',
+          '@id': `${imageUrl}#image`,
+          'url': imageUrl,
+        },
+        'url': pageUrl,
+        'worksFor': { '@id': `${SITE_URL}/#org` },
+        'alumniOf': author.education.map(edu => ({
+          '@type': 'CollegeOrUniversity',
+          'name': edu.school,
+        })),
+        'hasCredential': author.admissions.map(admission => ({
+          '@type': 'EducationalOccupationalCredential',
+          'credentialCategory': 'Professional license',
+          'name': `${admission.jurisdiction} — Bar Admission`,
+          'identifier': author.barNumber,
+          'url': author.barUrl,
+        })),
+        'hasOccupation': {
+          '@type': 'Occupation',
+          'name': 'Attorney',
+          'occupationalCategory': '23-1011.00',
+          'description': 'Personal Injury Attorney',
+          'qualifications': author.awards.map(a => a.name).join(', '),
+        },
+        'sameAs': author.socialLinks.map(link => link.url),
+        'knowsAbout': author.practiceAreas,
+        'memberOf': author.memberships.map(org => ({
+          '@type': 'Organization',
+          'name': org.replace(/ — .*/, ''),
+        })),
+        'award': author.awards.map(a => `${a.name} (${a.years})`),
+        'review': testimonials.slice(0, 2).map(t => ({
+          '@type': 'Review',
+          'author': { '@type': 'Person', 'name': t.name },
+          'reviewBody': t.text,
+          'reviewRating': {
+            '@type': 'Rating',
+            'ratingValue': String(t.rating),
+            'bestRating': '5',
+            'worstRating': '1',
+          },
+        })),
+      },
+      {
+        '@type': 'Role',
+        '@id': `${pageUrl}#role`,
+        'roleName': author.role,
+        'startDate': '2017-08-01',
+        'member': { '@id': `${pageUrl}#person` },
+        'organization': { '@id': `${SITE_URL}/#org` },
+      },
+      {
+        '@type': 'PodcastSeries',
+        '@id': `${SITE_URL}/#podcast`,
+        'name': siteConfig.podcastName,
+        'url': SITE_URL,
+        'webFeed': SITE_URL,
+        'host': { '@id': `${pageUrl}#person` },
+        'productionCompany': { '@id': `${SITE_URL}/#org` },
+        'inLanguage': 'en',
+        'genre': ['Law', 'Personal Injury', 'Legal Education'],
+      },
+    ],
+  }
+}
 
 export async function generateStaticParams() {
   return Object.keys(authorProfiles).map((slug) => ({ slug }))
@@ -36,8 +197,14 @@ const AuthorPage = async ({ params }: { params: Promise<{ slug: string }> }) => 
     notFound()
   }
 
+  const schema = generateAuthorSchema(author, slug)
+
   return (
     <div className="bg-white min-h-screen overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <Header variant="light" />
 
       <main className="pt-[6rem]">
