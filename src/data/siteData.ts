@@ -535,6 +535,7 @@ export const about = {
     "Hear real stories from attorneys who fight insurance companies daily",
     "Understand how technology is changing legal representation",
   ],
+  showReadMore: false, // Controls whether Read More button appears
 }
 
 // Subscribe CTA content

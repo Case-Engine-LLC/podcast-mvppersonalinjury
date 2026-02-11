@@ -1,12 +1,22 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { ChevronDown, CheckCircle, FileText } from 'lucide-react'
 import { about, attorney, siteConfig } from '@/data/siteData'
 
 const About = () => {
   const [isExpanded, setIsExpanded] = useState(false)
+  const [shouldShowToggle, setShouldShowToggle] = useState(false)
+  const contentRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (contentRef.current) {
+      // Measure the actual content height
+      const contentHeight = contentRef.current.scrollHeight
+      setShouldShowToggle(contentHeight > 300)
+    }
+  }, [])
 
   return (
     <section id="about" className="bg-white py-16 md:py-20">
@@ -25,8 +35,11 @@ const About = () => {
 
             {/* Expandable content */}
             <div
+              ref={contentRef}
               className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                isExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+                shouldShowToggle
+                  ? isExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+                  : 'max-h-[1000px] opacity-100'
               }`}
             >
               <ul className="space-y-3 mb-4">
@@ -39,19 +52,21 @@ const About = () => {
               </ul>
             </div>
 
-            {/* Read More / Read Less Button */}
-            <button
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="flex items-center gap-2 text-base font-semibold text-black hover:opacity-70 transition-opacity mt-4 mx-auto md:mx-0"
-            >
-              {isExpanded ? 'Read Less' : 'Read More'}
-              <ChevronDown
-                size={20}
-                className={`transition-transform duration-300 ${
-                  isExpanded ? 'rotate-180' : 'rotate-0'
-                }`}
-              />
-            </button>
+            {/* Read More / Read Less Button - Auto-shown based on content height */}
+            {shouldShowToggle && (
+              <button
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="flex items-center gap-2 text-base font-semibold text-black hover:opacity-70 transition-opacity mt-4 mx-auto md:mx-0"
+              >
+                {isExpanded ? 'Read Less' : 'Read More'}
+                <ChevronDown
+                  size={20}
+                  className={`transition-transform duration-300 ${
+                    isExpanded ? 'rotate-180' : 'rotate-0'
+                  }`}
+                />
+              </button>
+            )}
 
             {/* CTA/Form */}
             <div className="mt-6 flex justify-center md:justify-start">
