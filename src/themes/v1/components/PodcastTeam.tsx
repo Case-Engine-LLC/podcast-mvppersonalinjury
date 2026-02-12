@@ -28,7 +28,7 @@ const PodcastTeam = () => {
   }
 
   const handleAuthorClick = (slug: string) => {
-    router.push(`/author/${slug}`)
+    router.push(`/v1/author/${slug}`)
   }
 
   return (

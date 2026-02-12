@@ -1,9 +1,5 @@
-import HomePodcast from '@/components/HomePodcast'
+import { redirect } from 'next/navigation'
 
 export default function Home() {
-  return (
-    <main className="min-h-screen">
-      <HomePodcast />
-    </main>
-  )
+  redirect('/v1')
 }

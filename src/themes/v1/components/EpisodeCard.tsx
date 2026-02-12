@@ -41,7 +41,7 @@ const EpisodeCard = ({ id, title, description, date, episodeNumber, image }: Epi
           </p>
           <div className="flex flex-wrap items-center gap-6">
             <Link 
-              href={`/episode/${id}`}
+              href={`/v1/episode/${id}`}
               className="flex items-center gap-2 bg-white text-black px-6 py-2.5 rounded-full font-bold text-[14px] hover:bg-white/90"
             >
               <PlayCircle size={20} />

@@ -1,22 +1,21 @@
 import React from 'react'
 import { notFound } from 'next/navigation'
-import { Metadata } from 'next'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import TrustBadges from '@/components/TrustBadges'
-import StatsBanner from '@/components/StatsBanner'
-import Testimonials from '@/components/Testimonials'
-import ContactSection from '@/components/ContactSection'
-import FAQ from '@/components/FAQ'
-import LatestEpisodes from '@/components/LatestEpisodes'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import TrustBadges from '../components/TrustBadges'
+import StatsBanner from '../components/StatsBanner'
+import Testimonials from '../components/Testimonials'
+import ContactSection from '../components/ContactSection'
+import FAQ from '../components/FAQ'
+import LatestEpisodes from '../components/LatestEpisodes'
 import { authorProfiles, siteConfig, contact, stats, testimonials } from '@/data/siteData'
 import { Scale, GraduationCap, Award, Briefcase, Users, ExternalLink, FileText } from 'lucide-react'
 import Link from 'next/link'
 
 const SITE_URL = 'https://podcast-template-next-js.vercel.app'
 
-function generateAuthorSchema(author: typeof authorProfiles[string], slug: string) {
-  const pageUrl = `${SITE_URL}/author/${slug}`
+export function generateAuthorSchema(author: typeof authorProfiles[string], slug: string) {
+  const pageUrl = `${SITE_URL}/v1/author/${slug}`
   const imageUrl = `${SITE_URL}${author.photo}`
 
   return {
@@ -174,23 +173,11 @@ function generateAuthorSchema(author: typeof authorProfiles[string], slug: strin
   }
 }
 
-export async function generateStaticParams() {
-  return Object.keys(authorProfiles).map((slug) => ({ slug }))
+interface V1AuthorPageProps {
+  slug: string
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params
-  const author = authorProfiles[slug]
-  if (!author) return { title: 'Author Not Found' }
-
-  return {
-    title: `${author.name} — ${author.title} | ${siteConfig.podcastName}`,
-    description: author.bio[0],
-  }
-}
-
-const AuthorPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
-  const { slug } = await params
+const V1AuthorPage = ({ slug }: V1AuthorPageProps) => {
   const author = authorProfiles[slug]
 
   if (!author) {
@@ -273,7 +260,7 @@ const AuthorPage = async ({ params }: { params: Promise<{ slug: string }> }) => 
         {/* Trust Badges */}
         <TrustBadges />
 
-        {/* Bio Section — follows About component pattern */}
+        {/* Bio Section */}
         <section className="bg-white py-16 md:py-20">
           <div className="max-w-container mx-auto px-6 md:px-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
@@ -351,7 +338,7 @@ const AuthorPage = async ({ params }: { params: Promise<{ slug: string }> }) => 
           </div>
         </section>
 
-        {/* Practice Areas — follows StatsBanner pattern */}
+        {/* Practice Areas */}
         <section className="bg-[#f1f2f4] py-16 md:py-20">
           <div className="max-w-container mx-auto px-6 md:px-12">
             <div className="text-center mb-12">
@@ -425,4 +412,4 @@ const AuthorPage = async ({ params }: { params: Promise<{ slug: string }> }) => 
   )
 }
 
-export default AuthorPage
+export default V1AuthorPage
