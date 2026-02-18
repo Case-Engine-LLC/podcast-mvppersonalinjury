@@ -44,69 +44,50 @@ const LatestEpisodes = () => {
           </p>
         </div>
 
-        {/* Controls: Topic Tabs + Location Tabs + View Toggle */}
-        <div className="flex flex-col gap-6 mb-8">
-          {/* Topic Filters with View Toggle (Desktop) */}
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 flex-1">
-              <span className="text-white font-medium whitespace-nowrap">Filter Episodes By Topic</span>
-              <div className="flex overflow-x-auto gap-2 pb-2 scrollbar-hide">
-                {episodeTopics.map((topic) => (
-                  <button
-                    key={topic}
-                    onClick={() => setActiveTopic(topic)}
-                    className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all flex-shrink-0 ${
-                      activeTopic === topic
-                        ? 'bg-secondary text-black'
-                        : 'bg-white/10 text-white hover:bg-white/20'
-                    }`}
-                  >
-                    {topic}
-                  </button>
-                ))}
+        {/* Controls: Filters + View Toggle */}
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-8 md:gap-6">
+          <div className="flex items-center gap-3">
+            {/* Topic Filter */}
+            <div className="flex items-center gap-2 md:gap-3">
+              <span className="hidden md:inline text-white font-medium whitespace-nowrap">Filter By Topic:</span>
+              <div className="relative">
+                <select
+                  value={activeTopic}
+                  onChange={(e) => setActiveTopic(e.target.value)}
+                  className="appearance-none w-auto bg-white/10 text-white pl-3 pr-8 py-2 md:pl-4 md:pr-10 md:py-2.5 rounded-lg border border-white/20 text-sm focus:outline-none focus:border-white cursor-pointer"
+                >
+                  {episodeTopics.map(topic => (
+                    <option key={topic} value={topic} className="text-black bg-white">{topic}</option>
+                  ))}
+                </select>
+                <div className="absolute right-2 md:right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <svg className="w-4 h-4 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/></svg>
+                </div>
               </div>
             </div>
-            {/* View Toggle - Desktop Only */}
-            <div className="hidden md:flex items-center gap-2">
-              <button
-                onClick={() => setViewMode('grid')}
-                className={`p-2.5 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-white text-black' : 'bg-white/10 text-white hover:bg-white/20'}`}
-                aria-label="Grid view"
-              >
-                <LayoutGrid size={20} />
-              </button>
-              <button
-                onClick={() => setViewMode('list')}
-                className={`p-2.5 rounded-lg transition-all ${viewMode === 'list' ? 'bg-white text-black' : 'bg-white/10 text-white hover:bg-white/20'}`}
-                aria-label="List view"
-              >
-                <LayoutList size={20} />
-              </button>
-            </div>
-          </div>
 
-          {/* Location Filters */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-            <span className="text-white font-medium whitespace-nowrap">Filter By Location:</span>
-            <div className="flex overflow-x-auto gap-2 pb-2 scrollbar-hide">
-              {episodeLocations.map((location) => (
-                <button
-                  key={location}
-                  onClick={() => setActiveLocation(location)}
-                  className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all flex-shrink-0 ${
-                    activeLocation === location
-                      ? 'bg-secondary text-black'
-                      : 'bg-white/10 text-white hover:bg-white/20'
-                  }`}
+            {/* Location Filter */}
+            <div className="flex items-center gap-2 md:gap-3">
+              <span className="hidden md:inline text-white font-medium whitespace-nowrap">Filter By Location:</span>
+              <div className="relative">
+                <select
+                  value={activeLocation}
+                  onChange={(e) => setActiveLocation(e.target.value)}
+                  className="appearance-none w-auto bg-white/10 text-white pl-3 pr-8 py-2 md:pl-4 md:pr-10 md:py-2.5 rounded-lg border border-white/20 text-sm focus:outline-none focus:border-white cursor-pointer"
                 >
-                  {location}
-                </button>
-              ))}
+                  {episodeLocations.map(loc => (
+                    <option key={loc} value={loc} className="text-black bg-white">{loc}</option>
+                  ))}
+                </select>
+                <div className="absolute right-2 md:right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <svg className="w-4 h-4 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/></svg>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* View Toggle - Mobile Only (Below Filters) */}
-          <div className="flex md:hidden items-center gap-2">
+          {/* View Toggle */}
+          <div className="flex items-center gap-2">
             <button
               onClick={() => setViewMode('grid')}
               className={`p-2.5 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-white text-black' : 'bg-white/10 text-white hover:bg-white/20'}`}
@@ -128,7 +109,7 @@ const LatestEpisodes = () => {
         {viewMode === 'list' && (
           <div className="relative">
             <div className="space-y-0">
-            {visibleEpisodes.map((episode, index) => (
+            {visibleEpisodes.map((episode) => (
               <div key={episode.id} className="relative">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 py-8 md:py-12 items-center">
                   {/* Episode Image */}

@@ -75,14 +75,14 @@ const Testimonials = () => {
         <div className="relative">
           {/* Cards Container */}
           <div className="overflow-hidden">
-            <div
+            <ul
               className="flex items-stretch transition-transform duration-500 ease-in-out md:gap-6"
               style={{
                 transform: getTransform()
               }}
             >
               {testimonials.map((testimonial) => (
-                <div
+                <li
                   key={testimonial.id}
                   className="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] flex flex-col"
                 >
@@ -148,9 +148,9 @@ const Testimonials = () => {
                       </p>
                     </div>
                   </div>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
           {/* Navigation Controls */}
