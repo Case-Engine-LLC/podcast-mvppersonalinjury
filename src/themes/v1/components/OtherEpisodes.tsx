@@ -77,10 +77,11 @@ const OtherEpisodes = () => {
                 className="group flex flex-col flex-shrink-0 w-full md:w-[calc(33.333%-1rem)]"
               >
                 <div className="aspect-video bg-gray-200 rounded-2xl mb-4 overflow-hidden relative flex items-center justify-center">
-                  <svg width="60" height="60" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-gray-400">
-                    <circle cx="45" cy="35" r="12" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M15 105 L45 65 L75 90 L105 50" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
+                  {episode.image ? (
+                    <img src={episode.image} alt={episode.title} className="w-full h-full object-cover" />
+                  ) : (
+                    <img src="/episode-art-1.jpg" alt={episode.title} className="w-full h-full object-cover opacity-60" />
+                  )}
                 </div>
 
                 <div className="inline-block bg-gray-200 px-3 py-1.5 rounded-md text-xs font-bold text-black uppercase tracking-widest self-start mb-3">

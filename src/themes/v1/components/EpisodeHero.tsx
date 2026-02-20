@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { episode, siteConfig } from '@/data/siteData'
+import { episode, siteConfig, episodes as episodesData } from '@/data/siteData'
 
 const EpisodeHero = () => {
   return (
@@ -88,13 +88,14 @@ const EpisodeHero = () => {
               </div>
             </div>
 
-            {/* Right Image */}
+            {/* Right Image — Episode Thumbnail */}
             <div className="relative w-full h-[280px] md:h-[380px] flex items-center justify-center">
-              <div className="w-full h-full rounded-2xl border-2 border-gray-200 flex items-center justify-center bg-gray-50">
-                <svg width="100" height="100" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="45" cy="35" r="12" stroke="#d1d5db" strokeWidth="2"/>
-                  <path d="M15 105 L45 65 L75 90 L105 50" stroke="#d1d5db" strokeWidth="2" strokeLinecap="round"/>
-                </svg>
+              <div className="w-full h-full rounded-2xl overflow-hidden">
+                <img
+                  src={episodesData[0]?.logo || '/episode-art-1.jpg'}
+                  alt={episode.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
