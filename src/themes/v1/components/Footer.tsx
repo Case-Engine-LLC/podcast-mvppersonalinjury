@@ -32,9 +32,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
           {/* Left Column - Logo & Social */}
           <div>
-            <h3 className="text-xl md:text-2xl font-extrabold text-white mb-6">
-              {footer.logo}
-            </h3>
+            <div className="mb-6">
+              <img
+                src="/logo.svg"
+                alt={footer.logo}
+                className="h-12 w-auto brightness-0 invert"
+              />
+            </div>
             <p className="text-base text-white/70 leading-relaxed mb-8 max-w-md">
               {footer.description}
             </p>

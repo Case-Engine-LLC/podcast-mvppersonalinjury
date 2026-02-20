@@ -486,7 +486,7 @@ export const stats = {
 }
 
 export const navigation = {
-  logo: "Logo Here",
+  logo: "MVP Accident Attorneys",
   items: [
     { name: 'Episodes', href: '#episodes' },
     { name: 'About', href: '#about' },
@@ -497,7 +497,7 @@ export const navigation = {
 }
 
 export const footer = {
-  logo: "Logo Here",
+  logo: "MVP Accident Attorneys",
   description: "The You Interview features in-depth conversations with California's leading personal injury attorneys. Each episode explores their journey, philosophy, and insights on fighting for accident victims.",
   copyright: "MVP Accident Attorneys",
   socialLinks: {
@@ -565,7 +565,7 @@ export const episodes = [
     topic: "Personal Injury",
     concepts: ["Client-first approach", "Insurance industry", "Tech-forward firm", "Contingency fees"],
     chapters: ["Why Personal Injury Law", "From Midwest to California", "Fighting Insurance Giants"],
-    logo: "/episode-art.avif",
+    logo: "/episode-art-1.jpg",
   },
 ]
 

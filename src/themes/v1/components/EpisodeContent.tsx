@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { Play } from 'lucide-react'
 import { content, attorney } from '@/data/siteData'
+import { episodeTranscript } from '@/data/transcript'
 
 const EpisodeContent = () => {
   const [activeTab, setActiveTab] = useState('Overview')
@@ -81,49 +82,23 @@ const EpisodeContent = () => {
                 </h2>
 
                 <div className="text-base md:text-lg leading-relaxed text-white/70 space-y-6 mb-8">
-                  <p>
-                    <span className="text-white font-semibold">[00:00:00]</span> Welcome to The You Interview. Today we're sitting down with {attorney.name} from {attorney.firm}.
-                  </p>
-                  <p>
-                    <span className="text-white font-semibold">[00:02:15]</span> {content.articleParagraphs[0]}
-                  </p>
-                </div>
-
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
-                  Key Discussion Points
-                </h3>
-
-                <div className="text-base md:text-lg leading-relaxed text-white/70 space-y-6 mb-8">
-                  <p>
-                    <span className="text-white font-semibold">[00:10:45]</span> {content.articleParagraphs[1] || 'Discussion of practice areas and client approach.'}
-                  </p>
-                </div>
-
-                <div className="bg-[#2a2a3e] rounded-3xl p-8 md:p-12 mb-8 relative">
-                  <div className="text-white/20 text-[80px] md:text-[100px] font-bold leading-[0.7] -mb-2">"</div>
-                  <p className="text-lg md:text-xl text-white leading-relaxed">
-                    {content.featuredQuote}
-                  </p>
-                </div>
-
-                <div
-                  className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                    isExpanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
-                  }`}
-                >
-                  <div className="text-base md:text-lg leading-relaxed text-white/70 space-y-6 mb-8">
-                    <p>
-                      <span className="text-white font-semibold">[00:20:00]</span> Full transcript available upon request. Contact us for the complete episode transcript.
+                  {episodeTranscript.slice(0, isExpanded ? episodeTranscript.length : 8).map((segment, index) => (
+                    <p key={index}>
+                      <span className="text-white font-semibold">[{segment.timestamp}]</span>{' '}
+                      <span className="text-secondary font-semibold">{segment.speaker}:</span>{' '}
+                      {segment.text}
                     </p>
-                  </div>
+                  ))}
                 </div>
 
-                <button
-                  onClick={() => setIsExpanded(!isExpanded)}
-                  className="text-base md:text-lg font-bold text-white hover:text-white/80 transition-colors"
-                >
-                  {isExpanded ? 'Read Less' : 'Read More'}
-                </button>
+                {episodeTranscript.length > 8 && (
+                  <button
+                    onClick={() => setIsExpanded(!isExpanded)}
+                    className="text-base md:text-lg font-bold text-white hover:text-white/80 transition-colors"
+                  >
+                    {isExpanded ? 'Show Less' : `Read Full Transcript (${episodeTranscript.length} segments)`}
+                  </button>
+                )}
               </>
             )}
 

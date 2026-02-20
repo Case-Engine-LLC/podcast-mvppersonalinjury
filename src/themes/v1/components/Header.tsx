@@ -36,8 +36,12 @@ const Header = ({ variant = 'dark' }: HeaderProps) => {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${headerBg}`}>
       <div className="max-w-container mx-auto px-6 md:px-12 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className={`text-lg md:text-xl font-extrabold ${textColor} tracking-tight`}>
-          {navigation.logo}
+        <Link href="/v1" className="flex items-center">
+          <img
+            src="/logo.svg"
+            alt={navigation.logo}
+            className="h-10 md:h-12 w-auto"
+          />
         </Link>
 
         {/* Desktop Nav */}
