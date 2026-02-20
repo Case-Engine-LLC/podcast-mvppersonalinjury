@@ -15,7 +15,7 @@ import Link from 'next/link'
 const SITE_URL = 'https://podcast-template-next-js.vercel.app'
 
 export function generateAuthorSchema(author: typeof authorProfiles[string], slug: string) {
-  const pageUrl = `${SITE_URL}/v1/author/${slug}`
+  const pageUrl = `${SITE_URL}/author/${slug}`
   const imageUrl = `${SITE_URL}${author.photo}`
 
   return {
