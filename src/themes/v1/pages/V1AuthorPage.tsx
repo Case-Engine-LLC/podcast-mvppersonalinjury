@@ -212,13 +212,13 @@ const V1AuthorPage = ({ slug }: V1AuthorPageProps) => {
 
               {/* Info */}
               <div className="text-center md:text-left">
-                <div className="inline-block bg-[#EC6A00] px-6 py-1.5 rounded-[6px] text-[12px] font-bold text-black uppercase tracking-[0.96px] mb-6">
+                <div className="inline-block bg-[#FAA31A] px-6 py-1.5 rounded-[6px] text-[12px] font-bold text-black uppercase tracking-[0.96px] mb-6">
                   {author.role}
                 </div>
                 <h1 className="text-[2.25rem] leading-[1.1] md:text-5xl font-bold text-white mb-4">
                   {author.name}
                 </h1>
-                <p className="text-xl md:text-2xl text-[#EC6A00] font-semibold mb-6">
+                <p className="text-xl md:text-2xl text-[#FAA31A] font-semibold mb-6">
                   {author.title}
                 </p>
                 <p className="text-base md:text-lg text-white/80 leading-relaxed mb-8">
@@ -229,7 +229,7 @@ const V1AuthorPage = ({ slug }: V1AuthorPageProps) => {
                 <div className="flex flex-wrap gap-4 justify-center md:justify-start mb-8">
                   {author.admissions.map((admission, i) => (
                     <div key={i} className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-                      <Scale size={16} className="text-[#EC6A00]" />
+                      <Scale size={16} className="text-[#FAA31A]" />
                       <span className="text-sm text-white">{admission.jurisdiction} ({admission.year})</span>
                     </div>
                   ))}
@@ -247,7 +247,7 @@ const V1AuthorPage = ({ slug }: V1AuthorPageProps) => {
                 {/* CTA */}
                 <Link
                   href={siteConfig.formCTA?.href || '#contact'}
-                  className="inline-flex items-center gap-3 bg-[#EC6A00] text-black px-8 py-4 rounded-2xl transition-transform hover:scale-105 font-bold"
+                  className="inline-flex items-center gap-3 bg-[#FAA31A] text-black px-8 py-4 rounded-2xl transition-transform hover:scale-105 font-bold"
                 >
                   <FileText className="w-5 h-5" />
                   <span>{siteConfig.formCTA?.text || 'Free Consultation'}</span>
@@ -281,7 +281,7 @@ const V1AuthorPage = ({ slug }: V1AuthorPageProps) => {
                 {/* Education */}
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <GraduationCap size={24} className="text-[#EC6A00]" />
+                    <GraduationCap size={24} className="text-[#FAA31A]" />
                     <h3 className="text-xl font-bold text-black">Education</h3>
                   </div>
                   <div className="space-y-4">
@@ -298,7 +298,7 @@ const V1AuthorPage = ({ slug }: V1AuthorPageProps) => {
                 {/* Awards */}
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <Award size={24} className="text-[#EC6A00]" />
+                    <Award size={24} className="text-[#FAA31A]" />
                     <h3 className="text-xl font-bold text-black">Awards & Recognition</h3>
                   </div>
                   <div className="space-y-3">
@@ -309,7 +309,7 @@ const V1AuthorPage = ({ slug }: V1AuthorPageProps) => {
                             <p className="font-bold text-black">{award.name}</p>
                             <p className="text-gray-600 text-sm mt-1">{award.description}</p>
                           </div>
-                          <span className="text-xs px-3 py-1 bg-[#EC6A00]/10 text-[#EC6A00] rounded-full whitespace-nowrap font-semibold">
+                          <span className="text-xs px-3 py-1 bg-[#FAA31A]/10 text-[#FAA31A] rounded-full whitespace-nowrap font-semibold">
                             {award.years}
                           </span>
                         </div>
@@ -321,13 +321,13 @@ const V1AuthorPage = ({ slug }: V1AuthorPageProps) => {
                 {/* Memberships */}
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <Users size={24} className="text-[#EC6A00]" />
+                    <Users size={24} className="text-[#FAA31A]" />
                     <h3 className="text-xl font-bold text-black">Professional Memberships</h3>
                   </div>
                   <ul className="space-y-2">
                     {author.memberships.map((org, index) => (
                       <li key={index} className="flex items-start gap-3 text-gray-700">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#EC6A00] mt-2.5 flex-shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#FAA31A] mt-2.5 flex-shrink-0" />
                         {org}
                       </li>
                     ))}
@@ -343,7 +343,7 @@ const V1AuthorPage = ({ slug }: V1AuthorPageProps) => {
           <div className="max-w-container mx-auto px-6 md:px-12">
             <div className="text-center mb-12">
               <div className="flex items-center justify-center gap-3 mb-4">
-                <Briefcase size={24} className="text-[#EC6A00]" />
+                <Briefcase size={24} className="text-[#FAA31A]" />
                 <h2 className="text-3xl md:text-4xl font-bold text-black leading-none">
                   Practice Areas
                 </h2>
@@ -392,7 +392,7 @@ const V1AuthorPage = ({ slug }: V1AuthorPageProps) => {
               ))}
               <a
                 href={`tel:${contact.phone}`}
-                className="flex items-center gap-2 bg-[#EC6A00] text-black px-6 py-3 rounded-full hover:bg-[#d15f00] transition-colors font-bold"
+                className="flex items-center gap-2 bg-[#FAA31A] text-black px-6 py-3 rounded-full hover:bg-[#e09000] transition-colors font-bold"
               >
                 Call {contact.phone}
               </a>

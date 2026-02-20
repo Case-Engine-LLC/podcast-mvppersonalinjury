@@ -9,7 +9,7 @@ const StatsBanner = () => {
       <div className="max-w-container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {/* Card 1: Rating - Orange */}
-          <div className="bg-[#EC6A00] rounded-3xl px-6 py-8 md:px-5 md:py-10 text-left">
+          <div className="bg-[#FAA31A] rounded-3xl px-6 py-8 md:px-5 md:py-10 text-left">
             <p>
               <span className="flex items-center justify-between mb-4 md:mb-6">
                 <span className="text-[#FFC564] text-4xl md:text-6xl font-bold">{stats.rating}</span>
@@ -36,7 +36,7 @@ const StatsBanner = () => {
           <div className="bg-[#10284B] rounded-3xl px-6 py-8 md:px-5 md:py-10 text-left">
             <p>
               <span className="flex items-center justify-between mb-4 md:mb-6">
-                <span className="text-[#EC6A00] text-4xl md:text-6xl font-bold">{stats.casesHandled}+</span>
+                <span className="text-[#FAA31A] text-4xl md:text-6xl font-bold">{stats.casesHandled}+</span>
                 <img src="/icons/case.svg" alt="Case" className="w-16 h-16 md:w-20 md:h-20" />
               </span>
               <span className="text-[#A3C9FF] text-xl md:text-2xl font-bold mb-3 block">{stats.casesLabel}</span>

@@ -110,8 +110,8 @@ const Testimonials = () => {
                             <Star
                               key={index}
                               size={24}
-                              fill="#EC6A00"
-                              stroke="#EC6A00"
+                              fill="#FAA31A"
+                              stroke="#FAA31A"
                             />
                           ))}
                         </div>

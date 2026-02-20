@@ -29,7 +29,7 @@ const TopicalEntryGrid = () => {
               onClick={() => setActiveTab(index)}
               className={`px-8 py-3 rounded-full text-sm md:text-base font-bold transition-all ${
                 activeTab === index
-                  ? 'bg-[#EC6A00] text-white'
+                  ? 'bg-[#FAA31A] text-white'
                   : 'bg-white text-black hover:bg-gray-100'
               }`}
             >
@@ -66,7 +66,7 @@ const TopicalEntryGrid = () => {
                 <p className="text-sm md:text-base text-gray-600 leading-relaxed mb-4">
                   {link.description}
                 </p>
-                <div className="flex items-center text-black font-semibold group-hover:text-[#EC6A00] transition-colors">
+                <div className="flex items-center text-black font-semibold group-hover:text-[#FAA31A] transition-colors">
                   <span className="text-sm md:text-base">Read More</span>
                   <ChevronRight className="w-5 h-5 ml-1" />
                 </div>
