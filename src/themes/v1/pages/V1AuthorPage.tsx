@@ -12,7 +12,7 @@ import { authorProfiles, siteConfig, contact, stats, testimonials } from '@/data
 import { Scale, GraduationCap, Award, Briefcase, Users, ExternalLink, FileText } from 'lucide-react'
 import Link from 'next/link'
 
-const SITE_URL = 'https://podcast-template-next-js.vercel.app'
+const SITE_URL = contact.website
 
 export function generateAuthorSchema(author: typeof authorProfiles[string], slug: string) {
   const pageUrl = `${SITE_URL}/author/${slug}`
@@ -86,7 +86,7 @@ export function generateAuthorSchema(author: typeof authorProfiles[string], slug
         'breadcrumb': { '@id': `${pageUrl}#breadcrumb` },
         'speakable': {
           '@type': 'SpeakableSpecification',
-          'cssSelector': ['article h1', 'article .bio-summary'],
+          'name': ['headline', 'description'],
         },
       },
       {
