@@ -93,7 +93,7 @@ const V1EpisodePage = ({ episodeId, episode: rssEpisode, allEpisodes, transcript
         <FAQ />
       </main>
 
-      <Footer />
+      <Footer episodes={allEpisodes} />
     </div>
   )
 }
