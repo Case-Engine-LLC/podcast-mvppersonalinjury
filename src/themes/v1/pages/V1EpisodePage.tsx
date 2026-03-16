@@ -9,10 +9,12 @@ import { siteConfig, attorney, contact, episode } from '@/data/siteData'
 import type { Episode } from '@/lib/data'
 import type { TranscriptSegment } from '@/lib/rss'
 
-const SITE_URL = contact.website
+const SITE_URL = 'https://mvppersonalinjury.com'
 
-export function generateEpisodeSchema(episodeId: string) {
-  const episodeUrl = `${SITE_URL}/episode/${episodeId}`
+export function generateEpisodeSchema(episodeId: string, rssEp?: any) {
+  const ep = rssEp ?? episode
+  const episodeUrl = `https://mvppersonalinjury.com/episode/${episodeId}`
+  const siteUrl = 'https://mvppersonalinjury.com'
 
   return {
     '@context': 'https://schema.org',
@@ -21,11 +23,11 @@ export function generateEpisodeSchema(episodeId: string) {
         '@type': 'WebPage',
         '@id': `${episodeUrl}#webpage`,
         'url': episodeUrl,
-        'name': `${episode.title} | ${siteConfig.podcastName}`,
-        'headline': episode.title,
-        'description': episode.description,
+        'name': `${ep.title} | ${siteConfig.podcastName}`,
+        'headline': ep.title,
+        'description': typeof ep.description === 'string' ? ep.description.slice(0, 200) : '',
         'inLanguage': 'en',
-        'isPartOf': { '@id': `${SITE_URL}/#website` },
+        'isPartOf': { '@id': `${siteUrl}/#website` },
         'speakable': {
           '@type': 'SpeakableSpecification',
           'name': ['headline', 'description'],
@@ -34,13 +36,14 @@ export function generateEpisodeSchema(episodeId: string) {
       {
         '@type': 'PodcastEpisode',
         '@id': `${episodeUrl}#episode`,
-        'name': episode.title,
-        'description': episode.description,
+        'name': ep.title,
+        'description': typeof ep.description === 'string' ? ep.description.slice(0, 200) : '',
         'url': episodeUrl,
-        'episodeNumber': episode.number,
-        'duration': `PT${episode.duration.replace(':', 'H').replace(':', 'M')}S`,
-        'partOfSeries': { '@id': `${SITE_URL}/#podcast` },
-        'productionCompany': { '@id': `${SITE_URL}/#org` },
+        'episodeNumber': ep.number ?? ep.id ?? 1,
+        'partOfSeries': { '@id': `${siteUrl}/#podcast` },
+        'productionCompany': { '@id': `${siteUrl}/#org` },
+        ...(ep.audioUrl ? { 'associatedMedia': { '@type': 'MediaObject', 'contentUrl': ep.audioUrl } } : {}),
+        ...(ep.logo ? { 'image': ep.logo } : {}),
         'speakable': {
           '@type': 'SpeakableSpecification',
           'name': ['name', 'description'],
@@ -48,14 +51,14 @@ export function generateEpisodeSchema(episodeId: string) {
       },
       {
         '@type': 'PodcastSeries',
-        '@id': `${SITE_URL}/#podcast`,
+        '@id': `${siteUrl}/#podcast`,
         'name': siteConfig.podcastName,
-        'url': SITE_URL,
+        'url': siteUrl,
         'inLanguage': 'en',
       },
       {
         '@type': ['LegalService', 'Organization'],
-        '@id': `${SITE_URL}/#org`,
+        '@id': `${siteUrl}/#org`,
         'name': attorney.firm,
         'url': contact.website,
         'telephone': contact.phone,
@@ -73,7 +76,7 @@ interface V1EpisodePageProps {
 }
 
 const V1EpisodePage = ({ episodeId, episode: rssEpisode, allEpisodes, transcript }: V1EpisodePageProps) => {
-  const schema = generateEpisodeSchema(episodeId)
+  const schema = generateEpisodeSchema(episodeId, rssEpisode)
 
   return (
     <div className="bg-white min-h-screen overflow-x-hidden">

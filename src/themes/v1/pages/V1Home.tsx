@@ -16,7 +16,7 @@ import Footer from '../components/Footer'
 import { siteConfig, attorney, contact, episode } from '@/data/siteData'
 import type { Episode } from '@/lib/data'
 
-const SITE_URL = contact.website
+const SITE_URL = 'https://mvppersonalinjury.com'
 
 const homeSchema = {
   '@context': 'https://schema.org',
