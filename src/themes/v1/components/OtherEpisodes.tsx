@@ -3,9 +3,16 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { episodes as episodesData, subscribeCTA } from '@/data/siteData'
+import { episodes as staticEpisodesData } from '@/data/siteData'
+import { subscribeCTA } from '@/lib/site-compat'
+import type { Episode } from '@/lib/data'
 
-const OtherEpisodes = () => {
+interface OtherEpisodesProps {
+  episodes?: Episode[]
+}
+
+const OtherEpisodes = ({ episodes: propEpisodes }: OtherEpisodesProps) => {
+  const episodesData = propEpisodes ?? staticEpisodesData
   const [currentIndex, setCurrentIndex] = useState(0)
 
   // Map episodes from siteData - for now we just have episode 1
@@ -80,7 +87,7 @@ const OtherEpisodes = () => {
                   {episode.image ? (
                     <img src={episode.image} alt={episode.title} className="w-full h-full object-cover" />
                   ) : (
-                    <img src="/episode-art-1.jpg" alt={episode.title} className="w-full h-full object-cover opacity-60" />
+                    <img src="/cover-placeholder.jpg" alt={episode.title} className="w-full h-full object-cover opacity-60" />
                   )}
                 </div>
 

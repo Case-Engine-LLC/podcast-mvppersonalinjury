@@ -31,7 +31,7 @@ const FeaturedEpisodePlayer = ({
           {/* Episode Image */}
           <div className="w-24 h-24 bg-gray-200 rounded-lg shrink-0 flex items-center justify-center overflow-hidden">
             <img
-              src={imageUrl || '/episode-art.avif'}
+              src={imageUrl || '/cover-placeholder.jpg'}
               alt={title}
               className="w-full h-full object-cover"
             />
@@ -85,7 +85,7 @@ const FeaturedEpisodePlayer = ({
         {/* Episode Image */}
         <div className="w-[12rem] h-[12rem] bg-gray-200 rounded-lg shrink-0 flex items-center justify-center overflow-hidden">
           <img
-            src={imageUrl || '/episode-art.avif'}
+            src={imageUrl || '/cover-placeholder.jpg'}
             alt={title}
             className="w-full h-full object-cover"
           />

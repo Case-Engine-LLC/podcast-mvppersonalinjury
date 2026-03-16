@@ -3,9 +3,18 @@
 import React, { useState } from 'react'
 import { Play } from 'lucide-react'
 import { content, attorney } from '@/data/siteData'
-import { episodeTranscript } from '@/data/transcript'
+import { episodeTranscript as staticTranscript } from '@/data/transcript'
+import type { Episode } from '@/lib/data'
+import type { TranscriptSegment } from '@/lib/rss'
+import AudioPlayer from '@/components/AudioPlayer'
 
-const EpisodeContent = () => {
+interface EpisodeContentProps {
+  episode?: Episode | null
+  transcript?: TranscriptSegment[]
+}
+
+const EpisodeContent = ({ episode, transcript }: EpisodeContentProps) => {
+  const episodeTranscript = transcript && transcript.length > 0 ? transcript : staticTranscript
   const [activeTab, setActiveTab] = useState('Overview')
   const [isExpanded, setIsExpanded] = useState(false)
 
@@ -15,13 +24,22 @@ const EpisodeContent = () => {
     <section id="episode-content" className="py-16 md:py-20 bg-white">
       <div className="w-[90%] mx-auto bg-primary rounded-[30px] py-12 md:py-16">
         <div className="max-w-container mx-auto px-6 md:px-12">
-          {/* Video Player */}
-          <div className="relative w-full aspect-video bg-[#3a3a3a] rounded-3xl overflow-hidden mb-12 flex items-center justify-center group cursor-pointer">
-            {/* Play Button */}
-            <div className="relative z-10 w-20 h-20 rounded-full bg-secondary flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Play size={32} className="text-white fill-white ml-1" />
+          {/* Audio Player */}
+          {episode?.audioUrl ? (
+            <div className="mb-12">
+              <AudioPlayer
+                audioUrl={episode.audioUrl}
+                duration={episode.duration}
+                title={episode.title}
+              />
             </div>
-          </div>
+          ) : (
+            <div className="relative w-full aspect-video bg-[#3a3a3a] rounded-3xl overflow-hidden mb-12 flex items-center justify-center group cursor-pointer">
+              <div className="relative z-10 w-20 h-20 rounded-full bg-secondary flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Play size={32} className="text-white fill-white ml-1" />
+              </div>
+            </div>
+          )}
 
           {/* Tabs */}
           <div className="flex items-center gap-8 md:gap-12 border-b border-white/10 mb-8">

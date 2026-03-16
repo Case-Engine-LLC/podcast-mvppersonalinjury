@@ -3,9 +3,16 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { Play, Info, ArrowRight, LayoutList, LayoutGrid } from 'lucide-react'
-import { episodes as episodesData, subscribeCTA, episodeTopics, episodeLocations } from '@/data/siteData'
+import { episodes as staticEpisodesData, episodeTopics, episodeLocations } from '@/data/siteData'
+import { subscribeCTA } from '@/lib/site-compat'
+import type { Episode } from '@/lib/data'
 
-const LatestEpisodes = () => {
+interface LatestEpisodesProps {
+  episodes?: Episode[]
+}
+
+const LatestEpisodes = ({ episodes: propEpisodes }: LatestEpisodesProps) => {
+  const episodesData = propEpisodes ?? staticEpisodesData
   const [activeTopic, setActiveTopic] = useState('All')
   const [activeLocation, setActiveLocation] = useState('All')
   const [viewMode, setViewMode] = useState<'list' | 'grid'>('list')
@@ -116,7 +123,7 @@ const LatestEpisodes = () => {
                   <div className="md:col-span-4">
                     <div className="w-full aspect-square bg-gray-700 rounded-2xl flex items-center justify-center overflow-hidden">
                       <img
-                        src={episode.logo || '/episode-art.avif'}
+                        src={episode.logo || '/cover-placeholder.jpg'}
                         alt={episode.title}
                         className="w-full h-full object-cover"
                       />

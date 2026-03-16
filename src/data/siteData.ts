@@ -10,8 +10,8 @@ export const siteConfig = {
   podcastName: "The MVP of Personal Injury Law w. Brett & Chelsee Sachs",
   tagline: "NEW EPISODE",
   platformLinks: {
-    apple: "#",
-    spotify: "#",
+    apple: "https://www.youtube.com/@TheMVPPersonalInjuryLawPodcast",
+    spotify: "https://open.spotify.com/show/0mXB4YhNdQVeFZb5Orr0pD",
   },
   formCTA: {
     text: "Free Consultation",
@@ -505,7 +505,7 @@ export const footer = {
     linkedin: "https://linkedin.com/company/mvp-accident-attorneys",
     facebook: "https://facebook.com/mvpaccidentattorneys",
     instagram: "https://instagram.com/mvpaccidentattorneys",
-    youtube: "https://youtube.com/@mvpaccidentattorneys",
+    youtube: "https://www.youtube.com/@TheMVPPersonalInjuryLawPodcast",
   },
 }
 

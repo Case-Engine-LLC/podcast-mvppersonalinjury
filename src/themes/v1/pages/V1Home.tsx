@@ -14,6 +14,7 @@ import FAQ from '../components/FAQ'
 import TopicalEntryGrid from '../components/TopicalEntryGrid'
 import Footer from '../components/Footer'
 import { siteConfig, attorney, contact, episode } from '@/data/siteData'
+import type { Episode } from '@/lib/data'
 
 const SITE_URL = contact.website
 
@@ -67,7 +68,11 @@ const homeSchema = {
   ],
 }
 
-const V1Home = () => {
+interface V1HomeProps {
+  episodes?: Episode[]
+}
+
+const V1Home = ({ episodes }: V1HomeProps) => {
   return (
     <div className="bg-white min-h-screen overflow-x-hidden">
       <script
@@ -82,7 +87,7 @@ const V1Home = () => {
         <StatsBanner />
         <About />
         <PodcastTeam />
-        <LatestEpisodes />
+        <LatestEpisodes episodes={episodes} />
         <Testimonials />
         <PodcastSubscribeCTA />
         <FAQ />

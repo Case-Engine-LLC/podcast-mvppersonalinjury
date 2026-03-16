@@ -6,6 +6,8 @@ import EpisodeContent from '../components/EpisodeContent'
 import OtherEpisodes from '../components/OtherEpisodes'
 import FAQ from '../components/FAQ'
 import { siteConfig, attorney, contact, episode } from '@/data/siteData'
+import type { Episode } from '@/lib/data'
+import type { TranscriptSegment } from '@/lib/rss'
 
 const SITE_URL = contact.website
 
@@ -65,9 +67,12 @@ export function generateEpisodeSchema(episodeId: string) {
 
 interface V1EpisodePageProps {
   episodeId: string
+  episode?: Episode | null
+  allEpisodes?: Episode[]
+  transcript?: TranscriptSegment[]
 }
 
-const V1EpisodePage = ({ episodeId }: V1EpisodePageProps) => {
+const V1EpisodePage = ({ episodeId, episode: rssEpisode, allEpisodes, transcript }: V1EpisodePageProps) => {
   const schema = generateEpisodeSchema(episodeId)
 
   return (
@@ -79,9 +84,9 @@ const V1EpisodePage = ({ episodeId }: V1EpisodePageProps) => {
       <Header variant="light" />
 
       <main className="pt-[6rem]">
-        <EpisodeHero />
-        <EpisodeContent />
-        <OtherEpisodes />
+        <EpisodeHero episode={rssEpisode} />
+        <EpisodeContent episode={rssEpisode} transcript={transcript} />
+        <OtherEpisodes episodes={allEpisodes} />
         <FAQ />
       </main>
 

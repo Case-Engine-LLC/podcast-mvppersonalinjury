@@ -1,5 +1,9 @@
 import V1Home from '@/themes/v1/pages/V1Home'
+import { getAllEpisodes } from '@/lib/data'
 
-export default function Home() {
-  return <V1Home />
+export const revalidate = 3600
+
+export default async function Home() {
+  const episodes = await getAllEpisodes()
+  return <V1Home episodes={episodes} />
 }
