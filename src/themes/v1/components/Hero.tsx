@@ -114,11 +114,11 @@ const Hero = ({ latestEpisode }: HeroProps) => {
     <div className="relative z-10 -mt-16">
       <div className="max-w-container mx-auto px-4 md:px-12">
         <FeaturedEpisodePlayer
-          episodeNumber={String(ep.number ?? ep.id ?? 1)}
+          episodeNumber={String(ep.number ?? 1)}
           title={ep.title}
           description={(ep.description ?? '').replace(/\*\*/g, '')}
           duration={ep.duration}
-          episodeLink={`/episode/${ep.number ?? ep.id ?? 1}`}
+          episodeLink={`/episode/${ep.number ?? 1}`}
           imageUrl={(latestEpisode as any)?.logo || undefined}
           audioUrl={(latestEpisode as any)?.audioUrl || undefined}
         />
