@@ -85,6 +85,12 @@ const Footer = () => {
           <p className="text-sm text-white/60 text-center">
             © {currentYear} {footer.copyright}. All rights reserved.
           </p>
+          <p className="text-xs text-white/40 text-center mt-2">
+            Attorney Advertising. Brett Sachs, CA Bar #297504. Chelsee Sachs, CA Bar #297511. Past results do not guarantee future outcomes. Results may vary based on the facts of each case.
+          </p>
+          <p className="text-xs text-white/40 text-center mt-1">
+            <Link href="/privacy" className="underline hover:text-white/60">Privacy Policy</Link>
+          </p>
         </div>
       </div>
     </footer>

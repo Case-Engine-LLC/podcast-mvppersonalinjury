@@ -44,7 +44,7 @@ const EpisodeHero = ({ episode: propEpisode }: EpisodeHeroProps) => {
 
               {/* Description */}
               <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-8">
-                {ep.description.replace(/\*\*/g, '')}
+                {(() => { const d = (ep.description ?? ''); return d.length > 250 ? d.slice(0, 250) + '...' : d; })()}
               </p>
 
               {/* Platform Buttons */}

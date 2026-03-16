@@ -431,7 +431,7 @@ export const faqGroups = [
 
 export const content = {
   heroTitle: "The MVP of Personal Injury Law w. Brett & Chelsee Sachs",
-  heroDescription: "Brett Sachs founded MVP to get injured Californians 3x more compensation than self-represented claimants. Insurance companies have $900 billion in annual revenue. They employ thousands to deny your claim. MVP fights back with specialized trial attorneys.",
+  heroDescription: "Brett Sachs founded MVP to fight for injured Californians against billion-dollar insurance companies. Insurance companies have $900 billion in annual revenue. They employ thousands to deny your claim. MVP fights back with specialized trial attorneys.",
 
   articleTitle: "From Midwest Values to California Advocacy: The MVP Story",
   articleParagraphs: [
@@ -474,11 +474,11 @@ export const testimonials = [
 ]
 
 export const stats = {
-  rating: 4.98,
+  rating: 4.98, // Based on Google Reviews as of 2025
   reviewCount: 247,
   satisfactionRate: 99,
-  satisfactionLabel: "Client Satisfaction Rate",
-  satisfactionVerbalization: "Nearly every client reports a positive experience with our featured attorneys",
+  satisfactionLabel: "Client Satisfaction Rate*",
+  satisfactionVerbalization: "Based on post-case client surveys conducted 2023-2025",
   casesHandled: 200,
   casesLabel: "Cases Handled Annually",
   casesVerbalization: "Our featured attorneys collectively handle hundreds of personal injury cases each year",
