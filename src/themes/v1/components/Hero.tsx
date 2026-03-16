@@ -5,8 +5,14 @@ import Link from 'next/link'
 import { FileText } from 'lucide-react'
 import FeaturedEpisodePlayer from './FeaturedEpisodePlayer'
 import { siteConfig, episode, content } from '@/data/siteData'
+import type { Episode } from '@/lib/data'
 
-const Hero = () => {
+interface HeroProps {
+  latestEpisode?: Episode | null
+}
+
+const Hero = ({ latestEpisode }: HeroProps) => {
+  const ep = latestEpisode ?? episode
   return (
     <>
     <section className="hero-section pt-[4rem] md:pt-[6rem] h-[120vh] md:h-[90vh]">
@@ -108,10 +114,13 @@ const Hero = () => {
     <div className="relative z-10 -mt-16">
       <div className="max-w-container mx-auto px-4 md:px-12">
         <FeaturedEpisodePlayer
-          episodeNumber={String(episode.number)}
-          title={episode.title}
-          description={episode.description}
-          duration={episode.duration}
+          episodeNumber={String(ep.number ?? ep.id ?? 1)}
+          title={ep.title}
+          description={(ep.description ?? '').replace(/\*\*/g, '')}
+          duration={ep.duration}
+          episodeLink={`/episode/${ep.number ?? ep.id ?? 1}`}
+          imageUrl={(latestEpisode as any)?.logo || undefined}
+          audioUrl={(latestEpisode as any)?.audioUrl || undefined}
         />
       </div>
     </div>
