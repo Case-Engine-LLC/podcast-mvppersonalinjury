@@ -2,9 +2,16 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { episode, siteConfig, episodes as episodesData } from '@/data/siteData'
+import { episode as staticEpisode, siteConfig, episodes as staticEpisodesData } from '@/data/siteData'
+import type { Episode } from '@/lib/data'
 
-const EpisodeHero = () => {
+interface EpisodeHeroProps {
+  episode?: Episode | null
+}
+
+const EpisodeHero = ({ episode: propEpisode }: EpisodeHeroProps) => {
+  const ep = propEpisode ?? staticEpisode
+  const episodesData = propEpisode ? [propEpisode] : staticEpisodesData
   return (
     <>
       {/* Marquee Banner */}
@@ -27,17 +34,17 @@ const EpisodeHero = () => {
             <div>
               {/* Episode Badge */}
               <div className="inline-block bg-gray-200 px-4 py-2 rounded-md text-xs font-bold text-black uppercase tracking-widest mb-6">
-                EPISODE {episode.number}
+                EPISODE {ep.number}
               </div>
 
               {/* Heading */}
               <h1 className="text-4xl md:text-5xl font-bold leading-tight text-black mb-6">
-                {episode.title}
+                {ep.title}
               </h1>
 
               {/* Description */}
               <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-8">
-                {episode.description.replace(/\*\*/g, '')}
+                {ep.description.replace(/\*\*/g, '')}
               </p>
 
               {/* Platform Buttons */}
@@ -83,8 +90,8 @@ const EpisodeHero = () => {
             <div className="relative w-full h-[280px] md:h-[380px] flex items-center justify-center">
               <div className="w-full h-full rounded-2xl overflow-hidden">
                 <img
-                  src={episodesData[0]?.logo || '/episode-art-1.jpg'}
-                  alt={episode.title}
+                  src={episodesData[0]?.logo || '/cover-placeholder.jpg'}
+                  alt={ep.title}
                   className="w-full h-full object-cover"
                 />
               </div>
