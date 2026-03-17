@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import '@/themes/v1/variables.css'
+import { siteConfig } from '@/data/siteData'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -33,6 +34,15 @@ export const metadata: Metadata = {
     description: 'In-depth conversations about personal injury law, car accidents, and your rights. Hosted by Brett & Chelsee Sachs of MVP Accident Attorneys.',
     images: ['https://mvppersonalinjury.com/Hero.jpg'],
   },
+  ...(siteConfig.rssFeedUrl
+    ? {
+        alternates: {
+          types: {
+            'application/rss+xml': siteConfig.rssFeedUrl,
+          },
+        },
+      }
+    : {}),
 }
 
 export default function RootLayout({

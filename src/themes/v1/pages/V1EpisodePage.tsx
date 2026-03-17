@@ -5,16 +5,87 @@ import EpisodeHero from '../components/EpisodeHero'
 import EpisodeContent from '../components/EpisodeContent'
 import OtherEpisodes from '../components/OtherEpisodes'
 import FAQ from '../components/FAQ'
-import { siteConfig, attorney, contact, episode } from '@/data/siteData'
+import { siteConfig, episode as staticEpisode, podcastTeam } from '@/data/siteData'
 import type { Episode } from '@/lib/data'
 import type { TranscriptSegment } from '@/lib/rss'
+import {
+  PODCAST_SITE_URL,
+  generateOrganizationEntity,
+  generatePodcastSeriesEntity,
+  generateBreadcrumbList,
+  generateFAQPageEntity,
+  truncateToSentence,
+  formatDurationISO8601,
+} from '@/lib/schema-helpers'
 
-const SITE_URL = 'https://mvppersonalinjury.com'
+export function generateEpisodeSchema(episodeId: string, rssEp?: Episode | null) {
+  const ep = rssEp ?? staticEpisode
+  const episodeUrl = `${PODCAST_SITE_URL}/episode/${episodeId}`
+  const host = podcastTeam[0]
 
-export function generateEpisodeSchema(episodeId: string, rssEp?: any) {
-  const ep = rssEp ?? episode
-  const episodeUrl = `https://mvppersonalinjury.com/episode/${episodeId}`
-  const siteUrl = 'https://mvppersonalinjury.com'
+  const title = ep.title
+  const description = typeof ep.description === 'string' ? ep.description : ''
+  const duration = ep.duration
+  const number = ('number' in ep ? ep.number : undefined) ?? ('id' in ep ? (ep as Episode).id : 1)
+
+  const datePublished = rssEp?.date
+    ? (() => {
+        // RSS dates come as "MM.DD.YY" — convert to ISO
+        const parts = rssEp.date.split('.')
+        if (parts.length === 3) {
+          const [mm, dd, yy] = parts
+          return `20${yy}-${mm}-${dd}`
+        }
+        return rssEp.date
+      })()
+    : undefined
+
+  const episodeEntity: Record<string, unknown> = {
+    '@type': 'PodcastEpisode',
+    '@id': `${episodeUrl}#episode`,
+    'name': title,
+    'description': truncateToSentence(description),
+    'url': episodeUrl,
+    'episodeNumber': number,
+    'duration': formatDurationISO8601(duration),
+    'inLanguage': 'en',
+    'partOfSeries': { '@id': `${PODCAST_SITE_URL}/#podcast` },
+    'productionCompany': { '@id': `${PODCAST_SITE_URL}/#org` },
+  }
+
+  if (datePublished) {
+    episodeEntity['datePublished'] = datePublished
+  }
+
+  if (host) {
+    episodeEntity['author'] = { '@type': 'Person', 'name': host.name }
+  }
+
+  if (rssEp && 'concepts' in rssEp && rssEp.concepts?.length > 0) {
+    episodeEntity['keywords'] = rssEp.concepts.join(', ')
+  }
+
+  if (rssEp && 'audioUrl' in rssEp && rssEp.audioUrl) {
+    episodeEntity['associatedMedia'] = {
+      '@type': 'MediaObject',
+      'contentUrl': rssEp.audioUrl,
+      'encodingFormat': rssEp.audioType || 'audio/mpeg',
+      'name': title,
+    }
+  }
+
+  if (rssEp?.logo) {
+    episodeEntity['image'] = {
+      '@type': 'ImageObject',
+      'url': rssEp.logo.startsWith('http')
+        ? rssEp.logo
+        : `${PODCAST_SITE_URL}${rssEp.logo}`,
+    }
+  }
+
+  if (rssEp && 'transcriptUrl' in rssEp && rssEp.transcriptUrl) {
+    episodeEntity['transcript'] = rssEp.transcriptUrl
+  }
 
   return {
     '@context': 'https://schema.org',
@@ -23,47 +94,29 @@ export function generateEpisodeSchema(episodeId: string, rssEp?: any) {
         '@type': 'WebPage',
         '@id': `${episodeUrl}#webpage`,
         'url': episodeUrl,
-        'name': `${ep.title} | ${siteConfig.podcastName}`,
-        'headline': ep.title,
-        'description': typeof ep.description === 'string' ? ep.description.slice(0, 200) : '',
+        'name': `${title} | ${siteConfig.podcastName}`,
+        'headline': title,
+        'description': truncateToSentence(description),
         'inLanguage': 'en',
-        'isPartOf': { '@id': `${siteUrl}/#website` },
+        'isPartOf': { '@id': `${PODCAST_SITE_URL}/#website` },
+        'breadcrumb': { '@id': `${episodeUrl}#breadcrumb` },
         'speakable': {
           '@type': 'SpeakableSpecification',
-          'name': ['headline', 'description'],
+          'cssSelector': ['h1', '.episode-description'],
         },
       },
-      {
-        '@type': 'PodcastEpisode',
-        '@id': `${episodeUrl}#episode`,
-        'name': ep.title,
-        'description': typeof ep.description === 'string' ? ep.description.slice(0, 200) : '',
-        'url': episodeUrl,
-        'episodeNumber': ep.number ?? ep.id ?? 1,
-        'partOfSeries': { '@id': `${siteUrl}/#podcast` },
-        'productionCompany': { '@id': `${siteUrl}/#org` },
-        ...(ep.audioUrl ? { 'associatedMedia': { '@type': 'MediaObject', 'contentUrl': ep.audioUrl } } : {}),
-        ...(ep.logo ? { 'image': ep.logo } : {}),
-        'speakable': {
-          '@type': 'SpeakableSpecification',
-          'name': ['name', 'description'],
-        },
-      },
-      {
-        '@type': 'PodcastSeries',
-        '@id': `${siteUrl}/#podcast`,
-        'name': siteConfig.podcastName,
-        'url': siteUrl,
-        'inLanguage': 'en',
-      },
-      {
-        '@type': ['LegalService', 'Organization'],
-        '@id': `${siteUrl}/#org`,
-        'name': attorney.firm,
-        'url': contact.website,
-        'telephone': contact.phone,
-        'email': contact.email,
-      },
+      episodeEntity,
+      generatePodcastSeriesEntity(),
+      generateOrganizationEntity(),
+      generateBreadcrumbList(
+        [
+          { name: 'Home', item: `${PODCAST_SITE_URL}/` },
+          { name: 'Episodes', item: `${PODCAST_SITE_URL}/#episodes` },
+          { name: title },
+        ],
+        episodeUrl,
+      ),
+      generateFAQPageEntity(episodeUrl),
     ],
   }
 }

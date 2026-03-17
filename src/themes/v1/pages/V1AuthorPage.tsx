@@ -8,66 +8,40 @@ import Testimonials from '../components/Testimonials'
 import ContactSection from '../components/ContactSection'
 import FAQ from '../components/FAQ'
 import LatestEpisodes from '../components/LatestEpisodes'
-import { authorProfiles, siteConfig, contact, stats, testimonials } from '@/data/siteData'
+import { authorProfiles, siteConfig, contact, testimonials } from '@/data/siteData'
 import { Scale, GraduationCap, Award, Briefcase, Users, ExternalLink, FileText } from 'lucide-react'
 import Link from 'next/link'
-
-const SITE_URL = contact.website
+import {
+  PODCAST_SITE_URL,
+  generateOrganizationEntity,
+  generatePodcastSeriesEntity,
+  generateBreadcrumbList,
+  generateFAQPageEntity,
+} from '@/lib/schema-helpers'
 
 export function generateAuthorSchema(author: typeof authorProfiles[string], slug: string) {
-  const pageUrl = `${SITE_URL}/author/${slug}`
-  const imageUrl = `${SITE_URL}${author.photo}`
+  const pageUrl = `${PODCAST_SITE_URL}/author/${slug}`
+  const imageUrl = `${PODCAST_SITE_URL}${author.photo}`
+
+  // Build PodcastSeries with this author as host
+  const podcastSeries = generatePodcastSeriesEntity()
+  const podcastWithHost = {
+    ...podcastSeries,
+    'host': { '@id': `${pageUrl}#person` },
+  }
 
   return {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'WebSite',
-        '@id': `${SITE_URL}/#website`,
-        'url': SITE_URL,
+        '@id': `${PODCAST_SITE_URL}/#website`,
+        'url': PODCAST_SITE_URL,
         'name': siteConfig.podcastName,
         'inLanguage': 'en',
-        'publisher': { '@id': `${SITE_URL}/#org` },
+        'publisher': { '@id': `${PODCAST_SITE_URL}/#org` },
       },
-      {
-        '@type': ['LegalService', 'Organization'],
-        '@id': `${SITE_URL}/#org`,
-        'name': 'MVP Accident Attorneys',
-        'legalName': 'Sachs Law, APC',
-        'url': 'https://themvp.com',
-        'telephone': '+1-833-687-9467',
-        'email': contact.email,
-        'foundingDate': '2017-08-01',
-        'address': {
-          '@type': 'PostalAddress',
-          'streetAddress': '4 Park Plaza, Suite 850',
-          'addressLocality': 'Irvine',
-          'addressRegion': 'CA',
-          'postalCode': '92614',
-          'addressCountry': 'US',
-        },
-        'aggregateRating': {
-          '@type': 'AggregateRating',
-          'ratingValue': String(stats.rating),
-          'ratingCount': String(stats.reviewCount),
-          'bestRating': '5',
-          'worstRating': '1',
-        },
-        'sameAs': [
-          'https://www.linkedin.com/company/mvp-accident-attorneys',
-          'https://www.facebook.com/MVPAccidentAttorneys',
-          'https://www.instagram.com/mvpaccidentattorneys/',
-          'https://x.com/mvpaccidentatty',
-          'https://www.youtube.com/@mvpaccidentattorneys',
-        ],
-        'knowsAbout': [
-          'Personal Injury Law',
-          'Car Accident Claims',
-          'Wrongful Death',
-          'Premises Liability',
-          'Insurance Negotiations',
-        ],
-      },
+      generateOrganizationEntity(),
       {
         '@type': ['WebPage', 'ProfilePage'],
         '@id': `${pageUrl}#webpage`,
@@ -75,7 +49,7 @@ export function generateAuthorSchema(author: typeof authorProfiles[string], slug
         'name': `${author.name} — ${author.title}`,
         'headline': `${author.name} — Personal Injury Attorney`,
         'inLanguage': 'en',
-        'isPartOf': { '@id': `${SITE_URL}/#website` },
+        'isPartOf': { '@id': `${PODCAST_SITE_URL}/#website` },
         'about': { '@id': `${pageUrl}#person` },
         'mainEntity': { '@id': `${pageUrl}#person` },
         'primaryImageOfPage': {
@@ -86,18 +60,17 @@ export function generateAuthorSchema(author: typeof authorProfiles[string], slug
         'breadcrumb': { '@id': `${pageUrl}#breadcrumb` },
         'speakable': {
           '@type': 'SpeakableSpecification',
-          'name': ['headline', 'description'],
+          'cssSelector': ['h1', '.author-bio'],
         },
       },
-      {
-        '@type': 'BreadcrumbList',
-        '@id': `${pageUrl}#breadcrumb`,
-        'itemListElement': [
-          { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': `${SITE_URL}/` },
-          { '@type': 'ListItem', 'position': 2, 'name': 'Team', 'item': `${SITE_URL}/#about` },
-          { '@type': 'ListItem', 'position': 3, 'name': author.name, 'item': pageUrl },
+      generateBreadcrumbList(
+        [
+          { name: 'Home', item: `${PODCAST_SITE_URL}/` },
+          { name: 'Team', item: `${PODCAST_SITE_URL}/#about` },
+          { name: author.name },
         ],
-      },
+        pageUrl,
+      ),
       {
         '@type': 'Person',
         '@id': `${pageUrl}#person`,
@@ -112,7 +85,7 @@ export function generateAuthorSchema(author: typeof authorProfiles[string], slug
           'url': imageUrl,
         },
         'url': pageUrl,
-        'worksFor': { '@id': `${SITE_URL}/#org` },
+        'worksFor': { '@id': `${PODCAST_SITE_URL}/#org` },
         'alumniOf': author.education.map(edu => ({
           '@type': 'CollegeOrUniversity',
           'name': edu.school,
@@ -156,19 +129,10 @@ export function generateAuthorSchema(author: typeof authorProfiles[string], slug
         'roleName': author.role,
         'startDate': '2017-08-01',
         'member': { '@id': `${pageUrl}#person` },
-        'organization': { '@id': `${SITE_URL}/#org` },
+        'organization': { '@id': `${PODCAST_SITE_URL}/#org` },
       },
-      {
-        '@type': 'PodcastSeries',
-        '@id': `${SITE_URL}/#podcast`,
-        'name': siteConfig.podcastName,
-        'url': SITE_URL,
-        'webFeed': SITE_URL,
-        'host': { '@id': `${pageUrl}#person` },
-        'productionCompany': { '@id': `${SITE_URL}/#org` },
-        'inLanguage': 'en',
-        'genre': ['Law', 'Personal Injury', 'Legal Education'],
-      },
+      podcastWithHost,
+      generateFAQPageEntity(pageUrl),
     ],
   }
 }

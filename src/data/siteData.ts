@@ -9,6 +9,10 @@
 export const siteConfig = {
   podcastName: "The MVP of Personal Injury Law w. Brett & Chelsee Sachs",
   tagline: "NEW EPISODE",
+  /** Canonical URL where this podcast site is deployed */
+  podcastUrl: "https://mvppersonalinjury.com",
+  /** RSS feed URL for the podcast (used in schema webFeed and <link> tag) */
+  rssFeedUrl: process.env.PODCAST_RSS_URL || "",
   platformLinks: {
     apple: "https://www.youtube.com/@TheMVPPersonalInjuryLawPodcast",
     spotify: "https://open.spotify.com/show/0mXB4YhNdQVeFZb5Orr0pD",
