@@ -2,9 +2,11 @@ import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { formConfig, attorney, siteConfig } from '@/data/siteData'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'leads@caseengine.com'
+
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY)
+}
 
 interface ContactPayload {
   name?: string
@@ -93,7 +95,7 @@ export async function POST(request: NextRequest) {
       </div>
     `
 
-    await resend.emails.send({
+    await getResend().emails.send({
       from: `${firmName} Leads <${FROM_EMAIL}>`,
       to: notifyEmails,
       replyTo: email,
