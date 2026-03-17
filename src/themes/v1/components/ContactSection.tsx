@@ -53,6 +53,7 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="py-24 bg-[#f1f2f4]">
+      <div id="form" />
       <div className="max-w-container mx-auto px-6 md:px-12">
         <div className="bg-white rounded-[12px] shadow-sm overflow-hidden flex flex-col md:flex-row">
           {/* Contact Info */}

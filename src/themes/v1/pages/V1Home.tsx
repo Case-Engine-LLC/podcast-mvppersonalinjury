@@ -13,6 +13,7 @@ import Testimonials from '../components/Testimonials'
 import FAQ from '../components/FAQ'
 import TopicalEntryGrid from '../components/TopicalEntryGrid'
 import Footer from '../components/Footer'
+import ContactSection from '../components/ContactSection'
 import { generateHomeSchema } from '@/lib/schema-helpers'
 import type { Episode } from '@/lib/data'
 
@@ -42,6 +43,7 @@ const V1Home = ({ episodes }: V1HomeProps) => {
         <PodcastSubscribeCTA />
         <FAQ />
         <TopicalEntryGrid />
+        <ContactSection />
       </main>
 
       <Footer episodes={episodes} />
