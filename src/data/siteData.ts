@@ -44,10 +44,54 @@ export const attorney = {
 }
 
 export const contact = {
-  address: "California",
-  phone: "833-MVP-WINS",
+  address: "Irvine, California",
+  phone: "(833) 687-9467",
   email: "contact@themvp.com",
   website: "https://themvp.com",
+}
+
+export const compliance: {
+  jurisdiction: string
+  firm: string
+  responsibleAttorneys: { name: string; barNumber: string }[]
+  disclaimers: { kind: string; text: string }[]
+} = {
+  jurisdiction: "California",
+  firm: "MVP Accident Attorneys",
+  responsibleAttorneys: [
+    { name: "Brett Sachs", barNumber: "297504" },
+    { name: "Chelsee Sachs", barNumber: "297511" },
+  ],
+  disclaimers: [
+    {
+      kind: "attorney_advertising",
+      text: "This podcast and website constitute attorney advertising under the California Rules of Professional Conduct.",
+    },
+    {
+      kind: "no_ac_relationship",
+      text: "Viewing this site or listening to the podcast does not create an attorney-client relationship. An attorney-client relationship with MVP Accident Attorneys is formed only through a signed written agreement.",
+    },
+    {
+      kind: "prior_results",
+      text: "Prior results do not guarantee a similar outcome. Every case is different and must be evaluated on its own facts.",
+    },
+    {
+      kind: "testimonial",
+      text: "Any testimonial or endorsement on this site is from a verified client or peer, shared with consent, and does not guarantee that a prospective client will receive the same result.",
+    },
+    {
+      kind: "jurisdictional",
+      text: "MVP Accident Attorneys is licensed to practice law in the State of California. Information on this site addresses California law and should not be relied upon as legal advice in any other jurisdiction.",
+    },
+    {
+      kind: "fee_structure",
+      text: "MVP Accident Attorneys represents personal injury clients on a contingency-fee basis. No attorney's fees are charged unless a recovery is obtained. Clients may be responsible for case-related costs as set out in a written fee agreement.",
+    },
+    {
+      kind: "podcast_content",
+      text: "The MVP of Personal Injury Law podcast is for general informational and educational purposes only. Nothing discussed on the show constitutes legal advice. Listeners should consult a qualified attorney about their specific situation.",
+    },
+  ],
 }
 
 export const formConfig = {
@@ -489,11 +533,17 @@ export const stats = {
   ratingVerbalization: "Based on verified client reviews across Google and legal review platforms",
 }
 
-export const navigation = {
+export const navigation: {
+  logo: string
+  items: { name: string; href: string; external?: boolean }[]
+  ctaText: string
+  ctaHref: string
+} = {
   logo: "MVP Accident Attorneys",
   items: [
     { name: 'Episodes', href: '#episodes' },
     { name: 'About', href: '#about' },
+    { name: "Brett's Bio", href: 'https://themvp.com/attorneys/brett-sachs/', external: true },
     { name: 'Contact', href: '#contact' },
   ],
   ctaText: 'Subscribe',
@@ -502,7 +552,7 @@ export const navigation = {
 
 export const footer = {
   logo: "MVP Accident Attorneys",
-  description: "The You Interview features in-depth conversations with California's leading personal injury attorneys. Each episode explores their journey, philosophy, and insights on fighting for accident victims.",
+  description: "The MVP of Personal Injury Law is hosted by Brett Sachs, founder of MVP Accident Attorneys. California-specific personal injury education for Irvine, Riverside, Sacramento, and surrounding service areas — delivered in plain English by a managing partner running the firm in real time.",
   copyright: "MVP Accident Attorneys",
   socialLinks: {
     twitter: "https://twitter.com/mvpaccident",
@@ -531,13 +581,13 @@ export const awards = [
 
 // About section content
 export const about = {
-  title: "Who Runs The You Interview?",
-  description: "The You Interview goes beyond the billboard. Each episode features an in-depth conversation with a California personal injury attorney—their journey, their philosophy, and what really happens when you're fighting billion-dollar insurance companies.",
+  title: "About The MVP of Personal Injury Law",
+  description: "The MVP of Personal Injury Law is hosted by Brett Sachs, founder and principal attorney of MVP Accident Attorneys in Irvine, California. Each episode delivers California-specific personal injury education for Irvine, Riverside, Sacramento, and the surrounding service areas — delivered by a managing partner who runs the firm in real time and walks listeners through what just happened to them the same way he would in a free consultation. No textbook lectures, no billboard energy — just direct, plainspoken answers from someone who has actually settled the case.",
   highlights: [
-    "Unscripted conversations about the realities of personal injury law",
-    "Learn what to look for when choosing an attorney after an accident",
-    "Hear real stories from attorneys who fight insurance companies daily",
-    "Understand how technology is changing legal representation",
+    "California-specific personal injury law: statutes, deadlines, and insurance tactics that apply to Irvine, Riverside, Sacramento, and Los Angeles",
+    "Plain-English breakdowns from an operator who runs the firm day-to-day, not a lecture-circuit attorney",
+    "Practical takeaways: what to photograph, what not to say to an adjuster, when to see a doctor, and which deadlines matter",
+    "Honest conversations about case value, timelines, and what makes a case big versus small — without inflated expectations",
   ],
   showReadMore: false, // Controls whether Read More button appears
 }

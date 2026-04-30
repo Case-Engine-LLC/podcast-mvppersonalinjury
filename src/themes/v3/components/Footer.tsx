@@ -62,9 +62,27 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-bold mb-6">Resources</h4>
             <ul className="space-y-4 text-sm text-slate-400">
+              <li>
+                <a
+                  href="https://themvp.com/attorneys/brett-sachs/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-amber-500 transition-colors"
+                >
+                  Brett&apos;s Attorney Bio
+                </a>
+              </li>
+              <li>
+                <a
+                  href={contact.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-amber-500 transition-colors"
+                >
+                  MVP Firm Website
+                </a>
+              </li>
               <li><a href="#car-accident-attorney" className="hover:text-amber-500 transition-colors">Car Accident Guide</a></li>
-              <li><a href="#" className="hover:text-amber-500 transition-colors">Legal Terms Glossary</a></li>
-              <li><a href="#" className="hover:text-amber-500 transition-colors">Client Reviews</a></li>
               <li><a href={`tel:${contact.phone}`} className="hover:text-amber-500 transition-colors">Contact Attorneys</a></li>
             </ul>
           </div>
