@@ -1,9 +1,10 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 import '@/themes/v1/variables.css'
-import { siteConfig } from '@/data/siteData'
+import { siteConfig, about, attorney } from '@/data/siteData'
+import SchemaJsonLd from '@/components/SchemaJsonLd'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -11,39 +12,92 @@ const inter = Inter({
   weight: ['400', '500', '600', '700', '800'],
 })
 
+const SITE_URL = siteConfig.podcastUrl
+const TITLE = siteConfig.podcastName
+const DESCRIPTION = about.description
+
 export const metadata: Metadata = {
-  title: 'The MVP of Personal Injury Law w. Brett & Chelsee Sachs',
-  description: 'Brett Sachs founded MVP Accident Attorneys to fight for injured Californians against billion-dollar insurance companies. Listen to in-depth conversations about personal injury law, car accidents, wrongful death, and your rights after an accident.',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: TITLE,
+    template: `%s | ${TITLE}`,
+  },
+  description: DESCRIPTION,
+  applicationName: TITLE,
+  authors: [{ name: attorney.name, url: 'https://themvp.com' }],
+  keywords: [
+    attorney.name,
+    attorney.firm,
+    'MVP Accident Attorneys',
+    'Brett Sachs',
+    'California personal injury podcast',
+    'Orange County accident attorney',
+    'Irvine personal injury lawyer',
+    'Riverside personal injury lawyer',
+    'Sacramento personal injury lawyer',
+    'Los Angeles personal injury attorney',
+    'Irvine Riverside Sacramento personal injury',
+    'car accident attorney California',
+    'wrongful death lawyer California',
+  ],
+  category: 'Legal Podcast',
+  alternates: {
+    canonical: '/',
+    ...(siteConfig.rssFeedUrl
+      ? {
+          types: {
+            'application/rss+xml': siteConfig.rssFeedUrl,
+          },
+        }
+      : {}),
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
+  },
   openGraph: {
-    title: 'The MVP of Personal Injury Law w. Brett & Chelsee Sachs',
-    description: 'Brett Sachs founded MVP Accident Attorneys to fight for injured Californians against billion-dollar insurance companies. Listen to in-depth conversations about personal injury law.',
-    url: 'https://mvppersonalinjury.com',
-    siteName: 'MVP Personal Injury Law Podcast',
     type: 'website',
+    siteName: TITLE,
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
+    locale: 'en_US',
     images: [
       {
-        url: 'https://mvppersonalinjury.com/Hero.jpg',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'The MVP of Personal Injury Law Podcast with Brett & Chelsee Sachs',
+        alt: `${TITLE} — hosted by ${attorney.name} of ${attorney.firm}`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'The MVP of Personal Injury Law w. Brett & Chelsee Sachs',
-    description: 'In-depth conversations about personal injury law, car accidents, and your rights. Hosted by Brett & Chelsee Sachs of MVP Accident Attorneys.',
-    images: ['https://mvppersonalinjury.com/Hero.jpg'],
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ['/opengraph-image'],
   },
-  ...(siteConfig.rssFeedUrl
-    ? {
-        alternates: {
-          types: {
-            'application/rss+xml': siteConfig.rssFeedUrl,
-          },
-        },
-      }
-    : {}),
+  icons: {
+    icon: [{ url: '/icon', type: 'image/png' }],
+    apple: [{ url: '/apple-icon', sizes: '180x180', type: 'image/png' }],
+  },
+  manifest: '/manifest.webmanifest',
+}
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#070519' },
+    { media: '(prefers-color-scheme: dark)', color: '#070519' },
+  ],
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({
@@ -53,6 +107,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <SchemaJsonLd />
+      </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         {children}
         <Script id="marker-io" strategy="afterInteractive">

@@ -1,0 +1,21 @@
+{
+  "name": "The MVP of Personal Injury Law w. Brett & Chelsee Sachs",
+  "short_name": "MVP Personal Injury",
+  "description": "California personal injury podcast hosted by Brett Sachs of MVP Accident Attorneys — Irvine, Riverside, Sacramento, Los Angeles.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070519",
+  "theme_color": "#070519",
+  "icons": [
+    {
+      "src": "/icon",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-icon",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
