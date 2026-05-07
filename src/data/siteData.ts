@@ -21,6 +21,7 @@ export const siteConfig = {
     text: "Free Consultation",
     href: "#form",
   },
+  firmUrl: "https://themvp.com",
 }
 
 export const episode = {
@@ -29,6 +30,7 @@ export const episode = {
   date: "01.28.26",
   duration: "01:06:33",
   description: "Brett Sachs founded MVP Accident Attorneys to fight insurance companies worth $900 billion annually. Brett Sachs moved from Indiana to California after graduating cum laude from Michigan State Law. His firm handles car accidents, wrongful death, and pool drowning cases. MVP treats each client like family, not a case number.",
+  youtubeUrl: "",
 }
 
 export const attorney = {
@@ -95,11 +97,11 @@ export const compliance: {
 }
 
 export const formConfig = {
-  // Webhook endpoint — receives POST with JSON body
+  // Webhook endpoint, receives POST with JSON body
   webhookUrl: process.env.NEXT_PUBLIC_FORM_WEBHOOK_URL || "",
-  // Notification emails — comma-separated, sent by webhook handler
+  // Notification emails, comma-separated, sent by webhook handler
   notifyEmails: process.env.NEXT_PUBLIC_FORM_NOTIFY_EMAILS || "contact@themvp.com",
-  // Form fields — configurable per client
+  // Form fields, configurable per client
   fields: [
     { name: "name", label: "NAME", type: "text" as const, placeholder: "Enter Your Name", required: true, halfWidth: true },
     { name: "email", label: "EMAIL", type: "email" as const, placeholder: "Enter Your Email", required: true, halfWidth: true },
@@ -120,7 +122,7 @@ export const formConfig = {
   submitText: "Send Message",
   successMessage: "Thank you! Your message has been sent. We'll get back to you within 4 hours during business days.",
   errorMessage: "Something went wrong. Please call us directly at 833-MVP-WINS.",
-  // Source tracking — included in webhook payload
+  // Source tracking, included in webhook payload
   source: "podcast-website",
   campaign: "the-you-interview",
 }
@@ -309,7 +311,7 @@ export const faqGroups = [
   },
   {
     label: "Car Accident Attorney",
-    description: "How the podcast covers car accident cases — approximately 40% of The You Interview episodes focus on car accident topics",
+    description: "How the podcast covers car accident cases, approximately 40% of The You Interview episodes focus on car accident topics",
     questions: [
       {
         question: "How does The You Interview cover car accident injury cases?",
@@ -365,7 +367,7 @@ export const faqGroups = [
   },
   {
     label: "Personal Injury Attorney",
-    description: "How the podcast covers personal injury representation — approximately 50% of The You Interview episodes focus on personal injury topics",
+    description: "How the podcast covers personal injury representation, approximately 50% of The You Interview episodes focus on personal injury topics",
     questions: [
       {
         question: "How does The You Interview cover different types of personal injury cases?",
@@ -547,12 +549,12 @@ export const navigation: {
     { name: 'Contact', href: '#contact' },
   ],
   ctaText: 'Subscribe',
-  ctaHref: '#subscribe',
+  ctaHref: '#listen',
 }
 
 export const footer = {
   logo: "MVP Accident Attorneys",
-  description: "The MVP of Personal Injury Law is hosted by Brett Sachs, founder of MVP Accident Attorneys. California-specific personal injury education for Irvine, Riverside, Sacramento, and surrounding service areas — delivered in plain English by a managing partner running the firm in real time.",
+  description: "The MVP of Personal Injury Law is hosted by Brett Sachs, founder of MVP Accident Attorneys. California-specific personal injury education for Irvine, Riverside, Sacramento, and surrounding service areas, delivered in plain English by a managing partner running the firm in real time.",
   copyright: "MVP Accident Attorneys",
   socialLinks: {
     twitter: "https://twitter.com/mvpaccident",
@@ -582,12 +584,12 @@ export const awards = [
 // About section content
 export const about = {
   title: "About The MVP of Personal Injury Law",
-  description: "The MVP of Personal Injury Law is hosted by Brett Sachs, founder and principal attorney of MVP Accident Attorneys in Irvine, California. Each episode delivers California-specific personal injury education for Irvine, Riverside, Sacramento, and the surrounding service areas — delivered by a managing partner who runs the firm in real time and walks listeners through what just happened to them the same way he would in a free consultation. No textbook lectures, no billboard energy — just direct, plainspoken answers from someone who has actually settled the case.",
+  description: "The MVP of Personal Injury Law is hosted by Brett Sachs, founder and principal attorney of MVP Accident Attorneys in Irvine, California. Each episode delivers California-specific personal injury education for Irvine, Riverside, Sacramento, and the surrounding service areas, delivered by a managing partner who runs the firm in real time and walks listeners through what just happened to them the same way he would in a free consultation. No textbook lectures, no billboard energy, just direct, plainspoken answers from someone who has actually settled the case.",
   highlights: [
     "California-specific personal injury law: statutes, deadlines, and insurance tactics that apply to Irvine, Riverside, Sacramento, and Los Angeles",
     "Plain-English breakdowns from an operator who runs the firm day-to-day, not a lecture-circuit attorney",
     "Practical takeaways: what to photograph, what not to say to an adjuster, when to see a doctor, and which deadlines matter",
-    "Honest conversations about case value, timelines, and what makes a case big versus small — without inflated expectations",
+    "Honest conversations about case value, timelines, and what makes a case big versus small, without inflated expectations",
   ],
   showReadMore: false, // Controls whether Read More button appears
 }
@@ -620,6 +622,7 @@ export const episodes = [
     concepts: ["Client-first approach", "Insurance industry", "Tech-forward firm", "Contingency fees"],
     chapters: ["Why Personal Injury Law", "From Midwest to California", "Fighting Insurance Giants"],
     logo: "/episode-art-1.jpg",
+    youtubeUrl: "",
   },
 ]
 
@@ -695,14 +698,14 @@ export const authorProfiles: Record<string, {
     ],
     bio: [
       "Brett Sachs founded MVP Accident Attorneys to fight for injured Californians against insurance companies with $900 billion in annual revenue. He graduated cum laude from Michigan State University College of Law in 2013, where he represented over 50 prisoners in civil rights cases through the MSU Legal Clinic and received an award for outstanding service.",
-      "Before founding MVP, Brett gained experience on both sides of personal injury law — first at a large plaintiff firm in Newport Beach, then at an insurance defense firm representing major medical providers and insurance carriers. This dual perspective gives him a unique advantage in anticipating and countering defense strategies.",
+      "Before founding MVP, Brett gained experience on both sides of personal injury law, first at a large plaintiff firm in Newport Beach, then at an insurance defense firm representing major medical providers and insurance carriers. This dual perspective gives him a unique advantage in anticipating and countering defense strategies.",
       "Brett moved from his hometown of Carmel, Indiana to Southern California and launched Sachs Law, APC in August 2017. He sold his car and restructured his household budget to fund the firm's startup. With the unwavering support of his wife Chelsee, he grew the practice from a solo operation to a 50-person firm now handling over 200 cases annually.",
       "MVP Accident Attorneys is the official law firm of the LA Galaxy. Brett serves on the board of the Orange County Trial Lawyers Association and the executive board of OCTLA Charities, which has donated over $200,000 to the Orange County community since 2021.",
     ],
     memberships: [
       "Consumer Attorneys Association of Los Angeles (CAALA)",
-      "Orange County Trial Lawyers Association (OCTLA) — Board Member",
-      "OCTLA Charities — Executive Board Member",
+      "Orange County Trial Lawyers Association (OCTLA), Board Member",
+      "OCTLA Charities, Executive Board Member",
       "American Bar Association (ABA)",
       "Orange County Bar Association (OCBA)",
     ],
@@ -729,7 +732,7 @@ export const authorProfiles: Record<string, {
       { jurisdiction: "Texas State Bar", year: "2023" },
     ],
     awards: [
-      { name: "Super Lawyers", years: "2025–2026", description: "Recognized as a Super Lawyer — an honor given to only the top 5% of attorneys in California." },
+      { name: "Super Lawyers", years: "2025–2026", description: "Recognized as a Super Lawyer, an honor given to only the top 5% of attorneys in California." },
       { name: "Super Lawyers Rising Star", years: "2022–2024", description: "An honor given to only 2.5% of eligible attorneys in California for three consecutive years." },
     ],
     practiceAreas: [
@@ -745,11 +748,11 @@ export const authorProfiles: Record<string, {
     bio: [
       "Chelsee Sachs serves as Managing Partner of MVP Accident Attorneys, where she co-leads the firm alongside her husband Brett. She graduated from Michigan State University College of Law in 2013 and earned a double major in Political Science and History from Indiana University Bloomington in 2010.",
       "Chelsee is a former defense attorney turned plaintiff advocate. She began her career at Bremer Whyte Brown & O'Meara, an AV-rated defense firm with over 180 attorneys, where she gained firsthand knowledge of the tactics insurance companies use to minimize claims. She then joined Carpenter Zuckerman & Rowley, one of California's largest plaintiff trial firms, where she co-managed their Irvine office.",
-      "In August 2017, Chelsee and Brett co-founded Sachs Law, APC — later rebranded as MVP Accident Attorneys. To fund the firm's launch, Chelsee supported the household on her salary alone for an entire year while Brett saved his full income as startup capital. Her sacrifice and partnership were essential to building the firm into the 50-person practice it is today.",
+      "In August 2017, Chelsee and Brett co-founded Sachs Law, APC, later rebranded as MVP Accident Attorneys. To fund the firm's launch, Chelsee supported the household on her salary alone for an entire year while Brett saved his full income as startup capital. Her sacrifice and partnership were essential to building the firm into the 50-person practice it is today.",
       "Chelsee has helped clients recover more than $15 million in favorable verdicts and settlements. She is licensed in both California and Texas, serves on the executive board of Orange County Trial Lawyers Charities, and has published in Advocate Magazine on premises liability defense strategies. She was also a speaker at the Law-Di-Gras legal conference.",
     ],
     memberships: [
-      "Orange County Trial Lawyers Charities — Executive Board Member",
+      "Orange County Trial Lawyers Charities, Executive Board Member",
       "Consumer Attorneys Association of Los Angeles (CAALA)",
       "Orange County Bar Association (OCBA)",
     ],
@@ -769,28 +772,28 @@ export const topicalEntryGrid = {
     {
       label: "Car Accident",
       links: [
-        { title: "Car Accident Attorney", description: "Find experienced car accident lawyers who fight for maximum compensation", href: "#car-accident-attorney" },
-        { title: "What To Do After a Car Accident", description: "Step-by-step guide for protecting your rights after a collision", href: "#after-car-accident" },
-        { title: "Car Accident Settlement Calculator", description: "Estimate the value of your car accident injury claim", href: "#settlement-calculator" },
-        { title: "Dealing With Insurance Companies", description: "How to handle insurance adjusters and protect your claim", href: "#insurance-companies" },
+        { title: "Car Accident Attorney", description: "Find experienced car accident lawyers who fight for maximum compensation", href: "https://themvp.com/car-accident-lawyer/" },
+        { title: "What To Do After a Car Accident", description: "Step-by-step guide for protecting your rights after a collision", href: "https://themvp.com/what-does-a-car-accident-attorney-do/" },
+        { title: "Self-Driving Car Accident Cases", description: "Understanding liability in autonomous vehicle collisions in California", href: "https://themvp.com/car-accident-lawyer/self-driving-car/" },
+        { title: "Distracted Driving Accidents", description: "How to handle insurance claims after a distracted-driver crash", href: "https://themvp.com/distracted-driving-accident-lawyer/" },
       ],
     },
     {
       label: "Personal Injury",
       links: [
-        { title: "Personal Injury Attorney", description: "Experienced trial lawyers fighting for accident victims in California", href: "#personal-injury-attorney" },
-        { title: "Types of Personal Injury Cases", description: "From slip and falls to wrongful death — understand your case type", href: "#case-types" },
-        { title: "Personal Injury Claim Process", description: "The complete timeline from injury to settlement or verdict", href: "#claim-process" },
-        { title: "Maximizing Your Settlement", description: "Proven strategies to increase your personal injury compensation", href: "#maximize-settlement" },
+        { title: "Sacramento Personal Injury Attorney", description: "Experienced trial lawyers fighting for accident victims in California", href: "https://themvp.com/sacramento/personal-injury-lawyer/" },
+        { title: "What a Personal Injury Attorney Does", description: "From slip and falls to wrongful death, understand your case type", href: "https://themvp.com/what-does-a-personal-injury-attorney-do/" },
+        { title: "Catastrophic Injury Lawyer", description: "Representation for life-changing injuries with long-term impact", href: "https://themvp.com/catastrophic-injury-lawyer/" },
+        { title: "Wrongful Death Claims", description: "Compensation for families who lost a loved one to negligence", href: "https://themvp.com/california/wrongful-death-lawyer/" },
       ],
     },
     {
-      label: "Laws",
+      label: "Resources",
       links: [
-        { title: "California Personal Injury Laws", description: "Key statutes and legal standards that govern injury claims", href: "#california-laws" },
-        { title: "Statute of Limitations", description: "Critical filing deadlines for California injury cases", href: "#statute-of-limitations" },
-        { title: "Comparative Fault in California", description: "How shared fault affects your injury compensation", href: "#comparative-fault" },
-        { title: "Workers Compensation vs Personal Injury", description: "Understanding which claim applies to your workplace injury", href: "#workers-comp" },
+        { title: "About MVP Accident Attorneys", description: "Meet the team and learn what makes MVP different", href: "https://themvp.com/about-us/" },
+        { title: "Free Case Consultation", description: "Schedule a free, no-obligation consultation with the firm", href: "https://themvp.com/contact-us/" },
+        { title: "Frequently Asked Questions", description: "Answers to the most common personal injury questions in California", href: "https://themvp.com/faq/" },
+        { title: "Client Testimonials", description: "Read real reviews from past MVP clients across California", href: "https://themvp.com/testimonials/" },
       ],
     },
   ],
@@ -801,7 +804,7 @@ export const trustBadges = [
   {
     id: 1,
     title: "Super Lawyers",
-    tooltip: "Brett Sachs is recognized as a Super Lawyers Rising Star—an honor given to only 2.5% of California attorneys.",
+    tooltip: "Brett Sachs is recognized as a Super Lawyers Rising Star,an honor given to only 2.5% of California attorneys.",
     badge: "/badges/Super-Lawyers_converted.avif",
     href: "#super-lawyers",
   },
