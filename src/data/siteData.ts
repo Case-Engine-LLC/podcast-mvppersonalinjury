@@ -545,8 +545,8 @@ export const navigation: {
   items: [
     { name: 'Episodes', href: '#episodes' },
     { name: 'About', href: '#about' },
-    { name: "Brett's Bio", href: 'https://themvp.com/attorneys/brett-sachs/', external: true },
-    { name: "Chelsee's Bio", href: 'https://themvp.com/attorneys/chelsee-sachs/', external: true },
+    { name: "Meet Brett Sachs", href: 'https://themvp.com/attorneys/brett-sachs/', external: true },
+    { name: "Meet Chelsee Sachs", href: 'https://themvp.com/attorneys/chelsee-sachs/', external: true },
     { name: 'Contact', href: '#contact' },
   ],
   ctaText: 'Subscribe',
