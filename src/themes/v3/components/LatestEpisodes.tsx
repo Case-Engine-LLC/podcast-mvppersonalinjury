@@ -37,6 +37,7 @@ const LatestEpisodes = () => {
       concepts: [],
       chapters: [],
       logo: '',
+      youtubeUrl: '',
     })
   }
 

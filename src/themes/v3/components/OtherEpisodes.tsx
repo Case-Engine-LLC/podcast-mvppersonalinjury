@@ -28,6 +28,7 @@ const OtherEpisodes = ({ currentEpisodeId }: OtherEpisodesProps) => {
       concepts: [],
       chapters: [],
       logo: '',
+      youtubeUrl: '',
     })
   }
 
