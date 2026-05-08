@@ -44,18 +44,24 @@ const TopicalEntryGrid = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {topicalEntryGrid.tabs[activeTab].links.map((link, index) => {
             const isExternal = /^https?:\/\//.test(link.href)
+            const linkImage = (link as { image?: string }).image
             const cardClass = "bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all group flex flex-col md:flex-row"
             const inner = (
               <>
-                {/* Image Placeholder - Alternates left/right on desktop */}
-                <div className={`w-full md:w-1/3 bg-gray-400 flex-shrink-0 ${
+                {/* Topical thumbnail - Alternates left/right on desktop */}
+                <div className={`w-full md:w-1/3 bg-[#FFF6E0] flex-shrink-0 ${
                   index % 2 === 1 ? 'md:order-2' : ''
                 }`}>
-                  <div className="w-full h-48 md:h-full bg-gray-400 flex items-center justify-center">
-                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="25" cy="20" r="6" stroke="white" strokeWidth="2" strokeOpacity="0.4"/>
-                      <path d="M10 50 L25 35 L40 45 L50 30" stroke="white" strokeWidth="2" strokeLinecap="round" strokeOpacity="0.4"/>
-                    </svg>
+                  <div className="w-full h-48 md:h-full bg-[#FFF6E0] flex items-center justify-center p-8">
+                    {linkImage ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={linkImage} alt="" aria-hidden="true" className="w-20 h-20 md:w-24 md:h-24" />
+                    ) : (
+                      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="25" cy="20" r="6" stroke="white" strokeWidth="2" strokeOpacity="0.4"/>
+                        <path d="M10 50 L25 35 L40 45 L50 30" stroke="white" strokeWidth="2" strokeLinecap="round" strokeOpacity="0.4"/>
+                      </svg>
+                    )}
                   </div>
                 </div>
 
