@@ -19,7 +19,7 @@ export const siteConfig = {
   },
   formCTA: {
     text: "Free Consultation",
-    href: "#form",
+    href: "https://themvp.com/contact-us/",
   },
   firmUrl: "https://themvp.com",
 }
@@ -547,7 +547,7 @@ export const navigation: {
     { name: 'About', href: '#about' },
     { name: "Meet Brett Sachs", href: 'https://themvp.com/attorneys/brett-sachs/', external: true },
     { name: "Meet Chelsee Sachs", href: 'https://themvp.com/attorneys/chelsee-sachs/', external: true },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Contact', href: 'https://themvp.com/contact-us/', external: true },
   ],
   ctaText: 'Subscribe',
   ctaHref: '#listen',
