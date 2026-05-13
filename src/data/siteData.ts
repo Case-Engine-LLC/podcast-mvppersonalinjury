@@ -12,7 +12,7 @@ export const siteConfig = {
   /** Canonical URL where this podcast site is deployed */
   podcastUrl: "https://mvppersonalinjury.com",
   /** RSS feed URL for the podcast (used in schema webFeed and <link> tag) */
-  rssFeedUrl: process.env.PODCAST_RSS_URL || "",
+  rssFeedUrl: process.env.PODCAST_RSS_URL || "https://rss2.flightcast.com/oe6ggnwuiesusp5cxpixx2bk.xml",
   platformLinks: {
     apple: "https://www.youtube.com/@TheMVPPersonalInjuryLawPodcast",
     spotify: "https://open.spotify.com/show/0mXB4YhNdQVeFZb5Orr0pD",
@@ -558,11 +558,10 @@ export const footer = {
   description: "The MVP of Personal Injury Law is hosted by Brett Sachs, founder of MVP Accident Attorneys. California-specific personal injury education for Irvine, Riverside, Sacramento, and surrounding service areas, delivered in plain English by a managing partner running the firm in real time.",
   copyright: "MVP Accident Attorneys",
   socialLinks: {
-    twitter: "https://twitter.com/mvpaccident",
-    linkedin: "https://linkedin.com/company/mvp-accident-attorneys",
-    facebook: "https://facebook.com/mvpaccidentattorneys",
-    instagram: "https://instagram.com/mvpaccidentattorneys",
-    youtube: "https://www.youtube.com/@TheMVPPersonalInjuryLawPodcast",
+      "facebook": "https://www.facebook.com/TheMVPLawyer",
+      "instagram": "https://www.instagram.com/mvpaccidentattorneys/",
+      "linkedin": "https://www.linkedin.com/company/mvp-accident-attorneys/",
+      "twitter": "https://x.com/MVPAccidentAtty"
   },
 }
 
