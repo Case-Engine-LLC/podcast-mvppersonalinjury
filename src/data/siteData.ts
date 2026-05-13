@@ -557,12 +557,14 @@ export const footer = {
   logo: "MVP Accident Attorneys",
   description: "The MVP of Personal Injury Law is hosted by Brett Sachs, founder of MVP Accident Attorneys. California-specific personal injury education for Irvine, Riverside, Sacramento, and surrounding service areas, delivered in plain English by a managing partner running the firm in real time.",
   copyright: "MVP Accident Attorneys",
-  socialLinks: {
-      "facebook": "https://www.facebook.com/TheMVPLawyer",
-      "instagram": "https://www.instagram.com/mvpaccidentattorneys/",
-      "linkedin": "https://www.linkedin.com/company/mvp-accident-attorneys/",
-      "twitter": "https://x.com/MVPAccidentAtty"
-  },
+  "socialLinks": {
+    "facebook": "https://www.facebook.com/TheMVPLawyer",
+    "instagram": "https://www.instagram.com/mvpaccidentattorneys/",
+    "linkedin": "https://www.linkedin.com/company/mvp-accident-attorneys/",
+    "twitter": "https://x.com/MVPAccidentAtty",
+    "youtube": "",
+    "tiktok": ""
+  }
 }
 
 // Awards/Trust badges from transcript
