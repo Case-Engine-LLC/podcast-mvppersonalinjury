@@ -26,6 +26,7 @@ export const siteConfig = {
 
 export const episode = {
   number: 1,
+  slug: "brett-sachs-why-mvp-puts-clients-first",
   title: "The YOU Interview",
   date: "01.28.26",
   duration: "01:06:33",

@@ -16,6 +16,7 @@ const OtherEpisodes = ({ currentEpisodeId }: OtherEpisodesProps) => {
   while (displayEpisodes.length < 3) {
     displayEpisodes.push({
       id: -(displayEpisodes.length + 1),
+      slug: '',
       number: displayEpisodes.length + 2,
       title: 'Coming Soon',
       subtitle: '',

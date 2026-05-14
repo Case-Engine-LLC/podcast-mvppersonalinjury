@@ -25,6 +25,7 @@ const LatestEpisodes = () => {
   while (displayEpisodes.length < 4) {
     displayEpisodes.push({
       id: -(displayEpisodes.length + 1),
+      slug: '',
       number: displayEpisodes.length + 1,
       title: 'Coming Soon',
       subtitle: '',
