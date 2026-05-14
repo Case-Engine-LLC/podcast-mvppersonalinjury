@@ -11,7 +11,7 @@ const Header = () => {
     <nav className="fixed top-0 w-full z-50 bg-[#050505]/90 backdrop-blur-md border-b border-white/5">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* Left: Logo */}
-        <Link href="/v3" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <div className="w-8 h-8 bg-gradient-to-br from-amber-400 to-amber-600 rounded-sm flex items-center justify-center font-bold text-black font-serif">
             {siteConfig.podcastName.charAt(0)}
           </div>
@@ -38,7 +38,7 @@ const Header = () => {
             ) : (
               <Link
                 key={item.name}
-                href={`/v3${item.href}`}
+                href={`${item.href}`}
                 className="text-sm font-medium text-slate-400 hover:text-amber-400 transition-colors"
               >
                 {item.name}
@@ -91,7 +91,7 @@ const Header = () => {
             ) : (
               <Link
                 key={item.name}
-                href={`/v3${item.href}`}
+                href={`${item.href}`}
                 className="block py-3 text-sm font-medium text-slate-400 hover:text-amber-400 transition-colors"
                 onClick={() => setMobileOpen(false)}
               >

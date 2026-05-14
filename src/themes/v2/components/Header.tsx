@@ -19,7 +19,7 @@ const Header = () => {
     <nav className={`fixed top-0 w-full z-50 bg-[#f4f2ed]/90 backdrop-blur-md border-b transition-all duration-300 ${scrolled ? 'border-[#10284B]/10 shadow-sm' : 'border-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/v2" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <div className="w-8 h-8 bg-[#10284B] rounded-br-xl rounded-tl-xl flex items-center justify-center text-[#FF9E00] font-heading font-bold italic">
             M
           </div>
