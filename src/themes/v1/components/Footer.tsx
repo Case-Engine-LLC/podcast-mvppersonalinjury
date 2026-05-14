@@ -67,7 +67,7 @@ const Footer = ({ episodes }: FooterProps) => {
               <img
                 src="/logo.svg"
                 alt={footer.logo}
-                className="h-12 w-auto brightness-0 invert"
+                className="h-24 md:h-28 w-auto object-contain brightness-0 invert"
               />
             </div>
             <p className="text-base text-white/70 leading-relaxed mb-8 max-w-md">
