@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 import V1EpisodePage from '@/themes/v1/pages/V1EpisodePage'
-import { getAllEpisodes, getEpisodeById, getEpisodeTranscript } from '@/lib/data'
+import { getAllEpisodes, getEpisodeByIdOrSlug, getEpisodeTranscript } from '@/lib/data'
 
 export const revalidate = 3600
 
 export async function generateStaticParams() {
   try {
     const episodes = await getAllEpisodes()
-    return episodes.map(ep => ({ id: String(ep.id) }))
+    return episodes.map(ep => ({ id: ep.slug }))
   } catch {
     return []
   }
@@ -15,7 +15,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params
-  const episode = await getEpisodeById(Number(id))
+  const episode = await getEpisodeByIdOrSlug(id)
 
   if (!episode) {
     return { title: 'Episode Not Found' }
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     openGraph: {
       title: episode.title,
       description,
-      url: `https://mvppersonalinjury.com/episode/${id}`,
+      url: `https://mvppersonalinjury.com/episode/${slug ?? id}`,
       siteName: 'MVP Personal Injury Law Podcast',
       type: 'article',
       images: [{ url: imageUrl, width: 1200, height: 630, alt: episode.title }],
@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const allEpisodes = await getAllEpisodes()
-  const episode = await getEpisodeById(Number(id))
+  const episode = await getEpisodeByIdOrSlug(id)
   const transcript = episode ? await getEpisodeTranscript(episode) : []
 
   return (

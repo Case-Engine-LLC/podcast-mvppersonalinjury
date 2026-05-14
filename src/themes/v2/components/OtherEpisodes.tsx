@@ -75,7 +75,7 @@ function OtherEpisodes() {
             style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
           >
             {episodes.map((ep) => {
-              const href = ep.isComingSoon ? '#subscribe' : `/v2/episode/${ep.id}`
+              const href = ep.isComingSoon ? '#subscribe' : `/v2/episode/${ep.slug}`
 
               return (
                 <Link

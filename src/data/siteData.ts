@@ -612,6 +612,7 @@ export const subscribeCTA = {
 export const episodes = [
   {
     id: 1,
+    "slug": "brett-sachs-why-mvp-puts-clients-first",
     number: 1,
     title: "Brett Sachs: Why MVP Puts Clients First",
     subtitle: "Episode 1 • MVP Accident Attorneys",
