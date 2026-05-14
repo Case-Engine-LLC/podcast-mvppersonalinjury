@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     openGraph: {
       title: episode.title,
       description,
-      url: `https://mvppersonalinjury.com/episode/${slug ?? id}`,
+      url: `https://mvppersonalinjury.com/episode/${id}`,
       siteName: 'MVP Personal Injury Law Podcast',
       type: 'article',
       images: [{ url: imageUrl, width: 1200, height: 630, alt: episode.title }],
