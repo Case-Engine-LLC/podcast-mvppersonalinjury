@@ -777,8 +777,8 @@ export const topicalEntryGrid = {
       label: "Car Accident",
       links: [
         { title: "Car Accident Attorney", description: "Find experienced car accident lawyers who fight for maximum compensation", href: "https://themvp.com/car-accident-lawyer/", image: "/topical/icon-pa-car.svg" },
-        { title: "What To Do After a Car Accident", description: "Step-by-step guide for protecting your rights after a collision", href: "https://themvp.com/what-does-a-car-accident-attorney-do/", image: "/topical/icon-svc-investigate.svg" },
-        { title: "Self-Driving Car Accident Cases", description: "Understanding liability in autonomous vehicle collisions in California", href: "https://themvp.com/car-accident-lawyer/self-driving-car/", image: "/topical/icon-pa-rideshare.svg" },
+        { title: "What To Do After a Car Accident", description: "Step-by-step guide for protecting your rights after a collision", href: "https://themvp.com/faq/what-it-means-if-no-ticket-is-issued-after-a-car-accident/", image: "/topical/icon-svc-investigate.svg" },
+        { title: "Self-Driving Car Accident Cases", description: "Understanding liability in autonomous vehicle collisions in California", href: "https://themvp.com/blog/self-driving-car-accident-liability/", image: "/topical/icon-pa-rideshare.svg" },
         { title: "Distracted Driving Accidents", description: "How to handle insurance claims after a distracted-driver crash", href: "https://themvp.com/distracted-driving-accident-lawyer/", image: "/topical/icon-svc-liability.svg" },
       ],
     },
@@ -788,7 +788,7 @@ export const topicalEntryGrid = {
         { title: "Sacramento Personal Injury Attorney", description: "Experienced trial lawyers fighting for accident victims in California", href: "https://themvp.com/sacramento/personal-injury-lawyer/", image: "/topical/icon-pa-medical.svg" },
         { title: "What a Personal Injury Attorney Does", description: "From slip and falls to wrongful death, understand your case type", href: "https://themvp.com/what-does-a-personal-injury-attorney-do/", image: "/topical/icon-svc-defense.svg" },
         { title: "Catastrophic Injury Lawyer", description: "Representation for life-changing injuries with long-term impact", href: "https://themvp.com/catastrophic-injury-lawyer/", image: "/topical/icon-svc-damages.svg" },
-        { title: "Wrongful Death Claims", description: "Compensation for families who lost a loved one to negligence", href: "https://themvp.com/california/wrongful-death-lawyer/", image: "/topical/icon-pa-wrongful-death.svg" },
+        { title: "Wrongful Death Claims", description: "Compensation for families who lost a loved one to negligence", href: "https://themvp.com/wrongful-death-claim-lawyer/", image: "/topical/icon-pa-wrongful-death.svg" },
       ],
     },
     {
