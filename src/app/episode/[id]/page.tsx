@@ -25,14 +25,18 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     ? episode.description.slice(0, 200) + '...'
     : episode.description
   const imageUrl = episode.logo || 'https://mvppersonalinjury.com/Hero.jpg'
+  const canonicalPath = `/episode/${episode.slug ?? episode.id}`
 
   return {
     title: `${episode.title} | MVP Personal Injury Law Podcast`,
     description,
+    alternates: {
+      canonical: canonicalPath,
+    },
     openGraph: {
       title: episode.title,
       description,
-      url: `https://mvppersonalinjury.com/episode/${id}`,
+      url: `https://mvppersonalinjury.com${canonicalPath}`,
       siteName: 'MVP Personal Injury Law Podcast',
       type: 'article',
       images: [{ url: imageUrl, width: 1200, height: 630, alt: episode.title }],
