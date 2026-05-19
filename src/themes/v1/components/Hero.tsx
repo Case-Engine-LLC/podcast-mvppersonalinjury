@@ -15,7 +15,7 @@ const Hero = ({ latestEpisode }: HeroProps) => {
   const ep = latestEpisode ?? episode
   return (
     <>
-    <section className="hero-section relative pt-[4rem] md:pt-[6rem] pb-12 md:pb-0 md:h-[90vh]">
+    <section className="hero-section relative pt-[5rem] md:pt-[7.5rem] pb-12 md:pb-0 md:h-[90vh]">
       {/* Hero Background Image - indexable - Desktop */}
       <figure className="hidden md:block absolute inset-0 z-0 m-0">
         <img
