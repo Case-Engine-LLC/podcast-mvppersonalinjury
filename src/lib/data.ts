@@ -16,6 +16,9 @@ export const REVALIDATE = parseInt(process.env.REVALIDATE_SECONDS || '3600', 10)
 export interface Episode {
   id: number
   slug?: string
+  guid?: string
+  sourceGuid?: string
+  rssGuid?: string
   number: number
   season?: number | null
   isExtension?: boolean
@@ -39,28 +42,35 @@ export interface Episode {
 }
 
 function rssEpisodeToEpisode(ep: RSSEpisode): Episode {
+  const override = findStaticEpisodeOverride(ep)
+  const explicitSlug = override?.slug
+
   return {
     id: ep.id,
-    slug: slugifyEpisode(ep.title, String(ep.id)),
+    slug: explicitSlug || slugifyEpisode(ep.title, String(ep.id)),
+    guid: ep.guid,
+    sourceGuid: ep.guid,
+    rssGuid: ep.guid,
     number: ep.id,
     season: ep.season,
     isExtension: ep.isExtension,
     numbered: ep.numbered,
-    title: ep.title,
-    subtitle: ep.subtitle,
-    description: ep.description,
-    duration: ep.duration,
-    date: ep.date,
-    category: ep.category,
+    title: override?.title || ep.title,
+    subtitle: override?.subtitle || ep.subtitle,
+    description: override?.description || ep.description,
+    duration: override?.duration || ep.duration,
+    date: override?.date || ep.date,
+    category: override?.category || ep.category,
     featured: ep.featured,
-    topic: ep.topic,
-    concepts: ep.concepts,
-    chapters: ep.chapters,
-    logo: ep.logo,
+    topic: override?.topic || ep.topic,
+    concepts: override?.concepts?.length ? override.concepts : ep.concepts,
+    chapters: override?.chapters?.length ? override.chapters : ep.chapters,
+    logo: override?.logo || ep.logo,
     audioUrl: ep.audioUrl || undefined,
     audioType: ep.audioType || undefined,
     transcriptUrl: ep.transcriptUrl,
     transcriptType: ep.transcriptType,
+    youtubeUrl: override?.youtubeUrl,
   }
 }
 
@@ -68,7 +78,13 @@ function normalizeStaticEpisode(ep: Record<string, unknown>): Episode {
   return {
     id: (ep.id as number) ?? 1,
     slug: (ep.slug as string) || slugifyEpisode((ep.title as string) || '', String((ep.id as number) ?? 1)),
+    guid: (ep.guid as string) ?? undefined,
+    sourceGuid: (ep.sourceGuid as string) ?? undefined,
+    rssGuid: (ep.rssGuid as string) ?? undefined,
     number: (ep.number as number) ?? (ep.id as number) ?? 1,
+    season: (ep.season as number | null) ?? null,
+    isExtension: (ep.isExtension as boolean) ?? false,
+    numbered: (ep.numbered as boolean) ?? true,
     title: (ep.title as string) ?? '',
     subtitle: (ep.subtitle as string) ?? '',
     description: (ep.description as string) ?? '',
@@ -86,6 +102,26 @@ function normalizeStaticEpisode(ep: Record<string, unknown>): Episode {
     transcriptType: (ep.transcriptType as string) ?? null,
     youtubeUrl: (ep.youtubeUrl as string) ?? undefined,
   }
+}
+
+function normalizeForMatch(value: string): string {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
+}
+
+function findStaticEpisodeOverride(ep: RSSEpisode): Episode | null {
+  const normalizedTitle = normalizeForMatch(ep.title)
+  const generatedSlug = slugifyEpisode(ep.title, String(ep.id))
+
+  for (const item of staticEpisodes as Record<string, unknown>[]) {
+    const staticEp = normalizeStaticEpisode(item)
+    const staticGuid = staticEp.guid || staticEp.sourceGuid || staticEp.rssGuid
+
+    if (staticGuid && staticGuid === ep.guid) return staticEp
+    if (staticEp.slug && staticEp.slug === generatedSlug) return staticEp
+    if (staticEp.title && normalizeForMatch(staticEp.title) === normalizedTitle) return staticEp
+  }
+
+  return null
 }
 
 let feedCache: { episodes: Episode[]; fetchedAt: number } | null = null
@@ -121,7 +157,7 @@ export async function getAllEpisodes(): Promise<Episode[]> {
     return episodes
   } catch (e) {
     console.error('RSS fetch failed, falling back to static data:', e)
-    return (staticEpisodes as Record<string, unknown>[]).map(normalizeStaticEpisode)
+    return dedupeBySlug((staticEpisodes as Record<string, unknown>[]).map(normalizeStaticEpisode))
   }
 }
 

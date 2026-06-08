@@ -20,7 +20,8 @@ import {
 
 export function generateEpisodeSchema(episodeId: string, rssEp?: Episode | null) {
   const ep = rssEp ?? staticEpisode
-  const episodeUrl = `${PODCAST_SITE_URL}/episode/${episodeId}`
+  const slugPart = rssEp?.slug ?? episodeId
+  const episodeUrl = `${PODCAST_SITE_URL}/episode/${slugPart}`
   const host = podcastTeam[0]
 
   const title = ep.title
