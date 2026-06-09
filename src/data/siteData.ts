@@ -481,7 +481,7 @@ export const faqGroups = [
 ]
 
 export const content = {
-  heroTitle: "The MVP of Personal Injury Law w. Brett & Chelsee Sachs",
+  heroTitle: "The MVP of Personal Injury Law Podcast with Brett & Chelsee Sachs",
   heroDescription: "Brett Sachs founded MVP to fight for injured Californians against billion-dollar insurance companies. Insurance companies have $900 billion in annual revenue. They employ thousands to deny your claim. MVP fights back with specialized trial attorneys.",
 
   articleTitle: "From Midwest Values to California Advocacy: The MVP Story",

@@ -90,9 +90,9 @@ const Footer = ({ episodes }: FooterProps) => {
           <div>
             <h3 className="text-xl font-bold text-white mb-6">Episodes</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
-              {(episodes ?? []).map((ep) => (
+              {(episodes ?? []).map((ep, index) => (
                 <Link
-                  key={ep.id}
+                  key={`${ep.id}-${index}`}
                   href={`/episode/${ep.slug ?? ep.id}`}
                   className="text-base text-white/80 hover:text-white transition-colors truncate"
                 >

@@ -96,7 +96,7 @@ const PodcastTeam = () => {
                   <img
                     src={teamMembers[currentSlide].image}
                     alt={teamMembers[currentSlide].name}
-                    className="w-11 h-11 rounded-full object-cover"
+                    className="w-11 h-11 rounded-full object-cover object-top"
                   />
                   <div>
                     <h3 className="text-lg font-bold text-gray-900 leading-tight">
@@ -182,7 +182,7 @@ const PodcastTeam = () => {
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-12 h-12 rounded-full object-cover"
+                      className="w-12 h-12 rounded-full object-cover object-top"
                     />
                     <div>
                       <h3 className="text-lg font-bold text-gray-900 leading-tight">{member.name}</h3>

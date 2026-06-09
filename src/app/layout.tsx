@@ -14,7 +14,10 @@ const inter = Inter({
 })
 
 const SITE_URL = siteConfig.podcastUrl
-const TITLE = siteConfig.podcastName
+// Meta/SEO title — "Podcast" inserted before the host and "w." spelled out
+// (e.g. "...Personal Injury Law Podcast with Brett & Chelsee Sachs").
+// Visible on-page headings use siteConfig.podcastName directly.
+const TITLE = siteConfig.podcastName.replace(' w. ', ' Podcast with ')
 const DESCRIPTION = about.description
 
 export const metadata: Metadata = {
