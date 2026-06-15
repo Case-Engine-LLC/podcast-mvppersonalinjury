@@ -56,7 +56,7 @@ const Header = ({ variant = 'dark' }: HeaderProps) => {
         {/* Desktop Contact Us Button */}
         <div className="hidden md:flex items-center">
           <Link
-            href="https://themvp.com/"
+            href="https://themvp.com/contact-us/"
             target="_blank"
             rel="noopener noreferrer"
             className={`px-6 py-2.5 rounded-lg text-base font-semibold ${buttonBg} transition-all`}
@@ -88,7 +88,7 @@ const Header = ({ variant = 'dark' }: HeaderProps) => {
             </Link>
           ))}
           <Link
-            href="https://themvp.com/"
+            href="https://themvp.com/contact-us/"
             target="_blank"
             rel="noopener noreferrer"
             className={`flex items-center justify-center px-6 py-3 rounded-lg text-base font-semibold ${buttonBg}`}
