@@ -108,7 +108,7 @@ const PodcastTeam = () => {
                 <button
                   onClick={(e) => {
                     e.stopPropagation()
-                    // TODO: Navigate to episodes page
+                    router.push('/#episodes')
                   }}
                   className="bg-[#FAA31A] hover:bg-[#e09000] text-white text-xs font-semibold px-3 py-1.5 rounded-full whitespace-nowrap"
                 >
@@ -192,7 +192,7 @@ const PodcastTeam = () => {
                   <button
                     onClick={(e) => {
                       e.stopPropagation()
-                      // TODO: Navigate to episodes page
+                      router.push('/#episodes')
                     }}
                     className="bg-[#FAA31A] hover:bg-[#e09000] text-white text-sm font-semibold px-4 py-2 rounded-full whitespace-nowrap"
                   >
