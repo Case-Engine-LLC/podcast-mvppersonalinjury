@@ -143,9 +143,6 @@ const Footer = ({ episodes }: FooterProps) => {
                   </Link>
                 )
               })}
-              <Link href={`https://open.spotify.com/episode/5CF7pgUkEaP4X02bZ6ABQm`} target="_blank" rel="noopener noreferrer" className="text-base text-white/80 hover:text-white transition-colors underline underline-offset-4">
-                Spotify (Ep. 1)
-              </Link>
             </div>
           </div>
         </div>
