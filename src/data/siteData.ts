@@ -562,8 +562,8 @@ export const footer = {
     "instagram": "https://www.instagram.com/mvpaccidentattorneys/",
     "linkedin": "https://www.linkedin.com/company/mvp-accident-attorneys/",
     "twitter": "https://x.com/MVPAccidentAtty",
-    "youtube": "",
-    "tiktok": ""
+    "youtube": "https://www.youtube.com/@TheMVPPersonalInjuryLawPodcast",
+    "tiktok": "https://www.tiktok.com/@mvpaccidentattorneys"
   }
 }
 
