@@ -30,6 +30,11 @@ const Testimonials = () => {
 
   const cardsPerView = isMobile ? 1 : 3
   const maxIndex = Math.max(0, testimonials.length - cardsPerView)
+  const canNavigate = maxIndex > 0
+
+  React.useEffect(() => {
+    setCurrentIndex((prev) => Math.min(prev, maxIndex))
+  }, [maxIndex])
 
   const handlePrevious = () => {
     setCurrentIndex((prev) => Math.max(0, prev - 1))
@@ -154,33 +159,39 @@ const Testimonials = () => {
           </div>
 
           {/* Navigation Controls */}
-          <div className="flex items-center gap-6 mt-8">
-            {/* Navigation Buttons */}
-            <div className="flex gap-4">
-              <button
-                onClick={handlePrevious}
-                disabled={currentIndex === 0}
-                className="w-12 h-12 rounded-full bg-black flex items-center justify-center hover:bg-gray-800 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
-              >
-                <ChevronLeft size={24} stroke="white" />
-              </button>
-              <button
-                onClick={handleNext}
-                disabled={currentIndex >= maxIndex}
-                className="w-12 h-12 rounded-full bg-black flex items-center justify-center hover:bg-gray-800 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
-              >
-                <ChevronRight size={24} stroke="white" />
-              </button>
-            </div>
+          {canNavigate && (
+            <div className="flex items-center gap-6 mt-8">
+              {/* Navigation Buttons */}
+              <div className="flex gap-4">
+                <button
+                  type="button"
+                  aria-label="Previous testimonial"
+                  onClick={handlePrevious}
+                  disabled={currentIndex === 0}
+                  className="w-12 h-12 rounded-full bg-black flex items-center justify-center hover:bg-gray-800 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  <ChevronLeft size={24} stroke="white" />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Next testimonial"
+                  onClick={handleNext}
+                  disabled={currentIndex >= maxIndex}
+                  className="w-12 h-12 rounded-full bg-black flex items-center justify-center hover:bg-gray-800 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  <ChevronRight size={24} stroke="white" />
+                </button>
+              </div>
 
-            {/* Progress Bar */}
-            <div className="flex-grow h-1 bg-black/5 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-black transition-all duration-500 ease-in-out rounded-full"
-                style={{ width: `${progressPercentage}%` }}
-              />
+              {/* Progress Bar */}
+              <div className="flex-grow h-1 bg-black/5 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-black transition-all duration-500 ease-in-out rounded-full"
+                  style={{ width: `${progressPercentage}%` }}
+                />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </section>
