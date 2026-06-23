@@ -56,8 +56,16 @@ interface FooterProps {
   episodes?: Episode[]
 }
 
+function getEpisodeSortNumber(ep: Episode): number {
+  const n = Number(ep.number ?? ep.id)
+  return Number.isFinite(n) ? n : 0
+}
+
 const Footer = ({ episodes }: FooterProps) => {
   const currentYear = new Date().getFullYear()
+  const footerEpisodes = [...(episodes ?? [])].sort(
+    (a, b) => getEpisodeSortNumber(b) - getEpisodeSortNumber(a)
+  )
 
   // Build bar number string from authorProfiles
   const barNumbers = podcastTeam
@@ -121,7 +129,7 @@ const Footer = ({ episodes }: FooterProps) => {
           <div>
             <h3 className="text-xl font-bold text-white mb-6">Episodes</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
-              {(episodes ?? []).map((ep, index) => (
+              {footerEpisodes.map((ep, index) => (
                 <Link
                   key={`${ep.id}-${index}`}
                   href={`/episode/${ep.slug ?? ep.id}`}
