@@ -116,7 +116,8 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans antialiased`}>
         {children}
         <Analytics
-          gtmId={process.env.NEXT_PUBLIC_GTM_ID || 'GTM-KJH873Z'}
+          gtmId={process.env.NEXT_PUBLIC_GTM_ID || 'GTM-M4RQQ56R'}
+          ga4Id={process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID || 'G-PJG5MG1JGQ'}
           clarityProjectId={process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID || 'gujq334he8'}
         />
       </body>
