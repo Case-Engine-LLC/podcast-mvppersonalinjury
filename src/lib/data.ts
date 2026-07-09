@@ -1,5 +1,5 @@
 import { fetchPodcastFeed, fetchTranscript as fetchRssTranscript, type RSSEpisode, type TranscriptSegment } from './rss'
-import { generatedTranscripts } from '@/data/transcripts.generated'
+import { generatedTranscripts, TRANSCRIPTS_BY_GUID } from '@/data/transcripts.generated'
 import { episodes as staticEpisodes, siteConfig } from '@/data/siteData'
 
 // Prefer env var (Vercel project setting), fall back to siteData.rssFeedUrl
@@ -181,7 +181,16 @@ export async function getEpisodeByIdOrSlug(idOrSlug: string): Promise<Episode | 
 }
 
 export async function getEpisodeTranscript(episode: Episode): Promise<TranscriptSegment[]> {
-  // Prefer a slug-keyed transcript: the slug is a stable identity that works for
+  // Resolve by guid FIRST: the guid is unique per feed item, which matters
+  // because several episodes collide on itunes:episode number in the live RSS
+  // feed (Ep2 Irvine/Riverside/Sacramento location cuts; Brett's and Chelsee's
+  // "YOU Interview" episodes both carry itunes:episode=1) — numeric-id-only
+  // lookup would serve the wrong transcript for those. See header comment in
+  // transcripts.generated.ts for the guid -> Drive-source mapping.
+  const guid = episode.guid || episode.sourceGuid || episode.rssGuid
+  if (guid && TRANSCRIPTS_BY_GUID[guid]) return TRANSCRIPTS_BY_GUID[guid]
+
+  // Next, a slug-keyed transcript: the slug is a stable identity that works for
   // city extensions (which have no episode number to key on). Fall back to the
   // legacy numeric-id key so existing main-episode transcripts keep working.
   const bySlug = episode.slug ? generatedTranscripts[episode.slug] : undefined
