@@ -41,17 +41,34 @@ export interface Episode {
   youtubeUrl?: string
 }
 
+// The live FlightCast RSS feed mistakenly tags Chelsee Sachs's "YOU Interview"
+// episode with the same <itunes:episode>1 as Brett Sachs's "YOU Interview"
+// episode (see the header comment in transcripts.generated.ts, which already
+// anticipated this collision and keys her transcript/guid data as "id 5").
+// That feed-level collision produces two homepage links both rendered as
+// "Ep. 1" and duplicate "#episode-1" PodcastEpisode JSON-LD entries
+// (Marker ticket f7b8f763-b6ba-423d-82c0-644aca7e1c55). We don't control the
+// FlightCast feed itself, so correct the number at the single point where feed
+// data becomes site data. Chelsee's episode (published 06.09.26) is
+// chronologically the 5th published episode overall — after Brett=1 (03.09.26),
+// Irvine main=2 (05.28.26), Riverside=3 (06.01.26), Sacramento=4 (06.03.26) —
+// which also matches the id already reserved for her transcript below.
+const EPISODE_NUMBER_OVERRIDES_BY_GUID: Record<string, number> = {
+  'flightcast:01KTMM8B3FFXMYKE8A6DD49ZEE': 5, // Chelsee Sachs "YOU Interview"
+}
+
 function rssEpisodeToEpisode(ep: RSSEpisode): Episode {
   const override = findStaticEpisodeOverride(ep)
   const explicitSlug = override?.slug
+  const correctedId = EPISODE_NUMBER_OVERRIDES_BY_GUID[ep.guid] ?? ep.id
 
   return {
-    id: ep.id,
+    id: correctedId,
     slug: explicitSlug || slugifyEpisode(ep.title, String(ep.id)),
     guid: ep.guid,
     sourceGuid: ep.guid,
     rssGuid: ep.guid,
-    number: ep.id,
+    number: correctedId,
     season: ep.season,
     isExtension: ep.isExtension,
     numbered: ep.numbered,
