@@ -144,7 +144,7 @@ export const faqGroups = [
       {
         question: "What is the focus of The You Interview on personal injury law?",
         level: "h2",
-        answer: "The You Interview is a bi-weekly podcast featuring in-depth conversations with California personal injury attorneys about real cases, legal strategy, and fighting insurance companies. Episode 1 is a 66-minute interview with Brett Sachs of MVP Accident Attorneys, covering car accidents, wrongful death, and pool drowning cases across five chapters. Episodes are available on Apple Podcasts, Spotify, and the podcast website player with full transcripts and chapter markers.",
+        answer: "The You Interview is a podcast featuring in-depth conversations with California personal injury attorneys about real cases, legal strategy, and fighting insurance companies. Episode 1 is a 66-minute interview with Brett Sachs of MVP Accident Attorneys, covering car accidents, wrongful death, and pool drowning cases across five chapters. Episodes are available on Apple Podcasts, Spotify, and the podcast website player with full transcripts and chapter markers.",
       },
       {
         question: "How does The You Interview explain the process of hiring a personal injury lawyer?",
@@ -179,7 +179,7 @@ export const faqGroups = [
       {
         question: "How often are new The You Interview episodes about injury law released?",
         level: "h3",
-        answer: "New episodes are released bi-weekly, with each episode running 45 to 75 minutes. Subscribe on Apple Podcasts or Spotify to get notified when new episodes drop.",
+        answer: "New episodes are released on an ongoing basis, and each one runs 45 to 75 minutes. Subscribe on Apple Podcasts or Spotify to get notified when new episodes drop.",
       },
       {
         question: "Where can I listen to The You Interview?",
@@ -306,7 +306,7 @@ export const faqGroups = [
       {
         question: "Is The You Interview updated regularly?",
         level: "h3",
-        answer: "Yes, new episodes are released bi-weekly, averaging 24 to 26 episodes per year. Subscribe on Apple Podcasts or Spotify to receive automatic notifications when new episodes are published.",
+        answer: "Yes, new episodes are released on an ongoing basis. Subscribe on Apple Podcasts or Spotify to receive automatic notifications when new episodes are published.",
       },
     ],
   },
@@ -604,7 +604,7 @@ export const subscribeCTA = {
     "In-depth conversations with California's top personal injury attorneys",
     "Real stories from lawyers who fight billion-dollar insurance companies",
     "Practical advice for anyone navigating an injury claim",
-    "New episodes released bi-weekly on all major platforms",
+    "New episodes released on all major platforms",
   ],
 }
 
