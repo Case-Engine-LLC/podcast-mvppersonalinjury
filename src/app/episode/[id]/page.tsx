@@ -31,7 +31,9 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const canonicalPath = `/episode/${episode.slug ?? episode.id}`
 
   return {
-    title: `${episode.title} | MVP Personal Injury Law Podcast`,
+    // Bare episode title only — layout's `template: '%s | <brand>'` appends the
+    // podcast name. Including it here too rendered it twice.
+    title: episode.title,
     description,
     alternates: {
       canonical: canonicalPath,
