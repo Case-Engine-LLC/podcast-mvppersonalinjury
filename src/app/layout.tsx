@@ -3,7 +3,6 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import '@/themes/v1/variables.css'
 import { siteConfig, about, attorney } from '@/data/siteData'
-import SchemaJsonLd from '@/components/SchemaJsonLd'
 import { Analytics } from '@/components/Analytics'
 
 const inter = Inter({
@@ -111,7 +110,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <SchemaJsonLd />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         {children}
