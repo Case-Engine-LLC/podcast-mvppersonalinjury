@@ -4,6 +4,7 @@ import './globals.css'
 import '@/themes/v1/variables.css'
 import { siteConfig, about, attorney } from '@/data/siteData'
 import { Analytics } from '@/components/Analytics'
+import { AgentTools } from '@/components/AgentTools'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -118,6 +119,7 @@ export default function RootLayout({
           ga4Id={process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID || 'G-PJG5MG1JGQ'}
           clarityProjectId={process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID || 'gujq334he8'}
         />
+        <AgentTools />
       </body>
     </html>
   )
