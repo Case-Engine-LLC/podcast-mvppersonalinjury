@@ -3,7 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react'
-import { footer, siteConfig, podcastTeam, authorProfiles, contact } from '@/data/siteData'
+import { footer, siteConfig, podcastTeam, authorProfiles, contact, compliance } from '@/data/siteData'
 import type { Episode } from '@/lib/data'
 
 const XIcon = ({ size = 20, className = '' }: { size?: number; className?: string }) => (
@@ -162,9 +162,21 @@ const Footer = ({ episodes }: FooterProps) => {
           <p className="text-sm text-white/60 text-center">
             &copy; {currentYear} {footer.copyright}. All rights reserved.
           </p>
+          {/*
+            R-PL-02: the disclaimers must reach the rendered DOM, not sit in
+            siteData. This footer used to print one hardcoded sentence that
+            dropped the no-attorney-client-relationship notice entirely, even
+            though compliance.disclaimers already carried it. Rendering the data
+            keeps the footer and the compliance record from drifting apart.
+          */}
           <p className="text-xs text-white/40 text-center mt-2">
-            Attorney Advertising. {barNumbers}. Past results do not guarantee future outcomes. Results may vary based on the facts of each case.
+            Attorney Advertising. {barNumbers}.
           </p>
+          <div className="text-xs text-white/40 text-center mt-2 space-y-1 max-w-3xl mx-auto">
+            {compliance.disclaimers.map((d) => (
+              <p key={d.kind}>{d.text}</p>
+            ))}
+          </div>
           <div className="flex items-center justify-center gap-4 mt-2">
             <Link href={`${contact.website.replace(/\/$/, '')}/privacy-policy/`} target="_blank" rel="noopener noreferrer" className="text-xs text-white/40 underline hover:text-white/60">Privacy Policy</Link>
             <span className="text-xs text-white/20">|</span>
