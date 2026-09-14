@@ -14,7 +14,7 @@ export const siteConfig = {
   /** RSS feed URL for the podcast (used in schema webFeed and <link> tag) */
   rssFeedUrl: process.env.PODCAST_RSS_URL || "https://rss2.flightcast.com/oe6ggnwuiesusp5cxpixx2bk.xml",
   platformLinks: {
-    apple: "https://www.youtube.com/@TheMVPPersonalInjuryLawPodcast",
+    apple: "https://podcasts.apple.com/us/podcast/the-mvp-of-personal-injury-law-w-brett-chelsee-sachs/id1882113936",
     spotify: "https://open.spotify.com/show/0mXB4YhNdQVeFZb5Orr0pD",
   },
   formCTA: {
