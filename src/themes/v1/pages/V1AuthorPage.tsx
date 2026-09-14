@@ -23,11 +23,13 @@ export function generateAuthorSchema(author: typeof authorProfiles[string], slug
   const pageUrl = `${PODCAST_SITE_URL}/author/${slug}`
   const imageUrl = `${PODCAST_SITE_URL}${author.photo}`
 
-  // Build PodcastSeries with this author as host
+  // Build PodcastSeries with this author credited. 'host' is not a property
+  // of PodcastSeries — the validator rejects it — so credit via 'author',
+  // which is what generatePodcastSeriesEntity() uses for the default host.
   const podcastSeries = generatePodcastSeriesEntity()
   const podcastWithHost = {
     ...podcastSeries,
-    'host': { '@id': `${pageUrl}#person` },
+    'author': { '@id': `${pageUrl}#person` },
   }
 
   return {
@@ -78,7 +80,16 @@ export function generateAuthorSchema(author: typeof authorProfiles[string], slug
           'url': imageUrl,
         },
         'url': pageUrl,
-        'worksFor': { '@id': `${PODCAST_SITE_URL}/#org` },
+        // Role wraps the relationship and repeats its property name — the
+        // schema.org pattern that carries roleName/startDate validly. The
+        // retired standalone Role node used 'member'/'organization', which
+        // are not Role properties.
+        'worksFor': {
+          '@type': 'Role',
+          'roleName': author.role,
+          'startDate': '2017-08-01',
+          'worksFor': { '@id': `${PODCAST_SITE_URL}/#org` },
+        },
         'alumniOf': author.education.map(edu => ({
           '@type': 'CollegeOrUniversity',
           'name': edu.school,
@@ -115,14 +126,6 @@ export function generateAuthorSchema(author: typeof authorProfiles[string], slug
             'worstRating': '1',
           },
         })),
-      },
-      {
-        '@type': 'Role',
-        '@id': `${pageUrl}#role`,
-        'roleName': author.role,
-        'startDate': '2017-08-01',
-        'member': { '@id': `${pageUrl}#person` },
-        'organization': { '@id': `${PODCAST_SITE_URL}/#org` },
       },
       podcastWithHost,
       generateFAQPageEntity(pageUrl),
