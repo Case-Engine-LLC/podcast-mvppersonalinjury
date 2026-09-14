@@ -184,7 +184,18 @@ export function generatePodcastSeriesEntity() {
     'productionCompany': { '@id': `${PODCAST_SITE_URL}/#org` },
     ...(host ? { 'host': { '@type': 'Person', 'name': host.name } } : {}),
     ...(siteConfig.rssFeedUrl ? { 'webFeed': siteConfig.rssFeedUrl } : {}),
+    // Where the show can actually be listened to. Without these the series
+    // node says a podcast exists but never says it is on Apple or Spotify.
+    ...(podcastPlatformUrls().length ? { 'sameAs': podcastPlatformUrls() } : {}),
   }
+}
+
+/** Real listening-platform URLs from siteConfig.platformLinks, in a stable order. */
+function podcastPlatformUrls(): string[] {
+  const links = (siteConfig.platformLinks ?? {}) as Record<string, string>
+  return ['apple', 'spotify']
+    .map((k) => links[k])
+    .filter((u): u is string => typeof u === 'string' && /^https?:\/\//.test(u))
 }
 
 /**
