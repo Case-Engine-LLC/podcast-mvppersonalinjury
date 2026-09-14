@@ -45,7 +45,7 @@ const EpisodeHero = ({ episode: propEpisode }: EpisodeHeroProps) => {
               </h1>
 
               {/* Description */}
-              <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-8">
+              <p className="episode-description text-base md:text-lg text-gray-700 leading-relaxed mb-8">
                 {(() => { const d = (ep.description ?? ''); return d.length > 250 ? d.slice(0, 250) + '...' : d; })()}
               </p>
 

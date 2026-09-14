@@ -181,8 +181,8 @@ export function generatePodcastSeriesEntity() {
     'url': PODCAST_SITE_URL,
     'inLanguage': 'en',
     'genre': ['Law', 'Personal Injury', 'Legal Education'],
-    'productionCompany': { '@id': `${PODCAST_SITE_URL}/#org` },
-    ...(host ? { 'host': { '@type': 'Person', 'name': host.name } } : {}),
+    'publisher': { '@id': `${PODCAST_SITE_URL}/#org` },
+    ...(host ? { 'author': { '@type': 'Person', 'name': host.name } } : {}),
     ...(siteConfig.rssFeedUrl ? { 'webFeed': siteConfig.rssFeedUrl } : {}),
     // Where the show can actually be listened to. Without these the series
     // node says a podcast exists but never says it is on Apple or Spotify.
@@ -231,7 +231,7 @@ export function generateHomeSchema(pagePath = '') {
         'breadcrumb': { '@id': `${pageUrl}#breadcrumb` },
         'speakable': {
           '@type': 'SpeakableSpecification',
-          'cssSelector': ['header h1', '.hero-description'],
+          'cssSelector': ['h1', '.hero-description'],
         },
       },
       generatePodcastSeriesEntity(),

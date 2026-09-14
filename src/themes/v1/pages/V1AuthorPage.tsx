@@ -178,7 +178,7 @@ const V1AuthorPage = ({ slug }: V1AuthorPageProps) => {
                 <p className="text-xl md:text-2xl text-[#FAA31A] font-semibold mb-6">
                   {author.title}
                 </p>
-                <p className="text-base md:text-lg text-white/80 leading-relaxed mb-8">
+                <p className="author-bio text-base md:text-lg text-white/80 leading-relaxed mb-8">
                   {author.bio[0]}
                 </p>
 
