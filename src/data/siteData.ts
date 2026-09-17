@@ -847,3 +847,15 @@ export const trustBadges = [
     href: "#excellence",
   },
 ]
+
+// Structured NAP for schema.org ONLY. `contact.address` is on-page marketing
+// copy and must never be parsed into a PostalAddress - comma-splitting it put
+// street addresses and building names into addressLocality (Marker TMF-437).
+// Source: GBP Irvine listing; site contact.address declares 'Irvine, California'.
+export const postalAddress = {
+  "streetAddress": "4 Park Plaza #850",
+  "addressLocality": "Irvine",
+  "addressRegion": "CA",
+  "postalCode": "92614",
+  "addressCountry": "US"
+} as const

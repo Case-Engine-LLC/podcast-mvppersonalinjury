@@ -25,14 +25,14 @@ const ContactSection = () => {
                 <Phone className="text-white/50 shrink-0" size={24} />
                 <div>
                   <p className="text-[12px] font-bold uppercase tracking-[0.96px] mb-1 opacity-50">PHONE</p>
-                  <a href={`tel:${contact.phone.replace(/\D/g, '')}`} className="text-[18px] hover:text-white/80 transition-colors">{contact.phone}</a>
+                  <a href={`tel:${contact.phone.replace(/\D/g, '')}`} className="text-[18px] hover:text-white/80 transition-colors" {...(/^https?:\/\//.test(String(`tel:${contact.phone.replace(/\D/g, '')}`)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{contact.phone}</a>
                 </div>
               </div>
               <div className="flex gap-4">
                 <Mail className="text-white/50 shrink-0" size={24} />
                 <div>
                   <p className="text-[12px] font-bold uppercase tracking-[0.96px] mb-1 opacity-50">EMAIL</p>
-                  <a href={`mailto:${contact.email}`} className="text-[18px] hover:text-white/80 transition-colors">{contact.email}</a>
+                  <a href={`mailto:${contact.email}`} className="text-[18px] hover:text-white/80 transition-colors" {...(/^https?:\/\//.test(String(`mailto:${contact.email}`)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{contact.email}</a>
                 </div>
               </div>
             </div>

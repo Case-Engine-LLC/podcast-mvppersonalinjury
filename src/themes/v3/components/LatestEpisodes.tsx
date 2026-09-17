@@ -146,13 +146,13 @@ const LatestEpisodes = () => {
                       </div>
                       <div>
                         <div className="text-xs text-amber-500 mb-1">Episode {ep.number}</div>
-                        <h4 className="text-white font-serif text-lg group-hover:text-amber-400 transition-colors">
+                        <h3 className="text-white font-serif text-lg group-hover:text-amber-400 transition-colors">
                           {ep.id > 0 ? (
                             <Link href={`/episode/${ep.slug}`}>{ep.title}</Link>
                           ) : (
                             ep.title
                           )}
-                        </h4>
+                        </h3>
                         <div className="text-slate-500 text-xs mt-1">{ep.subtitle || siteConfig.podcastName.split(' w.')[0]}</div>
                       </div>
                     </div>
@@ -217,13 +217,13 @@ const LatestEpisodes = () => {
                     </span>
                     <span className="text-xs text-slate-500 font-mono">{ep.duration}</span>
                   </div>
-                  <h4 className="text-xl font-serif text-white mb-2 group-hover:text-amber-400 transition-colors">
+                  <h3 className="text-xl font-serif text-white mb-2 group-hover:text-amber-400 transition-colors">
                     {ep.id > 0 ? (
                       <Link href={`/episode/${ep.slug}`}>{ep.title}</Link>
                     ) : (
                       ep.title
                     )}
-                  </h4>
+                  </h3>
                   <p className="text-sm text-slate-500 line-clamp-2 mb-4">{ep.description}</p>
                   {ep.topic && (
                     <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-zinc-800 text-slate-300 border border-white/5">

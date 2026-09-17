@@ -73,7 +73,7 @@ const About = () => {
               <Link
                 href={siteConfig.formCTA?.href || '#form'}
                 className="inline-flex items-center gap-3 bg-secondary text-black px-8 py-4 rounded-2xl transition-transform hover:scale-105 font-bold"
-              >
+               {...(/^https?:\/\//.test(String(siteConfig.formCTA?.href || '#form')) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
                 <FileText className="w-5 h-5" />
                 <span>{siteConfig.formCTA?.text || 'Free Consultation'}</span>
               </Link>

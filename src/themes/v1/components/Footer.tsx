@@ -182,7 +182,7 @@ const Footer = ({ episodes }: FooterProps) => {
             <span className="text-xs text-white/20">|</span>
             <Link href={contact.website} target="_blank" rel="noopener noreferrer" className="text-xs text-white/40 underline hover:text-white/60">{contact.website.replace('https://', '')}</Link>
             <span className="text-xs text-white/20">|</span>
-            <a href={`tel:${contact.phone.replace(/\D/g, '')}`} className="text-xs text-white/40 hover:text-white/60">{contact.phone}</a>
+            <a href={`tel:${contact.phone.replace(/\D/g, '')}`} className="text-xs text-white/40 hover:text-white/60" {...(/^https?:\/\//.test(String(`tel:${contact.phone.replace(/\D/g, '')}`)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{contact.phone}</a>
           </div>
         </div>
       </div>

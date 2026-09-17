@@ -47,7 +47,7 @@ const Header = ({ variant = 'dark' }: HeaderProps) => {
               key={index}
               href={item.href}
               className={`text-base font-medium ${textColor} ${textHoverColor} transition-colors`}
-            >
+             {...(/^https?:\/\//.test(String(item.href)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
               {item.name}
             </Link>
           ))}
@@ -83,7 +83,7 @@ const Header = ({ variant = 'dark' }: HeaderProps) => {
               href={item.href}
               className={`text-lg font-medium ${textColor}`}
               onClick={() => setIsMenuOpen(false)}
-            >
+             {...(/^https?:\/\//.test(String(item.href)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
               {item.name}
             </Link>
           ))}

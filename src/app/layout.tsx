@@ -47,6 +47,12 @@ export const metadata: Metadata = {
   category: 'Legal Podcast',
   alternates: {
     canonical: '/',
+    // Self-referencing x-default + en. These sites are English-only,
+    // so these are the only alternates there are (Marker TMF-436).
+    languages: {
+      'x-default': '/',
+      en: '/',
+    },
     ...(siteConfig.rssFeedUrl
       ? {
           types: {

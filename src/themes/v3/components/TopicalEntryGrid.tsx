@@ -91,7 +91,7 @@ const TopicalEntryGrid = () => {
               key={i}
               href={link.href}
               className="min-w-[80vw] md:min-w-[400px] snap-start bg-zinc-900 border border-white/5 rounded-xl overflow-hidden hover:border-amber-500/30 transition-all group cursor-pointer shrink-0"
-            >
+             {...(/^https?:\/\//.test(String(link.href)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
               <div className="h-40 bg-zinc-800 relative">
                 <div className="absolute inset-0 bg-black/20" />
                 <div className="absolute bottom-4 left-4 right-4">
@@ -101,9 +101,9 @@ const TopicalEntryGrid = () => {
                 </div>
               </div>
               <div className="p-6">
-                <h4 className="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
+                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
                   {link.title}
-                </h4>
+                </h3>
                 <p className="text-xs text-slate-500 mb-4">{link.description}</p>
                 <span className="text-xs font-bold text-white border-b border-amber-500 pb-0.5">
                   Read Guide

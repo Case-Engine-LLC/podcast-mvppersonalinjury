@@ -77,7 +77,7 @@ const Hero = () => {
               <span className="text-xs font-bold text-[#FF9E00] uppercase tracking-wider">Latest Episode</span>
               <span className="text-xs text-gray-400">Episode {episode.number} • {episode.duration}</span>
             </div>
-            <h3 className="font-heading text-xl font-bold text-[#10284B] mb-2">{episode.title}</h3>
+            <h2 className="font-heading text-xl font-bold text-[#10284B] mb-2">{episode.title}</h2>
             <p className="text-sm text-gray-500 mb-4 line-clamp-2">{episode.description}</p>
 
             <div className="flex items-center gap-4">

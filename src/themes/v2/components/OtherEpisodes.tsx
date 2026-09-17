@@ -82,7 +82,7 @@ function OtherEpisodes() {
                   key={ep.id}
                   href={href}
                   className="group flex flex-col flex-shrink-0 w-full md:w-[calc(33.333%-1rem)]"
-                >
+                 {...(/^https?:\/\//.test(String(href)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
                   {/* Image placeholder */}
                   <div className="aspect-video bg-[#10284B] rounded-2xl mb-4 overflow-hidden relative flex items-center justify-center">
                     {ep.isComingSoon ? (

@@ -20,6 +20,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     // is inherited and every author page declares itself a duplicate of home.
     alternates: {
       canonical: canonicalPath,
+      // Self-referencing x-default + en. These sites are English-only,
+      // so these are the only alternates there are (Marker TMF-436).
+      languages: {
+        'x-default': canonicalPath,
+        en: canonicalPath,
+      },
     },
     openGraph: {
       url: canonicalPath,

@@ -49,7 +49,7 @@ const Footer = () => {
 
           {/* Podcast */}
           <div>
-            <h4 className="text-white font-bold mb-6">Podcast</h4>
+            <h3 className="text-white font-bold mb-6">Podcast</h3>
             <ul className="space-y-4 text-sm text-slate-400">
               <li><Link href="#episodes" className="hover:text-amber-500 transition-colors">Latest Episodes</Link></li>
             </ul>
@@ -57,7 +57,7 @@ const Footer = () => {
 
           {/* Resources */}
           <div>
-            <h4 className="text-white font-bold mb-6">Resources</h4>
+            <h3 className="text-white font-bold mb-6">Resources</h3>
             <ul className="space-y-4 text-sm text-slate-400">
               <li>
                 <a
@@ -79,7 +79,7 @@ const Footer = () => {
                   MVP Firm Website
                 </a>
               </li>
-              <li><a href={`tel:${contact.phone}`} className="hover:text-amber-500 transition-colors">Contact Attorneys</a></li>
+              <li><a href={`tel:${contact.phone}`} className="hover:text-amber-500 transition-colors" {...(/^https?:\/\//.test(String(`tel:${contact.phone}`)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>Contact Attorneys</a></li>
             </ul>
           </div>
 

@@ -37,6 +37,12 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     description,
     alternates: {
       canonical: canonicalPath,
+      // Self-referencing x-default + en. These sites are English-only,
+      // so these are the only alternates there are (Marker TMF-436).
+      languages: {
+        'x-default': canonicalPath,
+        en: canonicalPath,
+      },
     },
     openGraph: {
       title: episode.title,
