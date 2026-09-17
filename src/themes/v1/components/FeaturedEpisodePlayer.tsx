@@ -94,10 +94,10 @@ const FeaturedEpisodePlayer = ({
             <img src={coverSrc} alt={title} className="w-full h-full object-cover" />
           </div>
           <div className="flex-1">
-            <h3 className="text-lg font-bold text-black leading-tight mb-1">{title}</h3>
+            <h2 className="text-lg font-bold text-black leading-tight mb-1">{title}</h2>
             <div className="text-xs text-gray-500">Episode {episodeNumber} • {duration}</div>
           </div>
-          <Link href={episodeLink} className="text-black hover:opacity-70 transition-opacity shrink-0">
+          <Link href={episodeLink} className="text-black hover:opacity-70 transition-opacity shrink-0" {...(/^https?:\/\//.test(String(episodeLink)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
             <ChevronRight size={28} />
           </Link>
         </div>
@@ -108,7 +108,7 @@ const FeaturedEpisodePlayer = ({
               {isPlaying ? <Pause size={20} fill="white" className="text-white" /> : <Play size={20} fill="white" className="text-white ml-0.5" />}
             </button>
           ) : (
-            <Link href={episodeLink} aria-label={`Play ${title}`} className="w-12 h-12 rounded-full bg-black flex items-center justify-center hover:bg-gray-800 transition-colors shrink-0">
+            <Link href={episodeLink} aria-label={`Play ${title}`} className="w-12 h-12 rounded-full bg-black flex items-center justify-center hover:bg-gray-800 transition-colors shrink-0" {...(/^https?:\/\//.test(String(episodeLink)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
               <Play size={20} fill="white" className="text-white ml-0.5" />
             </Link>
           )}
@@ -122,7 +122,7 @@ const FeaturedEpisodePlayer = ({
               </span>
             </div>
           ) : (
-            <Link href={episodeLink} className="flex-1 flex flex-col gap-1 cursor-pointer">
+            <Link href={episodeLink} className="flex-1 flex flex-col gap-1 cursor-pointer" {...(/^https?:\/\//.test(String(episodeLink)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
               <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden group">
                 <div className="h-full w-0 bg-black transition-all group-hover:bg-gray-800" />
               </div>
@@ -142,8 +142,8 @@ const FeaturedEpisodePlayer = ({
         <div className="flex-1 flex flex-col justify-between">
           <div>
             <div className="flex items-start justify-between mb-2">
-              <h3 className="text-xl md:text-2xl font-bold text-black leading-tight pr-4">{title}</h3>
-              <Link href={episodeLink} className="flex items-center gap-1 text-sm text-black hover:opacity-70 transition-opacity shrink-0">
+              <h2 className="text-xl md:text-2xl font-bold text-black leading-tight pr-4">{title}</h2>
+              <Link href={episodeLink} className="flex items-center gap-1 text-sm text-black hover:opacity-70 transition-opacity shrink-0" {...(/^https?:\/\//.test(String(episodeLink)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
                 Episode Page <ChevronRight size={16} />
               </Link>
             </div>
@@ -156,7 +156,7 @@ const FeaturedEpisodePlayer = ({
                 {isPlaying ? <Pause size={18} fill="white" className="text-white" /> : <Play size={18} fill="white" className="text-white ml-0.5" />}
               </button>
             ) : (
-              <Link href={episodeLink} aria-label={`Play ${title}`} className="w-10 h-10 rounded-full bg-black flex items-center justify-center hover:bg-gray-800 transition-colors shrink-0">
+              <Link href={episodeLink} aria-label={`Play ${title}`} className="w-10 h-10 rounded-full bg-black flex items-center justify-center hover:bg-gray-800 transition-colors shrink-0" {...(/^https?:\/\//.test(String(episodeLink)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
                 <Play size={18} fill="white" className="text-white ml-0.5" />
               </Link>
             )}
@@ -165,7 +165,7 @@ const FeaturedEpisodePlayer = ({
                 <div className="h-full bg-black transition-all group-hover:bg-gray-800" style={{ width: `${progress}%` }} />
               </div>
             ) : (
-              <Link href={episodeLink} className="flex-1 h-1.5 bg-gray-200 rounded-full overflow-hidden cursor-pointer group">
+              <Link href={episodeLink} className="flex-1 h-1.5 bg-gray-200 rounded-full overflow-hidden cursor-pointer group" {...(/^https?:\/\//.test(String(episodeLink)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
                 <div className="h-full w-0 bg-black transition-all group-hover:bg-gray-800" />
               </Link>
             )}
@@ -177,7 +177,7 @@ const FeaturedEpisodePlayer = ({
                 {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
               </button>
             ) : (
-              <Link href={episodeLink} aria-label="Open episode page for full player" className="text-gray-600 hover:text-black transition-colors shrink-0">
+              <Link href={episodeLink} aria-label="Open episode page for full player" className="text-gray-600 hover:text-black transition-colors shrink-0" {...(/^https?:\/\//.test(String(episodeLink)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
                 <Volume2 size={20} />
               </Link>
             )}

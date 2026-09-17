@@ -75,9 +75,9 @@ const Hero = () => {
                 </span>
                 <span className="text-xs text-slate-500">{episode.duration}</span>
               </div>
-              <h3 className="text-xl md:text-2xl font-serif text-white mb-2 group-hover:text-amber-400 transition-colors">
+              <h2 className="text-xl md:text-2xl font-serif text-white mb-2 group-hover:text-amber-400 transition-colors">
                 {episode.title}
-              </h3>
+              </h2>
               <p className="text-sm text-slate-400 line-clamp-2 mb-6">
                 {episode.description}
               </p>

@@ -63,9 +63,9 @@ const FAQ = () => {
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
               className="flex justify-between items-center w-full text-left cursor-pointer"
             >
-              <h4 className="text-lg font-medium text-slate-200 group-hover:text-amber-400 transition-colors pr-8">
+              <h3 className="text-lg font-medium text-slate-200 group-hover:text-amber-400 transition-colors pr-8">
                 {q.question}
-              </h4>
+              </h3>
               <span className="text-2xl font-light text-slate-500 group-hover:text-amber-400 shrink-0">
                 {openIndex === i ? '−' : '+'}
               </span>

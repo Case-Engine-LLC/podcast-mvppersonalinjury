@@ -35,7 +35,7 @@ const TopicalEntryGrid = () => {
             key={i}
             href={link.href}
             className="group flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm hover:shadow-lg transition-all border border-transparent hover:border-[#FF9E00]/20"
-          >
+           {...(/^https?:\/\//.test(String(link.href)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
             <div className="w-24 h-24 flex-shrink-0 bg-gray-200 rounded-lg overflow-hidden">
               <img
                 src={images[i % images.length]}

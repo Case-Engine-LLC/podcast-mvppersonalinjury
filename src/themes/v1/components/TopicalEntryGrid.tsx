@@ -83,7 +83,7 @@ const TopicalEntryGrid = () => {
             return isExternal ? (
               <a key={index} href={link.href} target="_blank" rel="noopener noreferrer" className={cardClass}>{inner}</a>
             ) : (
-              <Link key={index} href={link.href} className={cardClass}>{inner}</Link>
+              <Link key={index} href={link.href} className={cardClass} {...(/^https?:\/\//.test(String(link.href)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{inner}</Link>
             )
           })}
         </div>

@@ -208,7 +208,7 @@ const V1AuthorPage = ({ slug }: V1AuthorPageProps) => {
                 <Link
                   href={siteConfig.formCTA?.href || '#contact'}
                   className="inline-flex items-center gap-3 bg-[#FAA31A] text-black px-8 py-4 rounded-2xl transition-transform hover:scale-105 font-bold"
-                >
+                 {...(/^https?:\/\//.test(String(siteConfig.formCTA?.href || '#contact')) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
                   <FileText className="w-5 h-5" />
                   <span>{siteConfig.formCTA?.text || 'Free Consultation'}</span>
                 </Link>
@@ -353,7 +353,7 @@ const V1AuthorPage = ({ slug }: V1AuthorPageProps) => {
               <a
                 href={`tel:${contact.phone}`}
                 className="flex items-center gap-2 bg-[#FAA31A] text-black px-6 py-3 rounded-full hover:bg-[#e09000] transition-colors font-bold"
-              >
+               {...(/^https?:\/\//.test(String(`tel:${contact.phone}`)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
                 Call {contact.phone}
               </a>
             </div>

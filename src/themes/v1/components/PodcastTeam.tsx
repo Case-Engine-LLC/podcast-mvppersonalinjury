@@ -52,6 +52,9 @@ const PodcastTeam = () => {
         }
       `}</style>
       <section className="relative pt-40 md:pt-52 overflow-hidden">
+        {/* The cards below are h3. With no section heading of its own the
+            document outline jumps a level (Marker TMF-434). */}
+        <h2 className="sr-only">Podcast team</h2>
       {/* Background Image */}
       <img
         src="/team-bg.avif"

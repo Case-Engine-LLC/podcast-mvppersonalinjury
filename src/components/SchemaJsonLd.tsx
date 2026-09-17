@@ -9,8 +9,7 @@ import {
   faqGroups,
   footer,
   siteConfig,
-  stats,
-} from '@/data/siteData'
+  stats, postalAddress } from '@/data/siteData'
 import { getAllEpisodes } from '@/lib/data'
 
 type SchemaEpisode = {
@@ -132,18 +131,8 @@ const SchemaJsonLd = async () => {
     image: `${podcastUrl}/logo.svg`,
     logo: `${podcastUrl}/logo.svg`,
     description: footer.description,
-    address: contact.address
-      ? (() => {
-          const parts = contact.address.split(',').map(s => s.trim()).filter(Boolean)
-          const addressLocality = parts[0] || undefined
-          return {
-            '@type': 'PostalAddress',
-            ...(addressLocality ? { addressLocality } : {}),
-            addressRegion: compliance.jurisdiction || parts[1] || undefined,
-            addressCountry: 'US',
-          }
-        })()
-      : undefined,
+    // `contact.address` is marketing copy, not an address (Marker TMF-437).
+    address: postalAddress ? { '@type': 'PostalAddress', ...postalAddress } : undefined,
     aggregateRating: stats?.rating
       ? {
           '@type': 'AggregateRating',

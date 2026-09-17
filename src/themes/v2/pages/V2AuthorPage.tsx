@@ -89,7 +89,7 @@ const V2AuthorPage = ({ slug }: V2AuthorPageProps) => {
                 <Link
                   href={siteConfig.formCTA?.href || '#contact'}
                   className="inline-flex items-center gap-3 bg-[#FF9E00] text-[#091830] px-8 py-4 rounded-xl font-bold hover:bg-[#ffb133] transition-colors shadow-lg"
-                >
+                 {...(/^https?:\/\//.test(String(siteConfig.formCTA?.href || '#contact')) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
                   <FileText className="w-5 h-5" />
                   <span>{siteConfig.formCTA?.text || 'Free Consultation'}</span>
                 </Link>
@@ -244,7 +244,7 @@ const V2AuthorPage = ({ slug }: V2AuthorPageProps) => {
               <a
                 href={`tel:${contact.phone}`}
                 className="flex items-center gap-2 bg-[#FF9E00] text-[#091830] px-6 py-3 rounded-full hover:bg-[#ffb133] transition-colors font-bold"
-              >
+               {...(/^https?:\/\//.test(String(`tel:${contact.phone}`)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
                 Call {contact.phone}
               </a>
             </div>

@@ -40,7 +40,7 @@ const Header = () => {
                 key={item.name}
                 href={`${item.href}`}
                 className="text-sm font-medium text-slate-400 hover:text-amber-400 transition-colors"
-              >
+               {...(/^https?:\/\//.test(String(`${item.href}`)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
                 {item.name}
               </Link>
             )
@@ -52,7 +52,7 @@ const Header = () => {
           <Link
             href={navigation.ctaHref}
             className="bg-white text-black px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-amber-400 hover:text-black transition-all duration-300"
-          >
+           {...(/^https?:\/\//.test(String(navigation.ctaHref)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
             {navigation.ctaText}
           </Link>
 
@@ -94,7 +94,7 @@ const Header = () => {
                 href={`${item.href}`}
                 className="block py-3 text-sm font-medium text-slate-400 hover:text-amber-400 transition-colors"
                 onClick={() => setMobileOpen(false)}
-              >
+               {...(/^https?:\/\//.test(String(`${item.href}`)) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
                 {item.name}
               </Link>
             )
