@@ -66,7 +66,11 @@ function toIsoDate(raw: unknown): string | undefined {
     return `${year}-${mm.padStart(2, '0')}-${dd.padStart(2, '0')}`
   }
   const t = Date.parse(s)
-  return Number.isNaN(t) ? undefined : new Date(t).toISOString().slice(0, 10)
+  if (Number.isNaN(t)) return undefined
+  // Local components, not toISOString(): Date.parse reads "January 15, 2025" as
+  // local midnight, which toISOString() shifts to the previous day east of UTC.
+  const d = new Date(t)
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
 }
 
 const SchemaJsonLd = async () => {
