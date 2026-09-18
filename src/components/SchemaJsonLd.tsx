@@ -50,6 +50,25 @@ function toIsoDuration(raw: unknown): string | undefined {
   return undefined
 }
 
+// schema.org `datePublished` must be an ISO 8601 Date. Episode dates are stored
+// in the display format "MM.DD.YY" (and some static rows carry the placeholder
+// "TBD"); anything unparseable returns undefined so the key is dropped rather
+// than emitting a date Google cannot read.
+function toIsoDate(raw: unknown): string | undefined {
+  if (raw === undefined || raw === null) return undefined
+  const s = String(raw).trim()
+  if (!s || /^tbd$/i.test(s)) return undefined
+  if (/^\d{4}-\d{2}-\d{2}(T.*)?$/.test(s)) return s
+  const us = s.match(/^(\d{1,2})[./](\d{1,2})[./](\d{2}|\d{4})$/)
+  if (us) {
+    const [, mm, dd, yy] = us
+    const year = yy.length === 2 ? `20${yy}` : yy
+    return `${year}-${mm.padStart(2, '0')}-${dd.padStart(2, '0')}`
+  }
+  const t = Date.parse(s)
+  return Number.isNaN(t) ? undefined : new Date(t).toISOString().slice(0, 10)
+}
+
 const SchemaJsonLd = async () => {
   const podcastUrl = siteConfig.podcastUrl?.replace(/\/$/, '') || ''
   const firmUrl = (contact.website || '').replace(/\/$/, '')
@@ -85,7 +104,7 @@ const SchemaJsonLd = async () => {
       episodeNumber: ep.number,
       name: ep.title,
       description: ep.description,
-      datePublished: ep.date,
+      datePublished: toIsoDate(ep.date),
       timeRequired: toIsoDuration(ep.duration),
       url: `${podcastUrl}/episode/${slugPart}`,
       partOfSeries: { '@id': `${podcastUrl}/#podcast` },
